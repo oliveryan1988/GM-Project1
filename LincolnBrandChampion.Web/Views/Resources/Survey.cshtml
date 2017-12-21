@@ -1,0 +1,169 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@using LincolnBrandChampion.Model.Models
+@model LincolnBrandChampion.Model.Models.SurveyModel
+@{
+    ViewBag.Title = "Survey";
+}
+<div class="row">
+    <div class="twelve columns">
+        <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong> you are at the center of the Lincoln Brand Champion initiative. With your efforts, continued development and engagement in the Lincoln Brand Champion initiatives our collective goals and elevation of the customer experience can be achieved. Please take a moment to provide feedback so we can ensure that the Lincoln Brand Champion initiative is a continually exceptional experience.</p>
+        <!-- Grid Example -->
+        <div class="row">
+            <div class="twelve columns">
+                <div class="panel">
+                    <div class="row">
+                        <div class="four columns">
+                            <h5 class="text-center">SURVEYING THE EXCEPTIONAL:</h5>
+                            <p class="text-center">
+                                <span class="image2">
+                                    <img src="~/Images/survey.png" alt="" /></span>
+                            </p>
+                            <h3 class="text-center">PURPOSEFUL INTENT</h3>
+                            <p class="text-center">
+                                <img src="~/Images/dash.png" alt="" />
+                            </p>
+                            <ul class="disc">
+                                <li>Personalize the Lincoln Brand Champion immersion for participants whenever possible</li>
+                                <li>Help participants connect with others around natural affinities</li>
+                                <li>Better understand the Lincoln Brand Champion population to better tune future initiatives</li>
+                            </ul>
+                        </div>
+                        <div class="eight columns">
+                                <h3 class="text-center">YOUR OPINION COUNTS</h3>
+                                <p class="text-center">
+                                    <img src="~/Images/dash.png" alt="" />
+                                </p>
+                                @using (Html.BeginForm("Survey", "Resources", FormMethod.Post, new {enctype = "multipart/form-data", id = "surveyFrm", @class = "custom survey" }))
+                                {
+                                    <div class="row">
+                                        <div class="twelve columns">
+                                            <h3>Lincoln Brand Champion Affinity Survey</h3>
+                                            <label class="required">Please complete the entire survey - all questions require an answer.</label>
+                                            <hr />
+                                            @{int count = 1;
+                                              List<SurveyQuestionAnswerModel> lstQuestionAnswers = new List<SurveyQuestionAnswerModel>();
+                                            }
+                                            @foreach (var _group in Model.surveyQuestionList)
+                                            {
+                                                lstQuestionAnswers = Model.surveyQuestionAnswerList.Where(r => r.QUESTION_ID.Equals(_group.QUESTION_ID)).ToList<SurveyQuestionAnswerModel>();
+                                                lstQuestionAnswers = lstQuestionAnswers.OrderBy(r => r.ANSWER_ID).ToList<SurveyQuestionAnswerModel>();
+                                                <div class="twelve columns">
+                                                    <label class="listtitle">
+                                                        @count.ToString()
+                                                        @Html.Raw(_group.QUESTION_DESC)
+                                                       <label id="err_@_group.QUESTION_ID" style="display:none" class="required">*Required</label>
+                                                    </label>
+                                                </div>
+                                                foreach (SurveyQuestionAnswerModel answers in lstQuestionAnswers)
+                                                {
+                                                    if (answers.INPUT_TYPE.Equals("radio"))
+                                                    {
+                                                <div class="six columns group" data-validation="required">
+                                                    <label for="radio1-1">
+                                                        <input id="@answers.ANSWER_ID" name="@_group.QUESTION_ID" type="@answers.INPUT_TYPE" value="@_group.QUESTION_ID,@answers.ANSWER_ID" class="custom radio">
+                                                      
+                                                        @Html.Raw(answers.ANSWER)
+                                                    </label>
+                                                </div>
+                                                    }
+                                                    else if (answers.INPUT_TYPE.Equals("checkbox"))
+                                                    {
+                                                <div class="six columns group" data-validation="required">
+                                                    <label for="checkbox11-1">
+                                                        <input id="@answers.ANSWER_ID" name="@_group.QUESTION_ID" type="@answers.INPUT_TYPE" value="@_group.QUESTION_ID,@answers.ANSWER_ID" class="custom checkbox">
+                                                        @Html.Raw(answers.ANSWER)
+                                                    </label>
+                                                </div>
+                                                    }
+                                                    else if (answers.INPUT_TYPE.Equals("textarea"))
+                                                    {
+                                                <div class="twelve columns" data-validation="required">
+                                                    <textarea id="text_@_group.QUESTION_ID" name="@_group.QUESTION_ID"  required="required" maxlength="2000"></textarea>
+                                                </div>
+                                                    }
+                                                }
+                                                count++;
+                                                <hr />
+                                            }
+                                        </div>
+
+                                    </div>
+                                    <p class="text-right">
+                                        <input type="reset" value="Clear &#8250;" class="button register-button">
+                                        <input type="button" value="Submit &#8250;" id="btnSubmit" class="button register-button">
+                                    </p>  
+                                }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#btnSubmit').click(function () {
+
+            //RAdio Button VAlidation
+            var requiredgroups = ['1','2','4','5','6','7','8','9','10','12','13','14','16'],
+                returnValue = true;
+
+            
+            $.each(requiredgroups, function (id, name) {
+                var $radios = $('input[name="' + name + '"]:radio');
+                $('#err_'+name).css('display', 'none');
+               // $radios.last().next('div.error').remove();
+
+                if (!$radios.filter(':checked').length) {
+                    $('#err_'+name).css('display', 'inline');
+                   // $radios.last().after('<div class="re">Please select one</div>');
+                    returnValue = false;
+                }
+            });
+
+            //Check Box  Validation
+            var requiredgroups2 = ['11'],
+               returnValue2 = true;
+            $.each(requiredgroups2, function (id, name) {
+                var $checkbox = $('input[name="' + name + '"]:checkbox');
+                $('#err_' + name).css('display', 'none');
+                
+                if (!$checkbox.filter(':checked').length) {
+                    $('#err_' + name).css('display', 'inline');
+                    returnValue2 = false;
+                }
+            });
+
+
+            //Text Area VAlidation
+           
+            returnValue3 = true;
+           
+            $('#err_3').css('display', 'none');
+            if (!$.trim($("#text_3").val())) {
+                // textarea is empty or contains only white-space
+                $('#err_3').css('display', 'inline');
+                //$("textarea#3").focus();
+                returnValue3 = false;
+            }
+            //Text Area VAlidation
+            
+            returnValue4 = true;
+            
+            $('#err_15').css('display', 'none');
+            if (!$.trim($("#text_15").val())) {
+                // textarea is empty or contains only white-space
+                $('#err_15').css('display', 'inline');
+                //$("textarea#3").focus();
+                returnValue3 = false;
+            }
+            if (returnValue && returnValue2 && returnValue3 && returnValue4)
+            {
+                $("#surveyFrm").submit();
+            }
+            
+        });
+    });
+    </script>

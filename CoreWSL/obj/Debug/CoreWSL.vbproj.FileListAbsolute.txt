@@ -1,0 +1,96 @@
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.dll
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.pdb
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.xml
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\ResolveAssemblyReference.cache
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.dll
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.xml
+D:\using\oDesk\mktgassociates\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.pdb
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\bin\Debug\CoreWSL.dll
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\bin\Debug\CoreWSL.pdb
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\bin\Debug\CoreWSL.xml
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\obj\Debug\CoreWSL.vbproj.GenerateResource.Cache
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\obj\Debug\CoreWSL.dll
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\obj\Debug\CoreWSL.xml
+C:\CODE\_Ford\eandgesp.dealerconnection.com\eandgesp\app\trunk\code\endgesp\CoreWSL\obj\Debug\CoreWSL.pdb
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\bin\Debug\CoreWSL.dll
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\bin\Debug\CoreWSL.pdb
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\bin\Debug\CoreWSL.xml
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\ResolveAssemblyReference.cache
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\ResGen.read.1.tlog
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\ResGen.write.1.tlog
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\CoreWSL.dll
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\CoreWSL.xml
+T:\aroma\Work\19022 - 0016775 ESP Bonus Program - Reporting\code\CoreWSL\obj\Debug\CoreWSL.pdb
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.dll
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.pdb
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.xml
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\ResolveAssemblyReference.cache
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\ResGen.read.1.tlog
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\ResGen.write.1.tlog
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.dll
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.xml
+D:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.pdb
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\bin\Debug\CoreWSL.dll
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\bin\Debug\CoreWSL.pdb
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\bin\Debug\CoreWSL.xml
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\obj\Debug\ResolveAssemblyReference.cache
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\obj\Debug\CoreWSL.dll
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\obj\Debug\CoreWSL.xml
+\\EVASHARE02\Personnel_Shares2\aroma\Work\19022 - 0018533 Contract Table Download – Screen Shot Issue\code_2\CoreWSL\obj\Debug\CoreWSL.pdb
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\bin\Debug\CoreWSL.dll
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\bin\Debug\CoreWSL.pdb
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\bin\Debug\CoreWSL.xml
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\ResolveAssemblyReference.cache
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\ResGen.read.1.tlog
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\ResGen.write.1.tlog
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\CoreWSL.dll
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\CoreWSL.xml
+C:\SVN\_Ford\eandesp\code\endgesp\CoreWSL\obj\Debug\CoreWSL.pdb
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.dll
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.pdb
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\bin\Debug\CoreWSL.xml
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.vbproj.GenerateResource.Cache
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.dll
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.xml
+c:\Users\srude\Documents\MA\eandgesp.dealerconnection.com\eandgesp\MA_SVN\code\endgesp\CoreWSL\obj\Debug\CoreWSL.pdb
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.dll
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.pdb
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.xml
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.vbproj.GenerateResource.Cache
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.dll
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.xml
+C:\workspace\_Ford\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.pdb
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.dll
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.pdb
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.xml
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.vbproj.GenerateResource.Cache
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.dll
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.xml
+C:\Users\vabes\Desktop\lincolnbrandchampion.dealerconnection.com\app\trunk\code\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.pdb
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.dll
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.pdb
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\bin\Debug\CoreWSL.xml
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.vbproj.GenerateResource.Cache
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.dll
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.xml
+C:\Users\vabes\Desktop\LincolnBrandChampion.Web\CoreWSL\obj\Debug\CoreWSL.pdb
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\bin\Debug\CoreWSL.dll
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\bin\Debug\CoreWSL.pdb
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\bin\Debug\CoreWSL.xml
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\obj\Debug\CoreWSL.Resources.resources
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\obj\Debug\CoreWSL.vbproj.GenerateResource.Cache
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\obj\Debug\CoreWSL.dll
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\obj\Debug\CoreWSL.xml
+D:\lincolnbrandchampion.dealerconnection.com\CoreWSL\obj\Debug\CoreWSL.pdb

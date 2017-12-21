@@ -1,0 +1,221 @@
+﻿    	<ul class="nav-bar">
+  <li class="has-flyout nav-reg">
+   <a href="#">Registration</a>
+
+      @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+      {
+    <a href="~/Registration/Index" class="flyout-toggle">
+       
+        <span> </span></a>
+      }
+      else if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+      { 
+        <a href="~/Registration/registerAdmin" class="flyout-toggle">
+               <span> </span></a>
+      }
+      else
+      { <a href="#" class="flyout-toggle">
+               <span> </span></a> 
+      }
+    <div class="flyout">
+         @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+         {
+             
+      <a href="~/Registration/Index" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-immersion.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Immersion Event</p>
+          <p class="nav-text">Register to attend an Immersion or Summit Event as part of the Lincoln Brand Champion initiative.</p>
+        </div>
+      </div></a>
+         }
+         else if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+         {
+             
+      <a href="~/Registration/registerAdmin" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-immersion.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Immersion Event</p>
+          <p class="nav-text">Register to attend an Immersion or Summit Event as part of the Lincoln Brand Champion initiative.</p>
+        </div>
+      </div></a>
+         }
+         else
+         {
+               <a href="#" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-immersion.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Immersion Event</p>
+          <p class="nav-text">You are not authorized to access this section of Lincoln Brand Champion.</p>
+        </div>
+      </div></a>
+         }
+    </div>
+  </li>
+  <li class="has-flyout nav-resource">
+    <a href="#">Resources</a>
+    <a href="~/Resources/Index" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+      <a href="~/Resources/Index" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-resources.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">A Wealth of Knowledge</p>
+          <p class="nav-text">Your pathway to a wealth of valuable Lincoln content.</p>
+        </div>
+      </div></a>
+        @if (Convert.ToInt32(Session["ROLE_ID"]) == 1){
+        <a href="~/Resources/Survey" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/survey.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Affinity Survey</p>
+          <p class="nav-text">Help us shape the future of the Lincoln Brand Champion initiative.</p>
+        </div>
+      </div></a>}
+        else{
+         <a href="#" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/survey.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Affinity Survey</p>
+          <p class="nav-text">You are not authorized to access this section of Lincoln Brand Champion.</p>
+        </div>
+      </div></a>
+        }
+    </div>
+  </li>
+  <li class="has-flyout nav-brand">
+    <a href="#">Brand&nbsp;Champions</a>
+    <a href="~/BrandChampion/MakeConnections" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+      <a href="~/BrandChampion/MakeConnections" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-network.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Make Connections</p>
+          <p class="nav-text">Locate other Lincoln Brand Champions, view their profiles and start the conversation.</p>
+        </div>
+      </div></a>
+        @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+        { 
+      <a href="~/BrandChampion/LBCProfile" target"_parent"  class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-profile.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">My Profile</p>
+          <p class="nav-text">Enhance your informational story to build networking opportunities with other Lincoln Brand Champions.</p>
+        </div>
+      </div></a>}
+    </div>
+  </li>
+  <li class="has-flyout nav-tool"><a href="#">Toolkit</a>
+    <a href="~/Toolkit/Index" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+       @if (Convert.ToInt32(Session["ROLE_ID"]) == 1 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+       {
+      <a href="~/Toolkit/Index" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-training.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Checkpoint Resources</p>
+          <p class="nav-text">Everything you need to educate yourself and your team and become strong advocates of the Lincoln Brand.</p>
+        </div>
+      </div></a>
+      <a href="~/LBC/UnderConstruction" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-rewards.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Rewards</p>
+          <p class="nav-text">Learn about the benefits to be gained and rewards to be earned for completing programs, achieving results and helping others.</p>
+        </div>
+      </div></a>}
+       else
+       {
+             <a href="#" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-training.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Checkpoint Resources</p>
+          <p class="nav-text">You are not authorized to access this section of Lincoln Brand Champion.</p>
+        </div>
+      </div></a>
+      <a href="#" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-rewards.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Rewards</p>
+          <p class="nav-text">You are not authorized to access this section of Lincoln Brand Champion.</p>
+        </div>
+      </div></a>
+       }
+    </div>
+  </li>
+  <li class="has-flyout nav-tool"><a href="#">Share Your Story</a>
+     @if (Convert.ToInt32(Session["ROLE_ID"]) == 1 )
+             {
+            <a href="~/Story/Index" class="flyout-toggle"><span> </span></a>
+            <div class="flyout">
+              <a href="~/Story/Index" target="_parent" class="sub"><div class="row">
+                <div class="three columns">
+                  <p><img src="~/Images/icon-story.png" alt=""/></p>
+                </div>
+                <div class="nine columns">
+        	        <p class="nav-title">Submit Story</p>
+                  <p class="nav-text">Have a story to tell? Submit you tale of excellence on sales or service and recognize those whole elevate the lincoln brand</p>
+                </div>
+                </div></a>
+              <a href="~/Story/MyStories" target="_parent" class="sub"><div class="row">
+                <div class="three columns">
+                  <p><img src="~/Images/icon-multi-story.png" alt=""/></p>
+                </div>
+                <div class="nine columns">
+        	        <p class="nav-title">My Stories</p>
+                  <p class="nav-text">View a cross section of stories, in draft or final version. Add, edit or submit your stories as final.</p>
+                </div>
+              </div></a>
+            </div>
+                }
+        @if (Convert.ToInt32(Session["ROLE_ID"]) == 5 )
+             {
+            <a href="~/Story/AdminStories" class="flyout-toggle"><span> </span></a>
+            <div class="flyout">
+              <a href="~/Story/AdminStories" target="_parent" class="sub"><div class="row">
+                <div class="three columns">
+                  <p><img src="~/images/icon-multi-story.png" alt=""/></p>
+                </div>
+                <div class="nine columns">
+        	        <p class="nav-title">Submitted Stories</p>
+                  <p class="nav-text">View a cross-section of user stories. Review, categorize, rate or return user stories to draft status.</p>
+                </div>
+              </div></a>
+              <a href="~/Story/AddStoryAdmin" target="_parent" class="sub"><div class="row">
+                <div class="three columns">
+                  <p><img src="~/images/icon-story.png" alt=""/></p>
+                </div>
+                <div class="nine columns">
+        	        <p class="nav-title">Submit Story</p>
+                  <p class="nav-text">Use this section to add stories that you've received from Brand Champions.</p>
+                </div>
+                </div></a>
+
+            </div>
+                }
+
+  </li>
+</ul>

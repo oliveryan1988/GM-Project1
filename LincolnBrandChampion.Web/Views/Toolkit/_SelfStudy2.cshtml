@@ -1,0 +1,66 @@
+﻿
+    <div id="tools">
+        <h3>STEP ONE: DOWNLOAD AND STUDY THE PDF RESOURCE DOCUMENT</h3>
+
+        <div class="row">
+            <div class="twelve columns">
+                <p class="step-image">
+                    <img src="~/Images/step2-option1.png" alt="" />
+                </p>
+                <p>
+                    <strong>Checkpoint 2 (PDF) Resource Doc “Elevating the Client Experience”</strong><br>
+                    This document is includes leading practices from Lincoln Brand Champions across the country. In addition to providing the knowledge necessary for passing the Checkpoint 2 STARS test, it offers practical examples of elevated client experiences that can be applied locally. 
+                </p>
+
+                <div class="row">
+                    <!--OR BUTTON--SMALL-->
+                    <!--              	<p class="step-image-or-min"><img src="images/or-sm.png" alt=""/></p>-->
+                    <!--OR BUTTON--SMALL-->
+                    <div class="twelve columns">
+                        <p class="text-center">
+                            Checkpoint 2 (PDF) Resource Doc “Elevating the Client Experience”<br>
+                            <a href="~/Content/toolkit/LBC_ElevatingClientExperience_CP2_v2.pdf" class="button register-button" id="step2pdf" target="_blank">DOWNLOAD &#8250;</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ten columns centered text-center">
+                        <input type="button" value="NEXT &#8250;" class="button register-button" id="next" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById("step2pdf").onclick = function () { myFunc3() };
+    function myFunc3() {
+        $('#next').attr('disabled', false);
+    }
+
+    document.getElementById("next").onclick = function () { myFunc() };
+    function myFunc() {
+        $("#tools").load('@Url.Action("PhysicalTool", "Toolkit")')
+    }
+</script>
+
+<script type="text/javascript">
+        $('#step2pdf').click(function (e) {  //For each a (anchor), set the following function
+
+            ga('send', 'event', 'button', 'click', 'LBC_ElevatingClientExperience_CP2_v2.pdf');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                    // gaq.push(['_trackEvent', 'File', 'downloads', 'Checkpoint1SelfStudyPDF.pdf']);
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+                }
+
+            });
+        });
+   // });
+</script>

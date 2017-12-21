@@ -1,0 +1,276 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@model LincolnBrandChampion.Model.Models.RegistrationModel
+@{
+    ViewBag.Title = "Register";
+   
+}
+
+ <div class="row">
+    <div class="twelve columns">
+      <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong>
+           The Brand Champion Immersion is a 3-day event that plays host to a series of premium, highly immersive activities and engagements, all designed to bring you precisely in tune with the Lincoln brand.   With unparalleled access to Lincoln brand stories, products, customer insights, and key company personnel, you’ll build a solid foundation for your leadership role as a Lincoln Brand Champion.</p>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+
+               <!-- Insert Partial for the navigation--> 
+                     @Html.Partial("~/Views/Registration/_Navigation.cshtml")
+                
+        <div class="eight columns">
+                	<h3 class="text-center">IMMERSE YOURSELF</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>      
+            @using (Html.BeginForm("Register", "Registration", FormMethod.Post, new { id = "registration", enctype = "multipart/form-data", @class = "awesome" }))
+            {
+                @Html.HiddenFor(m => Model.STARS_ID, new { id = "starid" })
+                @Html.HiddenFor(m => Model.PA_CODE)
+                @Html.HiddenFor(m => Model.EVENT_ID, new { id = "eventid" })
+                @Html.HiddenFor(m => Model.REGD_STATUS)
+                @Html.HiddenFor(m => Model.PROFILE_TYPE)
+                @Html.HiddenFor(m => Model.PROFILE_NOTE)
+                @Html.HiddenFor(m => Model.BIOGRAPHY)
+                @Html.HiddenFor(m => Model.DEPARTMENT)
+                @Html.HiddenFor(m => Model.SHIRT_SIZE)
+                @Html.Hidden("CancelReason")
+                  
+                   @Html.HiddenFor(m => Model.WSLX_ID)
+    <div class="row">
+      <div class="six columns">@Html.TextBoxFor(m => Model.DLR_NAME, new { @class = "", @readonly = "readonly" })<label>Dealership Name</label></div>
+      <div class="six columns">@Html.TextBoxFor(m => Model.PA_CODE, new { @class = "", @readonly = "readonly" })<label>P&amp;A Code</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.TextBoxFor(m => Model.FIRST_NAME, new { @class = "" , maxlength=35})@Html.ValidationMessageFor(m => Model.FIRST_NAME)<label>Attendee's First Name</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">@Html.TextBoxFor(m => Model.LAST_NAME, new { @class = "", maxlength=35 })@Html.ValidationMessageFor(m => Model.LAST_NAME)<label>Attendee's Last Name</label></div>
+        <div class="six columns">@Html.TextBoxFor(m => Model.BADGE_NAME, new { @class = "", maxlength=35 })@Html.ValidationMessageFor(m => Model.BADGE_NAME)<label>Attendee's Badge Name</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.TextBoxFor(m => Model.TITLE, new { @class = "" , maxlength=40})<label>Attendee's Title</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.TextBoxFor(m => Model.EMAIL_ID, new { @class = "", maxlength=60 })@Html.ValidationMessageFor(m => Model.EMAIL_ID)<label class="required">* Email Address</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <div class="row collapse">
+          @Html.TextBoxFor(m => Model.phone1, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.phone2, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.phone3, new { @class = "six columns", maxlength = 4 })
+            <span class="required">@Html.ValidationMessageFor(m => Model.phone1)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.phone2)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.phone3)<br /></span>
+        </div><label>Dealership Phone Number</label>
+      </div>
+      <div class="six columns">
+        <div class="row collapse">
+          @Html.TextBoxFor(m => Model.mobile1, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.mobile2, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.mobile3, new { @class = "six columns", maxlength = 4 })
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile1)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile2)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile3)<br /></span>
+        </div><label>Mobile/Other Phone Number</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.TextBoxFor(m => Model.DLR_ADDRESS, new { @class = "", @readonly = "readonly" })<label>Dealership Address</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">@Html.TextBoxFor(m => Model.DLR_CITY, new { @class = "", @readonly = "readonly" })<label>Dealership City</label></div>
+      <div class="three columns">@Html.TextBoxFor(m => Model.DLR_STATE, new { @class = "", @readonly = "readonly" })<label>State/Prov.</label></div>
+      <div class="three columns">@Html.TextBoxFor(m => Model.DLR_ZIP, new { @class = "", @readonly = "readonly" })<label>ZIP/Postal Code</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+                  @Html.DropDownListFor(m => Model.DIETARY_RESTRICTION, new SelectList(ModelValueListProvider.DietaryRestrictionsList, "Value", "Text", "DR00"))
+                    <span class="required">@Html.ValidationMessageFor(m => Model.DIETARY_RESTRICTION)</span>
+		<label class="required">* Dietary Restrictions</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.TextAreaFor(m => Model.NOTES, new { @class = "", maxlength=500 })<label>Additional Information/Notes</label></div>
+    </div>
+    
+    <div class="row">
+      <div class="twelve columns">@Html.DropDownListFor(m => Model.TRANSPORTATION_MODE, new SelectList(ModelValueListProvider.TransportationModeList, "Value", "Text"))
+          @Html.ValidationMessageFor(m => Model.TRANSPORTATION_MODE)<label class="required">* Transportation</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.DropDownListFor(m => Model.TRANSPORTATION_NEED, new SelectList(ModelValueListProvider.TransportationNeedList, "Value", "Text"))
+          @Html.ValidationMessageFor(m => Model.TRANSPORTATION_NEED)<label class="required">* Transportation Need</label></div>
+    </div>
+    if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+    {
+        <div class="row">
+          <div class="twelve columns">@Html.TextAreaFor(m => Model.ADMIN_NOTES, new { @class = "", maxlength=500 })<label>Admin Notes</label></div>
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(m => Model.ADMIN_NOTES, new { @class = ""})
+    }
+    <div class="row">
+      <div class="twelve columns text-right">
+            @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+            {
+             if (ViewBag.registered == 0)
+                 { 
+                 <input type="reset" value="Clear &#8250;" class="button" >
+                  <input type="submit" value="Register &#8250;" class="button register-button" >
+             }
+             else
+            {              
+             
+          <a class="button" data-reveal-id="cancelModal">Cancel Registration</a>
+            <input type="submit" value="Save Changes" class="button register-button" >
+          }
+            }
+
+            else
+            {
+                
+                 if (ViewBag.registered == 0)
+                 { 
+          <input type="reset" value="Clear &#8250;" class="button" >
+            <input type="submit" value="Register &#8250;" class="button register-button" >}
+                  if (Model.REGD_STATUS == "A")
+                  {
+                      <a class="button" data-reveal-id="cancelModal">Cancel Registration</a>
+            <input type="submit" value="Save Changes" class="button register-button" >
+                  }
+                if (Model.REGD_STATUS == "C")
+                  {
+                     
+             
+          <input type="button" value="Resume Registration" id="resumeRegistration" class="button" >@*
+            <input type="submit" value="Save Changes" class="button register-button" >*@
+                  }
+
+            }
+
+      </div>
+    </div>
+            }
+                </div>
+        	
+        	</div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+  </div>
+
+<div id="cancelModal" class="reveal-modal medium">
+    <form id="cancelForm">
+  <div class="row">
+    <div class="twelve columns">
+      <p>Please enter your reason for cancelling your registration for "@Model.EVENT_NAME".</p>
+    </div>
+    <div class="twelve columns">
+      @Html.TextAreaFor(m => Model.CANCEL_REASON, new { @class = "", maxlength=500})
+      <span class="required">@Html.ValidationMessageFor(m => Model.CANCEL_REASON)</span>
+     </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns text-right">
+        <input type="button" value="Back" class="button close-reveal-modal">
+        <input type="submit" value="Submit Cancellation" id="cancelRegistration" class="button register-button">
+    </div>
+  </div>
+  </form>  
+  <a class="close-reveal-modal">&#215;</a>
+</div> 
+
+<script>
+    
+    $(document).ready(function () {
+
+        wrapSelects = function () {
+            $('form.awesome select:not(.is-wrapped)')
+              .addClass('is-wrapped')
+              .wrap('<div class="custom dropdown select" />')
+              .after('<span class="selector"></span>');
+        }
+
+        $(wrapSelects);
+
+    });
+    </script>
+
+
+<script type ="text/javascript">
+    $(document).ready(function () {
+
+        $("#cancelForm").submit(function (e) {
+            e.preventDefault();
+            if (!$("#CANCEL_REASON").hasClass("input-validation-error")) {
+                $("#CancelReason").val($("#CANCEL_REASON").val());
+                var form = $("#registration").serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CancelRegistration", "Registration")',
+                    data: form,
+                    dataType: "json",
+                    success: function (json) {
+                        if (json.isRedirect) {
+                            window.location.href = json.redirectUrl;
+                        }
+                        //code after success
+                        //url: '@Url.Action("Index", "Registration")';
+                        //window.location.href = "~/Registration/Index/";
+
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+
+                });
+            }
+        });
+
+        $("#resumeRegistration").click(function () {
+            //var data = new FormData();
+            var form = $("#registration").serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ResumeRegistration", "Registration")',
+                data: form,
+                dataType: 'json',
+                success: function (json) {
+                    if (json.isRedirect) {
+                        window.location.href = json.redirectUrl;
+                    }
+                    //code after success
+                    //url: '@Url.Action("Index", "Registration")';
+                    //window.location.href = "~/Registration/Index/";
+
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+
+        $("#TRANSPORTATION_MODE").change(function () {
+            if ($("#TRANSPORTATION_NEED").val() == "") {
+                if ($(this).val() == "DRIVE") {
+                    $("#TRANSPORTATION_NEED").val("NONE");
+                }
+                if ($(this).val() == "FLY") {
+                    $("#TRANSPORTATION_NEED").val("BOTH");
+                }
+            }
+        });
+    });
+    </script>
+

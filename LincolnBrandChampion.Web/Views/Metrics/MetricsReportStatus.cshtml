@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "MetricsReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.homeid = "metrics";    
+}
+
+@*<link href="~/Content/DT_bootstrap.css" rel="stylesheet" />*@
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+<script type="text/javascript" charset="utf-8">
+
+    function populateTable(dlrRegion) {
+
+        $("#tableScroll").load('@Url.Action("UserReportStatus", "Metrics")');
+    }
+
+    /* Table initialisation */
+    $(document).ready(function () {
+        populateTable(null);
+
+        $("#filterSearch").change(function () {
+            populateTable();
+        });
+    });
+</script>
+<div class="row">
+    <div class="twelve columns">
+        <p class="home-intro">To generate refined <strong>Lincoln Brand Champion User Reports</strong>, choose from the Market dropdown options below. Select the buttons at the bottom of the page to create a print-ready file, generate an Adobe Acrobat<sup>&reg;</sup> PDF or Microsoft&#8482; Excel file based on the report selections, or view the content below for quick and easy reference. </p>
+        <h2>BRAND CHAMPION USER REPORTS</h2>
+
+        <div id="tableScroll">
+            <table width="976" border="0" cellpadding="0" cellspacing="0" id="regTable" >
+                <tr><th><div style='text-align:center;padding:10px 10px 10px 10px;'>Loading... </div></th></tr>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+
+        wrapSelects = function () {
+            $('form.awesome select:not(.is-wrapped)')
+              .addClass('is-wrapped')
+              .wrap('<div class="custom dropdown select" />')
+              .after('<span class="selector"></span>');
+        }
+
+        $(wrapSelects);
+    });
+</script>

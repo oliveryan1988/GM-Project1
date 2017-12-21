@@ -1,0 +1,110 @@
+﻿@using LincolnBrandChampion.Model.Models
+@using PagedList;
+@using PagedList.Mvc;
+@using LincolnBrandChampion.Web.Helpers;
+@model IList<LincolnBrandChampion.Model.Models.StoryModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=Stories.xls");
+}
+
+<?xml version="1.0" encoding="utf-16" ?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Story Submitted On</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Submitted By</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Category </ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Sub-Category</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Rating</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">LBC Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">P&A Code</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Select or Contact</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Market Area</ss:Data>
+                </ss:Cell>                                
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Sales or Service LBC</ss:Data>
+                </ss:Cell>
+                                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Photos Uploaded</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Story Copy</ss:Data>
+                </ss:Cell>
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+            <ss:Row>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@string.Format("{0:MM/dd/yyyy}",@item.SUBMISION_DATE)</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.CREATED_BY</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@(item.STORY_CATEGORY==null?"":item.Category.CATEG_NAME) </ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@(item.STORY_SUBCATEGORY==null?"": item.SubCategory.SUB_CAT_NAME)</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@(item.Rating.RATING_NAME==null?"N/A":item.Rating.RATING_NAME)</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.Profile.FIRST_NAME @item.Profile.LAST_NAME</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.Profile.DLR_NAME</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.PA_CODE</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@(item.Profile.SELECT_CONTACT_DLR=="C"?"Contact":"Sales")</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.Profile.DLR_REGION</ss:Data>
+                </ss:Cell>                                
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.Profile.DEPT_INFO</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    @{
+                        int photos=0;
+                        if (string.IsNullOrEmpty(item.IMG_1)) { photos = photos+1; }
+                        if (string.IsNullOrEmpty(item.IMG_2)) { photos = photos + 1; }
+                        if (string.IsNullOrEmpty(item.IMG_3)) { photos = photos + 1; }
+                        }
+                    <ss:Data ss:Type="String">@photos</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">@item.STORY_CONTENT</ss:Data>
+                </ss:Cell>
+            </ss:Row>
+            }
+
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>

@@ -1,0 +1,12 @@
+﻿
+@model string
+@{Layout = null;}
+
+@if(string.IsNullOrEmpty(Model))
+{
+<img src="~/Images/person-cutout.png" alt=""/>
+}
+else
+{
+    <img src= "@Url.Content("~/Images/ProfilePics/"+Model)" alt="IMAGES" />
+}

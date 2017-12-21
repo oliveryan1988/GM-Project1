@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD57D78E-337E-465C-97EB-4FF32886A17A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LincolnBrandChampion.Model</RootNamespace>
+    <AssemblyName>LincolnBrandChampion.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PagedList">
+      <HintPath>..\LincolnBrandChampion.Web\bin\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.RegularExpressions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AirlinesInfoModel.cs" />
+    <Compile Include="Models\AttendanceReportModel.cs" />
+    <Compile Include="Models\CheckpointCompletedModel.cs" />
+    <Compile Include="Models\CheckpointModel.cs" />
+    <Compile Include="Models\CheckpointReportModel.cs" />
+    <Compile Include="Models\CheckpointTracking.cs" />
+    <Compile Include="Models\StoryRatingModel.cs" />
+    <Compile Include="Models\StorySubCategoryModel.cs" />
+    <Compile Include="Models\StoryCategoryModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\FlightInfoDetailsModel.cs" />
+    <Compile Include="Models\FlightInfoModel.cs" />
+    <Compile Include="Models\GuestRegistrationModel.cs" />
+    <Compile Include="Models\GuestSessionLookupModel.cs" />
+    <Compile Include="Models\GuestSessionModel.cs" />
+    <Compile Include="Models\HotelCarModel.cs" />
+    <Compile Include="Models\ImmersionCourceModel.cs" />
+    <Compile Include="Models\LoginTrackingModel.cs" />
+    <Compile Include="Models\ProfileModel.cs" />
+    <Compile Include="Models\ProfileRecognition.cs" />
+    <Compile Include="Models\ProfileRecognitionMasterModel.cs" />
+    <Compile Include="Models\RecognitionModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Models\RegistrationReportModel.cs" />
+    <Compile Include="Models\ResourceTracking.cs" />
+    <Compile Include="Models\StoryModel.cs" />
+    <Compile Include="Models\SurveyCompledModel.cs" />
+    <Compile Include="Models\SurveyMasterModel.cs" />
+    <Compile Include="Models\SurveyModel.cs" />
+    <Compile Include="Models\SurveyQuestionAnswerModel.cs" />
+    <Compile Include="Models\SurveyQuestionModel.cs" />
+    <Compile Include="Models\SurveyReportModel.cs" />
+    <Compile Include="Models\SurveyTakenModel.cs" />
+    <Compile Include="Models\UserRolModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

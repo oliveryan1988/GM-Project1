@@ -1,0 +1,105 @@
+﻿@{Layout = null;}
+
+<div id="reg-table" class="row cattable">
+  <div class="four columns">
+    <h5>CATEGORY:</h5>
+    <h6><img src="~/Images/icon-immersion.png" alt="" class="icon"/>REGISTRATION:</h6>
+    <hr />
+    <img src="~/Images/banner-registration.jpg" alt="" class="banner"/> </div>
+  <div class="eight columns">
+    <h5>DESCRIPTION:<span>STATUS:</span><img src="~/Images/legend.png" alt="" class="legend"/></h5>
+    <h6>&nbsp;</h6>
+    <table width="100%" border="0" cellspacing="10px" cellpadding="5px">
+      <tbody>
+          @foreach (var item in Model.recognitionList)
+          {
+
+
+              if (@item.CATEGORY.ToUpper() == "REGISTRATION")
+              {
+        <tr>
+          <td class="descr"><strong>@item.RECOGNITION_TITLE</strong> <br>
+             @item.RECOGNITION_DESC</td>
+
+     @if (item.STATUS == "Y")
+                        {
+                        <td class="stat-not">&nbsp;</td>
+                        <td class="stat"><img src="~/Images/completed.png" alt=""/></td>  
+                        }
+                        else if (item.STATUS == "N" | item.STATUS == null)
+                           {
+                        <td class="stat-not"><img src="~/Images/not-completed.png" alt=""/></td>
+                        <td class="stat">&nbsp;</td>                   
+                           }
+
+        </tr>@*
+        <tr>
+          <td class="descr"><strong>Model Seted ut perspicaltis Immersion Event</strong> <br>
+            Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor et veritatis et quasi. Tium, totam rem aperiam</td>
+          <td class="stat-not"><img src="~/Images/not-completed.png" alt=""/></td>
+          <td class="stat">&nbsp;</td>
+        </tr>*@
+              }
+          }
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="res-table" class="row cattable">
+  <div class="four columns">
+    <h5>CATEGORY:</h5>
+    <h6><img src="~/Images/icon-resources.png" alt="" class="icon"/>RESOURCES:</h6>
+    <hr />
+    <img src="~/Images/banner-resources.jpg" alt="" class="banner"/> </div>
+  <div class="eight columns">
+    <h5>DESCRIPTION:<span>STATUS:</span><img src="~/Images/legend.png" alt="" class="legend"/></h5>
+    <h6>&nbsp;</h6>
+    <table width="100%" border="0" cellspacing="10px" cellpadding="5px">
+      <tbody>
+          @foreach (var item in Model.recognitionList)
+          {
+
+
+              if (@item.CATEGORY.ToUpper() == "RESOURCES")
+              {
+        <tr>
+          <td class="descr"><strong>@item.RECOGNITION_TITLE</strong> <br>
+             @item.RECOGNITION_DESC</td>
+         @if (item.STATUS == "Y")
+                {
+                <td class="stat-not">&nbsp;</td>
+                <td class="stat"><img src="~/Images/completed.png" alt=""/></td>  
+                }
+                else if (item.STATUS == "N" | item.STATUS == null)
+                   {
+                <td class="stat-not"><img src="~/Images/not-completed.png" alt=""/></td>
+                <td class="stat">&nbsp;</td>                   
+                   }
+
+        </tr>
+              
+              @*
+        <tr>
+          <td class="descr"><strong>Model Seted ut perspicaltis Immersion Event</strong> <br>
+            Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor et veritatis et quasi. Tium, totam rem aperiam</td>
+          <td class="stat-not">&nbsp;</td>
+          <td class="stat"><img src="~/Images/completed.png" alt=""/></td>
+        </tr>
+        <tr>
+          <td class="descr"><strong>Model Seted ut perspicaltis Immersion Event</strong> <br>
+            Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor et veritatis et quasi. Tium, totam rem aperiam</td>
+          <td class="stat-not">&nbsp;</td>
+          <td class="stat"><img src="~/Images/completed.png" alt=""/></td>
+        </tr>
+        <tr>
+          <td class="descr"><strong>Model Seted ut perspicaltis Immersion Event</strong> <br>
+            Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventor et veritatis et quasi. Tium, totam rem aperiam</td>
+          <td class="stat-not"><img src="~/Images/not-completed.png" alt=""/></td>
+          <td class="stat">&nbsp;</td>
+        </tr>*@
+              }
+          }
+      </tbody>
+    </table>
+  </div>
+</div>

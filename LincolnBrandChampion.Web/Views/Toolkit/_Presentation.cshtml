@@ -1,0 +1,132 @@
+﻿<div id="tools">
+    @model LincolnBrandChampion.Model.Models.CheckpointCompletedModel
+    @using (Html.BeginForm("Presentation", "Toolkit", FormMethod.Post, new { id = "presentation", enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m=>Model.STARS_ID)
+        @Html.HiddenFor(m=>Model.PA_CODE)
+        @Html.HiddenFor(m=>Model.CHECKPOINT_ID)
+        @Html.HiddenFor(m=>Model.TOOL_ORDERED)
+        @Html.HiddenFor(m=>Model.EMAIL_ID)
+        <h3>STEP FOUR: MAKE PRESENTATION TO STORE ASSOCIATES</h3>
+        <div class="row ">
+
+            <div class="three columns">
+                <p class="text-center">
+                    <img src="~/Images/step4-option1.png" alt="" />
+                </p>
+            </div>
+
+            <div class="nine columns">
+                <p><strong>PREPARE TO PRESENT AT TEAM MEETING</strong></p>
+                <ul class="disc">
+                    <li>Use the PowerPoint or PDF template</li>
+                    <li>Share learning content from Steps 1 and 2</li>
+                    <li>Integrate learning from the exercise selected in Step 3
+                  <ol class="">
+                      <li>Actions or behaviors that merited recognition because they were in alignment with quarter’s topic and focus, or</li>
+                      <li>Learnings from the activity that amplify the quarter's topic and focus</li>
+                  </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="six columns">
+                <p class="text-center">
+                    Check Point 1 Team Meeting PPT Doc (.ppt)<br>
+                    <a href="~/Content/toolkit/LBCCheckPoint1TeamMeetingPPTX.pptx" class="button register-button" id="step4ppt">DOWNLOAD &#8250;</a>
+                </p>
+            </div>
+
+            <!--OR BUTTON--SMALL-->
+            <!--              	<p class="step-image-or-min"><img src="images/or-sm.png" alt=""/></p>
+-->
+            <!--OR BUTTON--SMALL-->
+            <div class="six columns">
+                <p class="text-center">
+                    Check Point 1 Team Meeting PDF Doc (.pdf)<br>
+                    <a href="~/Content/toolkit/LBCCheckPoint1TeamMeetingPDF.pdf" class="button register-button" id="step4pdf" target="_blank">DOWNLOAD &#8250;</a>
+                </p>
+            </div>
+        </div>
+
+        <p class="text-center">
+            <br>
+            <input type="button" value="&#8249; Restart" class="button register-button" id="previous">
+            <input type="button" value="Next &#8250;" class="button register-button" id="next" disabled>
+        </p>
+    }
+</div>
+
+<script>
+    document.getElementById("step4ppt").onclick = function () { myFunc3() };
+    function myFunc3() {
+        $('#next').attr('disabled', false);
+    }
+
+    document.getElementById("step4pdf").onclick = function () { myFunc2() };
+    function myFunc2() {
+        $('#next').attr('disabled', false);
+    }
+    document.getElementById("previous").onclick = function () { myFunc1() };
+    function myFunc1() {
+        $("#tools").load('@Url.Action("SelfStudy", "Toolkit")')
+    }
+
+    $(document).ready(function () {
+        $("#next").click(function () {
+            var form = $("#presentation").serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Presentation", "Toolkit")',
+                    data: form,
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.isRedirect) {
+                            $("#tools").load(json.redirectUrl);
+                        }
+                        $("#tools").load(json.redirectUrl);
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+                });
+        });
+        //tracking
+        $('#step4ppt').click(function (e) {  //For each a (anchor), set the following function
+            ga('send', 'event', 'button', 'click', 'LBCCheckPoint1TeamMeetingPPTX.pptx');
+            // var file = 'Step1PPT.pptx';
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+
+                }
+
+            });
+         });
+        $('#step4pdf').click(function (e) {  //For each a (anchor), set the following function
+
+            ga('send', 'event', 'button', 'click', 'LBCCheckPoint1TeamMeetingPDF.pdf');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+                }
+
+            });
+        });
+    });
+</script>

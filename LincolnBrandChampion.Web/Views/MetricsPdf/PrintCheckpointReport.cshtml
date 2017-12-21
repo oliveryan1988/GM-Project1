@@ -1,0 +1,102 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<CheckpointReportModel>
+@{
+    Layout = null;
+}
+
+
+<link href="~/Content/DT_bootstrap.css" rel="stylesheet" />
+<link href="~/stylesheets/app.css" rel="stylesheet" />
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+
+<div class="row">
+    <div class="twelve columns">
+        <br />
+
+        <div class="admin wdataTable" id="content">
+            <div class="table-holder">
+                <font size="1">
+                <table class="metrics-data" cellspacing="3" cellpadding="3" id="regTable">
+
+                    <tbody> 
+                        <tr border="0" bgcolor="#C5C3C1" color="#222222">
+                            <td>P&A Code</td>
+                            <td>Dealership Type (Contact or Select)</td>
+                            <td>Physical Tool Selected</td>
+                            <td>Checkpoint</td>
+                            <td>LBC Name</td>
+                            <td>Dealership Name</td>
+                            <td>Dealership Address</td>
+                            <td>Dealership City</td>
+                            <td>Dealership State</td>
+                            <td>Dealership ZIP</td>
+                            <td>Dealership Phone</td>                            
+                            <td>Status</td>
+                            <td>STARS Completion</td>                            
+                            <td>Date Submitted</td>                             
+                            
+                            <td>Self Study PDF Download</td>
+                            <td>Self Study PPT Download</td>
+                            <td>Team Meeting PDF Download</td>
+                            <td>Team Meeting PPT Download</td>                   
+                        </tr>
+                            @{
+                                var OddColor = "#FFFFFF";
+                                var evenColor = "#F3F0E8";
+                                var Odd = OddColor;
+                                }
+                        @if (Model.Count() > 0)
+                        {
+                            foreach (CheckpointReportModel item in Model)
+                            {
+                        <tr border="0" bgcolor="@Odd">
+                                <td>@item.PA_CODE</td> 
+                                <td>@item.SELECT_CONTACT_DLR</td>
+                            <td>@item.TOOL_ORDERED</td> 
+                                <td>@item.CHECKPOINT_ID</td>
+                                <td>@item.FIRST_NAME @item.LAST_NAME</td>
+                                <td>@item.DLR_NAME</td>
+                                <td>@item.DLR_ADDRESS</td>
+                                <td>@item.DLR_CITY</td>
+                                <td>@item.DLR_STATE</td>
+                                <td>@item.DLR_ZIP</td>
+                                <td>@item.DLR_PHONE</td>                                                                
+                                <td>@item.SHIPPING_STATUS</td>
+                                <td>@item.STARS_COMPLETION</td>
+                                <td>@item.CREATED_DATE</td>                                
+                                
+                                <td>@item.Checkpoint1SelfStudyPDF</td> 
+                                <td>@item.Checkpoint1SelfStudyPPTX</td> 
+                                <td>@item.CheckPoint1TeamMeetingPDF</td>  
+                                <td>@item.CheckPoint1TeamMeetingPPTX</td> 
+                        </tr>
+                                if (Odd == OddColor)
+                                {
+                                    Odd = evenColor;
+                                }
+                                else
+                                {
+                                    Odd = OddColor;
+                                } 
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="12">No Match Found
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+              </font>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

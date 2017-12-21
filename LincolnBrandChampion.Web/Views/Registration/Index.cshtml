@@ -1,0 +1,173 @@
+﻿@using LincolnBrandChampion.Model.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ <div class="row">
+    <div class="twelve columns">
+      <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong>
+           The Brand Champion Immersion is a 3-day event that plays host to a series of premium, highly immersive activities and engagements, all designed to bring you precisely in tune with the Lincoln brand.   With unparalleled access to Lincoln brand stories, products, customer insights, and key company personnel, you’ll build a solid foundation for your leadership role as a Lincoln Brand Champion.</p>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+
+               <!-- Insert Partial for the navigation--> 
+                     @Html.Partial("~/Views/Registration/_Navigation.cshtml")
+                
+        
+        		<div class="eight columns">
+                	<h3 class="text-center">IMMERSE YOURSELF</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+      				@using (Html.BeginForm("Index", "Registration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+      {
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="regform">
+  <tbody>
+    <tr>
+      <th>Dates</th>
+      <th>Locations</th>
+      <th>Details</th>
+      <th>Attend</th>
+    </tr>
+      @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+      {
+      foreach (EventModel item in Model )
+        {
+              if (item.CURRENT_COUNT < item.OPEN_LIMIT)         
+              {<tr><td>@item.EVENT_MONTH @item.EVENT_START_DATE.ToString().AsDateTime().Day-@item.EVENT_END_DATE.ToString().AsDateTime().Day, @item.EVENT_YEAR</td>
+              <td>@item.EVENT_LOCATION</td>
+              <td>@item.EVENT_SESSION</td>
+              <td>
+                  <!-- Check to see if the User have register for an event-->
+                  @if (item.EVENT_ID == ViewBag.eventid)
+                {
+                                 
+                        <input type="radio" name="radio" value="@item.EVENT_ID" required checked>
+                    continue; 
+                      
+                }
+                  @if(item.Reg_Status == "C")
+                  {
+                       <input type="radio" name="radio" value="@item.EVENT_ID" disabled />
+                      continue; 
+                  } 
+                  <!-- Check to see if the User have been certified before and no need to register again-->
+             @if (ViewBag.lbcCert != null && ViewBag.lbcCert == "8001C") 
+             
+             {
+                  <input type="radio" name="radio" value="@item.EVENT_ID" disabled />
+                 continue; 
+             }
+             
+             @if (ViewBag.registered == 1 && item.EVENT_ID != ViewBag.eventid)
+                 
+             {
+                     <input type="radio" name="radio" value="@item.EVENT_ID" disabled />
+                 continue; 
+             }
+                                                         
+            else
+             {
+                
+              <input type="radio" name="radio" value="@item.EVENT_ID" required />
+               
+            }
+                              </tr>
+          }
+              else                   
+              {
+                  
+                  <tr>
+                      <td>@item.EVENT_MONTH @item.EVENT_START_DATE.ToString().AsDateTime().Day-@item.EVENT_END_DATE.ToString().AsDateTime().Day, @item.EVENT_YEAR</td>
+              <td>@item.EVENT_LOCATION</td>
+              <td>@item.EVENT_SESSION</td>
+                      @if (item.EVENT_ID == ViewBag.eventid)
+                      {
+              <td>   
+                         <input type="radio" name="radio" hidden value="@item.EVENT_ID" required checked > This event is full.</td> 
+                      }
+                      else
+                      {
+                           <td>   
+                         This event is full.</td> 
+                      }           
+              </tr>
+                    }
+        }
+      }
+      else
+      {
+        foreach (EventModel item in Model )
+        {<tr><td>@item.EVENT_MONTH @item.EVENT_START_DATE.ToString().AsDateTime().Day-@item.EVENT_END_DATE.ToString().AsDateTime().Day, @item.EVENT_YEAR</td>
+        <td>@item.EVENT_LOCATION</td>
+        <td>@item.EVENT_SESSION</td>
+        <td>
+            @if (item.EVENT_ID == ViewBag.eventid)
+            {
+                
+            <input type="radio" name="radio" value="@item.EVENT_ID" required checked>
+                
+            }
+                                            
+            else
+            
+            {
+                 if ( ViewBag.registered == 1)
+                 {
+                     <input type="radio" name="radio" value="@item.EVENT_ID" disabled />
+                    }
+                 else
+                 {
+            
+                <input type="radio" name="radio" value="@item.EVENT_ID" required />
+            }
+            }
+
+
+        </td>      </tr>
+        }
+    }
+      
+  </tbody>
+</table>
+          if (ViewBag.registered == 0 && ViewBag.lbcCert != "8001C")
+          {
+              <p class="text-right"><input type="submit" value="Register &#8250;" class="button register-button" ></p> 
+                  
+          }
+          if (ViewBag.lbcCert != null && ViewBag.lbcCert == "8001C") 
+          {
+              <p class="text-right"><input type="submit" value="Register &#8250;" class="button register-button" disabled ></p> 
+              <p>
+                  Thank you for attending an Immersion Event. You have completed this requirement and do not need to attend another Immersion.
+                  If you are interesting in attending again, please contact Program Headquarters at <a href="mailto:phq@LincolnBC.com">phq@LincolnBC.com </a>or 800-816-6130.
+
+              </p>
+          }
+         if (ViewBag.registered == 1)
+          {
+             <p class="text-right"><input type="submit" value="Edit/Cancel Registration" class="button register-button" ></p>
+          }
+          }
+                <img src="~/Images/registration-event-image.jpg" alt=""/> 
+
+                    
+        		</div>
+        	</div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+  </div>
+

@@ -1,0 +1,251 @@
+﻿@using LincolnBrandChampion.Model.Models;
+@using LincolnBrandChampion.Web.Helpers;
+@model LincolnBrandChampion.Model.Models.StoryModel
+@{
+    ViewBag.Title = "Submitted Stories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
+
+  <script src="javascripts/jquery.rateit.js"></script>
+  <script src="javascripts/app.js"></script>
+
+@using (Html.BeginForm("AdminEdit", "Story", FormMethod.Post, new { enctype = "multipart/form-data", @class = "awesome story-search profileform", id = "frmSearch" }))
+{
+        @Html.HiddenFor(m => Model.STARS_ID)
+    @Html.HiddenFor(m => Model.PA_CODE)
+    @Html.HiddenFor(m => Model.SEQ_ID)
+    @Html.HiddenFor(m => Model.SUBMISION_DATE)
+    string picPath = System.AppDomain.CurrentDomain.BaseDirectory + "//Images//StoryPics//";
+	@*<form class="awesome story-search">*@
+      <div class="row">
+        <div class="three columns">
+        	<p><strong></strong> <span></span></p>
+        </div>
+        <div class="one columns">
+        <p class="text-right"><strong>BY:</strong></p>
+        </div>
+        <div class="two columns">
+            @Html.DropDownList("Market", new SelectList(ModelValueListProvider.MarketList, "Value", "Text"), new  {id="market" })
+        </div>
+        <div class="two columns">
+            @Html.DropDownList("Market", new SelectList(ModelValueListProvider.EventList , "Value", "Text"), new  {id="Event" })
+        </div>
+        <div class="two columns"><p class="text-right"><strong>SEARCH BY NAME:</strong></p>
+        </div>
+        <div class="two columns">
+      	    <input type="text" placeholder="Search" class="champ-search" id="SearchName" name="SearchName" value="@Session["searchname"].ToString()" />
+        </div>
+      </div>
+    
+      <!-- Grid Example -->
+	  @*</form>*@
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+              <div class="twelve columns"  >
+                <div class="four columns">
+                  <div id="divpartial">
+                  </div> 
+                </div>
+               	<div class="eight columns toolback">
+                    <div id="divstories">
+                        <div class="admin-story-list-item">
+                            <div class="row">
+      					        <div class="nine columns">
+                            <div class="row">
+      					        <div class="two columns">
+                   	            <p>
+                                       <img src="@Url.Content((ViewBag.PHOTO_PATH==""?"~/images/person-cutout.png":"~/images/ProfilePics/"+ViewBag.PHOTO_PATH))" class="prof-info-img" alt="IMAGES"/>
+                   	            </p>
+                                </div>
+      					        <div class="ten columns">
+                                <p><strong>@ViewBag.FIRST_NAME @ViewBag.LAST_NAME  <br> @ViewBag.DLR_NAME </strong></p>
+                                </div>
+                            </div></div>
+                                @{DateTime sbmDate=DateTime.Now;
+                                    sbmDate = (DateTime)Model.CREATED_DATE ;}
+      					        <div class="three columns"><p class="right"><strong>@sbmDate.ToString("MM/dd/yy")</strong></p></div></div>
+                    
+                            <div class="row">
+      					        <div class="twelve columns">
+                                       @if (!String.IsNullOrWhiteSpace(Model.IMG_1) && File.Exists(picPath + Model.IMG_1))
+                                    {
+                   	                    <p><img src="@Url.Content((Model.IMG_1==null?"~/Images/blank.png":"~/Images/StoryPics/"+Model.IMG_1))" alt="IMAGES" /> </p>
+                                       }
+                                           <ul class="block-grid two-up two-three-up">
+  				                    <li>
+                                           @if (!String.IsNullOrWhiteSpace(Model.IMG_2) && File.Exists(picPath + Model.IMG_2))
+                                            {
+                                          <img src="@Url.Content((Model.IMG_2==null?"~/Images/blank.png":"~/Images/StoryPics/"+Model.IMG_2))" alt="IMAGES"/>
+                                                }
+  				                    </li>
+  				                    <li>
+                                          @if (!String.IsNullOrWhiteSpace(Model.IMG_3) && File.Exists(picPath + Model.IMG_3))
+                                            {
+                                          <img src="@Url.Content((Model.IMG_3==null?"~/Images/blank.png":"~/Images/StoryPics/"+Model.IMG_3))" alt="IMAGES"/>
+                                            }
+  				                    </li>
+			                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns">
+                                    @Html.EditorFor(model => model.STORY_TITLE)
+                                    @Html.ValidationMessageFor(model => model.STORY_TITLE)
+                                    <label class="required">* Story Title</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns">
+                                    @Html.TextAreaFor(m => Model.STORY_CONTENT, new {maxlength=2000,style="height:250px", })
+                                                            @Html.ValidationMessageFor(model => model.STORY_CONTENT)
+                                    <label class="required">* Type or copy and paste your story into the field above.<span class="right"><span id="counter"> 2000 </span> Characters</span></label></div>
+                            </div>
+                            <div class="row">
+                                <div class="five columns">
+          	                        <ul class="block-grid two-up two-three-up">
+  				                        <li class="text-right"><h5>STORY RATING:</h5></li>
+                                        <li>
+                                    @Html.DropDownListFor(m => m.STORY_RATING, new SelectList(ModelValueListProvider.StoryRatingList, "Value", "Text"), new { id = "rating",name="rating" })
+                                        <div class="rateit" data-rateit-backingfld="#backing2c" data-rateit-min="0"></div></li>
+                                    </ul>
+      
+                                </div>
+                                <div class="four columns">
+      	                            @*@Html.DropDownList("category", new SelectList(ModelValueListProvider.StoryCategotyList, "Value", "Text"), new  {id="subcategory" })*@
+                                    @Html.DropDownListFor(m => m.STORY_CATEGORY, new SelectList(ModelValueListProvider.StoryCategotyList, "Value", "Text"))
+                                </div>
+                                <div class="three columns">
+                                    @*@Html.DropDownList("subcategory", new SelectList(ModelValueListProvider.StorySubCategotyList, "Value", "Text"), new  {id="subcategory" })*@
+                                    @Html.DropDownListFor(m => m.STORY_SUBCATEGORY, new SelectList(ModelValueListProvider.StorySubCategotyList, "Value", "Text"))
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="six columns"><p><a href="#" class="button final admin-button" data-reveal-id="returnDraft" >&#8249; RETURN AS DRAFT</a></p></div>
+                            @*<div class="six columns text-right"><p><input type="submit" Name="Save" value="SAVE STORY >" class="button admin-button" ></p></div>*@
+                                <input type="hidden" name="save" id="save">
+                            <div class="six columns text-right"><p><div onclick="SaveStory()" class="button admin-button" >SAVE STORY ></div></p></div>
+                                @*<input type="submit" Name="save" value="SAVE STORY >" class="button admin-button" ></p></div>*@
+                        </div>
+  					   </div>
+                    </div>
+                </div>
+                <div class="row">
+      	          <div class="eight columns offset-by-four"><br>
+  				        <div class="row">
+      	  			        <div class="twelve columns">
+                        <p class="text-center"><a href="~/Story/AdminStories" class="button admin-button" >&#8249; BACK TO STORIES</a></p>
+                            </div>
+                        </div>
+                  </div>
+                </div>
+          </div>
+        
+        </div>
+        </div>
+    </div>
+</div>
+   
+
+<div id="returnDraft" class="reveal-modal medium">
+  <div class="row">
+    <div class="twelve columns text-center">
+      <p class="subtitle">You have selected to send this story back to the Lincoln Brand Champion in <strong>DRAFT</strong> mode. Please provide your rationale for this action below. Once the story is sent back to the user, you will not be able to access it until they resubmit.</p>
+<table class="prof-info" border="0" cellpadding="5px">
+  <tbody>
+    <tr>
+      <td width="20%"><img src="@Url.Content((ViewBag.PHOTO_PATH == "" ? "~/images/person-cutout.png" : "~/images/ProfilePics/" + ViewBag.PHOTO_PATH))" class="prof-info-img" alt="IMAGES"/>
+</td>
+      <td><strong>@ViewBag.FIRST_NAME @ViewBag.LAST_NAME  <br> @ViewBag.DLR_NAME <br>
+
+@ViewBag.DLR_ADDRESS @ViewBag.DLR_CITY @ViewBag.DLR_STATE @ViewBag.DLR_ZIP</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+    	
+      <form action="#" class="profileform awesome text-left">
+    <div class="row">
+      <div class="six columns"><p><strong>STORY TITLE: Aliquip Veniam Delectus Marfa</strong></p><p>Your story has been returned to DRAFT mode for the following reasons:</p></div>
+      <div class="six columns">
+          <div class="custom dropdown select"><select name="reason">
+  			<option>Rationale</option>
+  			<option value="1" >Learn</option>
+  			<option value="2">Find Out</option>
+  			<option value="3">Interesting</option>
+		</select><span class="selector"></span></div></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns"><p><textarea name="messagebody" placeholder="Add Return to Draft Mode Message Here" rows="6"></textarea></p></div>
+    </div>
+    
+    <div class="row">
+      <div class="six columns"><input type="submit" name="save" value="CANCEL" onclick="CancelStory()" class="button admin-button" ></div>
+      <div class="six columns text-right"><input type="submit" name="save" onclick="DraftStory()" value="SUBMIT TO USER >" class="button admin-button" ></div>
+    </div>
+  </form>
+    </div>
+  </div>
+  
+  </div><a class="close-reveal-modal">&#215;</a>
+} 
+<script>
+    $(document).ready(function () {
+        populateArea();
+
+
+
+        function populateArea() {
+            $.ajax({
+                url: '@Url.Action("GetSelections", "Story")',
+                    type: 'GET',
+                    cache: false,
+                    data: {  },
+                    error: function (request, status, error) {
+                        //alert('error');
+                    },
+                    success: function (data) {
+                        $('#divpartial').empty();
+                        $("#divpartial").html(data);
+                        //  $("#terminal").val(result.term);
+                    }
+                });
+        }
+
+
+        });
+</script>
+<script>
+    function countChar(textareaName, spanName) {
+        document.getElementById(spanName).innerHTML = 2000 - document.getElementById(textareaName).value.length;
+    }
+</script>  
+<script>
+    function SaveStory() {
+        var rating;
+        rating = $("#rating option:selected").val();
+        //rating = document.getElementsByTagName("rating").value; //;$("#rating").attr("selected");
+        if (rating == 0)
+        { alert("Please pick a rating."); }
+        else
+        {
+            $('#save').val("SAVE STORY >");
+            $("#frmSearch").submit();
+        }
+    }
+    function CancelStory() {
+        
+            $('#save').val("CANCEL");
+         //   $("#frmSearch").submit();
+        
+    }
+    function DraftStory() {
+
+        $('#save').val("SUBMIT TO USER >");
+        //   $("#frmSearch").submit();
+
+    }
+</script>  

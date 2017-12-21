@@ -1,0 +1,329 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>RESOURCE REPORTS</h2>
+<p class="text-center">Explore the links below to locate all your Lincoln Brand Champion tracking, user, usage, registration and toolkit reports.</p>
+
+<!-- Grid Example -->
+<div class="row">
+    <div class="twelve columns">
+        <div class="panel">
+            <h3 class="text-center">BRAND CHAMPION REPORTS</h3>
+            <p class="text-center">
+                <img src="~/Images/dash.png" alt="" />
+            </p>
+            <div class="row">
+                <div class="six columns">
+                    <div class="row">
+                        <div class="three columns mobile-one">
+                            <p>
+                                <img src="~/Images/brand-champ-user-report.png" alt="" />
+                            </p>
+                        </div>
+                        <div class="nine columns mobile-three">
+                            <p>
+                                <strong>Brand Champion User Report</strong><br>
+                                Find all the pertinent details about registered Lincoln Brand Champions such as a Brand Champion’s name, title, contact information, email address, dealership name, location and region.
+                            </p>
+                            <p class="text-right">
+                                @* @Html.ActionLink("Get User Report >","MetricsReport",null,new {@class="button right"})*@
+                                <a href="~/Metrics/MetricsReport" class="button admin-button">Get User Report &#8250;</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="six columns">
+                    <div class="row">
+                        <div class="three columns mobile-one">
+                            <p>
+                                <img src="~/Images/brand-champ-status-report.png" alt="" />
+                            </p>
+                        </div>
+                        <div class="nine columns mobile-three">
+                            <p>
+                                <strong>Brand Champion Status Report</strong><br>
+                                Each Lincoln Brand Champion will be encouraged to attend Lincoln Immersion and Summit Events, complete training checkpoints and progress through Brand Champion initiatives throughout the year. Utilize this report to review the progress and status on completion of these initiatives.
+                            </p>
+                            <p class="text-right"><a href="~/Metrics/MetricsReportStatus" class="button admin-button">Get Status Report &#8250;</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <p class="image-left">
+                        <img src="~/Images/brand-champ-registration-report.png" alt="" />
+                    </p>
+                    <p>
+                        <strong>Brand Champion Event Reports</strong><br>
+                        Find and view the Guest Registration information for thosse who plan to/have attended the Lincoln Brand Champion events. This report will include their contact information and will specify which events and sessions the guest plans to/have attended.
+                    </p>
+                    <div class="row">
+                        <div class="five columns">
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-event-reg-master.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Event Registration Master</strong><br>
+                                        View and edit details collected for registrants of Lincoln Brand Champion Events. From this report, you can also cancel a guest registration.                                        
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right"><a href="@Url.Action("MetricsRegistrationReport", "Metrics")" class="button admin-button small">Get Report &#8250;</a></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-lodging-report.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Housing Report</strong><br>  
+                                        View hotel accommodations required by guests for the Lincoln Brand Champion Events.                                      
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right">
+                                        <a href="@Url.Action("UploadHousingCsv", "Metrics")" data-reveal-id="fileModal" class="upload-csv button admin-button small">Upload CSV File &#8250;</a> 
+                                        <a href="@Url.Action("MetricsHousingReport", "Metrics")" class="button admin-button small">Get Report &#8250;</a></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-attendance-report.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Attendance Report</strong><br>
+                                        Update attendance information for all events.                                        
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right"><a href="@Url.Action("MetricsAttendanceReport", "Metrics")" class="button admin-button small">Get Report &#8250;</a></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-dietary-report.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Dietary Restrictions Report</strong><br>   
+                                        View dietary restrictions and notes provided by guests at the time of registration.                                     
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right"><a href="@Url.Action("MetricsDietaryReport", "Metrics")" class="button admin-button small">Get Report &#8250;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="five columns">
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-departure-report.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Departure Manifest</strong><br>   
+                                        View guest details including transportation requirements for their departure from the event.                                     
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right"><a href="@Url.Action("MetricsDepartureManifest", "Metrics")" class="button admin-button small">Get Report &#8250;</a></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-transportation-report.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Arrival Manifest</strong><br>  
+                                        View guest details including transportation requirements upon their arrival to the event.                                      
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right">
+                                        <a href="@Url.Action("UploadArrivalCsv", "Metrics")" data-reveal-id="fileModal" class="upload-csv button admin-button small">Upload CSV File &#8250;</a> 
+                                        <a href="@Url.Action("MetricsArrivalManifest", "Metrics")" class="button admin-button small">Get Report &#8250;</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="two columns mobile-one">
+                                    <p>
+                                        <img src="~/Images/metrics-cancel-report.png" alt="" />
+                                    </p>
+                                </div>
+                                <div class="ten columns mobile-three">
+                                    <p>
+                                        <strong>Cancellation Report</strong><br>  
+                                        View details for guests who have cancelled their registration for events.                                      
+                                    </p>
+                                    <!--NEED FINAL href location-->
+                                    <p class="text-right"><a href="@Url.Action("MetricsCancellationReport", "Metrics")" class="button admin-button small">Get Report &#8250;</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="six columns">
+                    <div class="row">
+                        <div class="three columns mobile-one">
+                            <p>
+                                <img src="~/Images/guest-reg-status-report.png" alt="" />
+                            </p>
+                        </div>
+                        <div class="nine columns mobile-three">
+                            <p>
+                                <strong>Brand Champion Guest Registration Report</strong><br>
+                                View information for Guests who plan to attend the Lincoln Brand Champion Immersion events. This report includes contact information and specifies which events and sessions Guests plan to attend.
+                            </p>
+                            <p class="text-right"><a href="~/Metrics/GuestRegistrationReport" class="button admin-button">Get Guest Report &#8250;</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="six columns">
+                    <div class="row">
+                        <div class="three columns mobile-one">
+                            <p>
+                                <img src="~/Images/survey-status-report.png" alt="" />
+                            </p>
+                        </div>
+                        <div class="nine columns mobile-three">
+                            <p>
+                                <strong>Brand Champion Affinity Survey Report</strong><br>
+                                The purpose of this survey is to gather information to help us personalize the Immersion for participants whenever possible, help connect Immersion participants with others around natural affinities and better understand the Lincoln Brand Champion population to better tune future initiatives.
+                            </p>
+                            <p class="text-right"><a href="~/Metrics/SurveyReport" class="button admin-button ">Get Survey Report &#8250;</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <div class="panel">
+            <h3 class="text-center">CHECK POINT REPORT</h3>
+            <p class="text-center">
+                <img src="~/Images/dash.png" alt="" />
+            </p>
+            <p class="image-left">
+                <img src="~/Images/checkpoint-status-report.png" alt="" />
+            </p>
+            <p>
+                <strong>Check Point Fulfillment Report</strong>
+                <br>
+                View Brand Champion Selections for the Physical Tool for Check Points and fulfillment information.
+            </p>
+            <p class="text-right"><a href="~/Metrics/MetricsCheckpointReport" class="button admin-button">Get Checkpoint Report &#8250;</a></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <div class="panel panel2">
+            <h3 class="text-center">DASHBOARD ANALYTICS</h3>
+            <p class="text-center">
+                <img src="~/Images/dash.png" alt="" />
+            </p>
+            <p class="image-left">
+                <img src="~/Images/google-analytics-report.png" alt="" />
+            </p>
+            <p>
+                <strong>GOOGLE&reg; Analytics Report</strong>
+                <br>
+                Want to know the latest information on site visits, bounce rates and regional usage reports? Launch the Lincoln Brand Champion Dashboard Analytics Reports to find detailed information on how well the dashboard site is tracking. (Requires analytics access to generate, view and export/print reports).
+            </p>
+            <p class="text-right"><a href="https://accounts.google.com/ServiceLogin?service=analytics&passive=true&nui=1&hl=en&continue=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den&followup=https%3A%2F%2Fwww.google.com%2Fanalytics%2Fweb%2F%3Fhl%3Den" target="_blank" class="button">Launch Analytics Portal &#8250;</a></p>
+        </div>
+    </div>
+
+</div>
+
+<div id="fileModal" class="reveal-modal medium">
+    <h2>CSV FILE UPLOAD</h2>
+    <div class="row">
+        <div class="ten columns centered text-center">
+            <form action="#" method="post" enctype="multipart/form-data">
+                <label class="text-center">Browse to select your CSV file.</label>
+                <div class="row">
+                    <div class="eight columns centered">
+                        <p><input type="file" id="datafile" name="datafile" size="40" accept=".csv"></p>
+                    </div>
+                </div>
+                <input type="submit" value="Upload CSV file &#8250;" class="button"">
+                <br /><br />
+                <div class="row upload-msg">
+                </div>
+            </form>
+        </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".upload-csv").click(function () {
+            $("#fileModal form").attr("action", $(this).attr("href"));
+            $("#fileModal form .upload-msg").html("");
+        });
+
+        $("#fileModal form input[type='submit']").click(function (e) {
+            e.preventDefault();
+            var submit = $(this);
+            var data = new FormData();
+
+            var files = $("#datafile").get(0).files;
+
+            if (files.length > 0) {
+                data.append(files[0].name, files[0]);
+            }
+            else {
+                return false;
+            }
+
+            // Make Ajax request with the contentType = false, and procesDate = false
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: $("#fileModal form").attr("action"),
+                contentType: false,
+                processData: false,
+                data: data,
+                beforeSend: function () {
+                    submit.val("loading...").prop("disabled", true);
+                },
+                success: function (data) {
+                    if (data.status == "success") {
+                        $("#fileModal form .upload-msg").html("<p>Successfully completed.</p>");
+                    }
+                    else {
+                        $("#fileModal form .upload-msg").html("<p>Sorry, there are some errors.</p>");
+                    }
+                },
+                complete: function () {
+                    submit.val("submit").prop("disabled", false);
+                }
+            });
+        });
+   });
+</script>

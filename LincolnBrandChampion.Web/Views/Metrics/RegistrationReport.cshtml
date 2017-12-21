@@ -1,0 +1,331 @@
+﻿@using LincolnBrandChampion.Model.Models
+@using LincolnBrandChampion.Web.Helpers
+@model List<RegistrationReportModel>
+
+@{
+    Layout = null;
+    ViewBag.market = ViewBag.market ?? "ALL";
+    ViewBag.eventid = ViewBag.eventid ?? 0;
+}
+<style>
+    .css_right
+    {
+        display: inline-block;
+    }
+</style>
+@*<link href="~/Content/DT_bootstrap.css" rel="stylesheet" />*@
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+<script type="text/javascript" language="javascript" src="@Url.Content("~/javascripts/report-datatable.js")"></script>
+
+<table id="loading" width="976" border="0" cellpadding="0" cellspacing="0"><tr><th><div style='text-align:center;padding:10px 10px 10px 10px;'>Loading... </div></th></tr></table>
+<div  id="table-wrap" style="display: none;">
+<div class="row">
+    <div class="twelve columns">
+
+        <form class="awesome">
+            <div class="row">
+                <div class="six columns">
+                    <div class="row ">
+                        <div class="four columns">
+                            <div class="custom dropdown select">
+                                @Html.DropDownList("Market", new SelectList(ModelValueListProvider.MarketList, "Value", "Text", ViewBag.market), new { id = "market" })
+                                <span class="selector"></span>
+                            </div>
+                        </div>
+                        <div class="four columns">
+                            <div class="custom dropdown select">
+                                @Html.DropDownList("Event", new SelectList(ModelValueListProvider.EventList, "Value", "Text", ViewBag.eventid), new { id = "event" })
+                                <span class="selector"></span>
+                            </div>
+                        </div>
+                        <div class="four columns">
+                            <input type="submit" value="Generate Report &#8250;" class="button admin-button" onclick="populateByMarketEvent(); return false;">
+                        </div>
+                    </div>
+                </div>
+                <div class="three columns">
+                    <label>
+                        <div class="custom dropdown select">
+                            <select class="valid" aria-controls="regTable" name="regTable_length">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select><span class="selector"></span>
+                        </div>
+                        <span>records per page</span></label>
+                </div>
+                <div class="three columns">
+                    <input type="text" placeholder="Search" class="champ-search" name="regTable_search" />
+                </div>
+            </div>
+        </form>
+
+        <div class="admin wdataTable" id="content">
+            <div class="table-holder">
+                @using (Html.BeginForm("RegistrationReportExcel", "Metrics", FormMethod.Post, new { name = "filter", id = "filter", @class = "awesome" }))
+                {
+                    <table class="metrics-data" cellspacing="0" id="regTable">
+                        <thead>
+                            <tr>
+                                <th style="display: none;">ID</th>
+                                <th style="display: none;">ID</th>
+                                <th>Edit</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Market</th>
+                                <th>Mobile phone #</th>
+                                <th>Dealership Phone #</th>
+                                <th>Email Address</th>
+                                <th>Status</th>
+                                <th>Method of Transportation</th>
+                                <th>Arrival Date</th>
+                                <th>Arrival Time</th>
+                                <th>Airline</th>
+                                <th>Flight Number</th>
+                                <th>Arriving From (Departure City)</th>
+                                <th>If this is a connection, please provide your originating flight information</th>
+                                <th>Confirm# for ground trans</th>
+                                <th>Departure Date</th>
+                                <th>Departure Time</th>
+                                <th>Airline</th>
+                                <th>Flight Number</th>
+                                <th>Departing to (Departure City)</th>
+                                <th>Destination</th>
+                                <th>Confirm# for hotel room</th>
+                                <th>Transportation Requirements</th>
+                                <th>Dietary Restrictions</th>
+                                <th>Dietary Restrictions Notes</th>
+                                <th>Dealership Name</th>
+                                <th>Title</th>
+                                <th>Department</th>
+                                <th>P&A Code</th>
+                                <th>STARs ID</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>ZIP</th>
+                                <th>Zone</th>
+                                <th>Registration Date</th>
+                                <th>Edited by Guest on (Date)</th>
+                                <th>Badge Name</th>
+                                <th>Admin Notes</th>
+                                <th>Attendance Confirmed</th>
+                            </tr>
+                            <tr id="filter-row">
+                                <th style="display: none"></th>
+                                <th style="display: none"></th>
+                                <th></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                                <th class="filtered"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @if (Model.Count() > 0)
+                            {
+                                int count = 1;
+                                foreach (RegistrationReportModel item in Model)
+                                {
+                                <tr>
+                                    <td style="display: none">@item.STARS_ID</td>
+                                    <td style="display: none">@item.EVENT_ID</td>
+                                    <td>
+                                        @if (!item.REGD_STATUS.Equals("C"))
+                                        {
+                                            <a href="#"  id="btnEdit_@count" onclick="populateLBC('@item.STARS_ID', '@item.EVENT_ID')" class="button admin-button">Edit ></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="button admin-button" onclick="return false;" disabled>Edit ></a>
+                                        }
+                                    </td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.LAST_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.FIRST_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.MARKET)</td>
+                                    <td>@ReportFormatHelper.FormatPhoneNumber(item.PHONE)</td>
+                                    <td>@ReportFormatHelper.FormatPhoneNumber(item.DLR_PHONE)</td>
+                                    <td>@ReportFormatHelper.FormatEmail(item.EMAIL_ID)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.REGD_STATUS)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.TRANSPORT_METHOD)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.ARR_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatTime(item.ARR_TIME)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.ARR_AIRLINE)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.ARR_FLIGHT_NUM)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.ARR_DEP_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.CONNECTING_FLIGHT_NOTES)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.CAR_CONFIRM)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.DEP_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatTime(item.DEP_TIME)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.DEP_AIRLINE)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.DEP_FLIGHT_NUM)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.DEP_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.DEP_DEST_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.HOTEL_CONF)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.TRANSPORTATION_NEED)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.DIETARY_RESTRICTION)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.REGISTRATION_NOTES)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DLR_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.TITLE)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DEPT_INFO)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.PA_CODE)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.STARS_ID)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DLR_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatState(item.DLR_STATE)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DLR_ZIP)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.ZONE)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.CREATED_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.UPDATE_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatBadgeName(item.BADGE_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.ADMIN_NOTES)</td>
+                                    <td>@ReportFormatHelper.FormatAttended(item.ATTENDED)</td>
+                                </tr>
+                                        count = count + 1;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>No Match Found
+                                    </td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                    <td>&nbsp</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row report-controls">
+    <div class="nine columns">
+    </div>
+    <div class="three columns">
+        <a href="@Url.Action("RegistrationReportExcel", "Metrics")" id="excel-btn" class="button admin-button">Export to Excel ></a>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+    function populateLBC(starid, eventid) {
+
+        $.ajax({
+            url: '@Url.Action("GetRegistrationInfo", "Metrics")',
+            type: "POST",
+            datatype: "html",
+            data: { starsId: starid, eventId: eventid },
+            error: function (request, status, error) {
+                //alert('error');
+            },
+            success: function (data) {
+                $('#divpartial').empty();
+                $("#divpartial").html(data);
+                $("#divpartial").reveal();
+            }
+        });
+
+        return false;
+    }
+
+    function populateByMarketEvent() {
+        
+        var market = $("#market").val();
+        var eventid = $("#event").val();
+
+        $("#tableScroll").html("<div style='text-align:center;padding:10px 10px 10px 10px;'>Loading... </div>");
+
+        $.ajax({
+            url: '@Url.Action("RegistrationReportByMarketEvent", "Metrics")',
+            method: "POST",
+            data: { market: market, eventid: eventid },
+            success: function (data) {
+                $("#tableScroll").html(data);
+                return false;
+            }
+        });
+        return false;
+
+    }
+</script>

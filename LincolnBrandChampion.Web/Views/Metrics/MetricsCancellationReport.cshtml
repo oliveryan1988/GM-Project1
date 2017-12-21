@@ -1,0 +1,48 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@{
+    ViewBag.Title = "MetricsCancellationReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.homeid = "metrics"; 
+}
+
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+<script type="text/javascript" charset="utf-8">
+
+    function populateTable(dlrRegion, eventid) {
+        $("#tableScroll").load('@Url.Action("CancellationReport", "Metrics")');
+    }
+    /* Table initialisation */
+    $(document).ready(function () {
+        populateTable(null, null);
+    });
+</script>
+
+<div class="row">
+    <div class="twelve columns">
+        <p class="home-intro">To generate refined <strong>Lincoln Brand Champion Cancellation Reports</strong>, choose from the Market dropdown options below. Select the buttons at the bottom of the page to create a print-ready file, generate an Adobe Acrobat&reg; PDF or Microsoft&#8482; Excel file based on the report selections, or view the conent below for quick and easy reference.</p>
+        <h2>BRAND CHAMPION CANCELLATION REPORTS</h2>
+        <div id="tableScroll">
+            <table width="976" border="0" cellpadding="0" cellspacing="0" id="regTable">
+                <tr><th><div style='text-align:center;padding:10px 10px 10px 10px;'>Loading... </div></th></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        wrapSelects = function () {
+            $('form.awesome select:not(.is-wrapped)')
+              .addClass('is-wrapped')
+              .wrap('<div class="custom dropdown select" />')
+              .after('<span class="selector"></span>');
+        }
+
+        $(wrapSelects);
+        $(function () {
+            $("#datepicker1").datepicker();
+            $("#datepicker2").datepicker();
+        });
+    });
+</script>

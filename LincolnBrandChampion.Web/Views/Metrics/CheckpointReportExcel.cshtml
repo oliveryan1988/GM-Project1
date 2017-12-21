@@ -1,0 +1,153 @@
+﻿
+@using LincolnBrandChampion.Model.Models
+@model List<CheckpointReportModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=CheckpointReport.xls");
+}
+
+<?xml version="1.0" encoding="utf-16"?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">P&A Code</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Type (Contact or Select)</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Physical Tool Selected</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Checkpoint</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">LBC Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Address</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership City</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership State</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership ZIP</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Phone</ss:Data>
+                </ss:Cell>                
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Status</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">STARS Completion</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Date Submitted</ss:Data>
+                </ss:Cell>
+                
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Self Study PDF Download</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Self Study PPT Download</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Team Meeting PDF Download</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Team Meeting PPT Download</ss:Data>
+                </ss:Cell>
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+                <ss:Row>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.PA_CODE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.SELECT_CONTACT_DLR
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.TOOL_ORDERED
+                        </ss:Data>
+                    </ss:Cell> 
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.CHECKPOINT_ID
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.FIRST_NAME @item.LAST_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.DLR_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                            <ss:Data ss:Type="String">@item.DLR_ADDRESS
+                            </ss:Data>
+                        
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_CITY
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_STATE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_ZIP
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_PHONE
+                        </ss:Data>
+                    </ss:Cell>
+                    
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.SHIPPING_STATUS
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.STARS_COMPLETION
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.CREATED_DATE
+                        </ss:Data>
+                    </ss:Cell>
+                    
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.Checkpoint1SelfStudyPDF
+                        </ss:Data>
+                    </ss:Cell> 
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.Checkpoint1SelfStudyPPTX
+                        </ss:Data>
+                    </ss:Cell> 
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.CheckPoint1TeamMeetingPDF
+                        </ss:Data>
+                    </ss:Cell> 
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.CheckPoint1TeamMeetingPPTX
+                        </ss:Data>
+                    </ss:Cell>                
+                </ss:Row>
+            }
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>

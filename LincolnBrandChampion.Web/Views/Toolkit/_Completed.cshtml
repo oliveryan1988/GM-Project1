@@ -1,0 +1,178 @@
+﻿@model LincolnBrandChampion.Model.Models.CheckpointModel
+<div class="row thanks">
+    <div class="twelve columns">
+        <h3 class="notify">TOOLKIT CHECK POINT ACCESS NOTIFICATION</h3>
+        <div class="row ">
+            <div class="three columns">
+                <p class="text-center">
+                    <img src="~/Images/step5-option1.png" alt="" />
+                </p>
+            </div>
+            <div class="nine columns">
+                <p>Thank you for participating in Check Point @Model.CHECKPOINT_ID. Your store has completed the tool selection and your physical tool will be delivered to your store. Virtual Tools are accessible to you at any time below.</p>
+                 @if (Model.CHECKPOINT_ID == 2)
+                 { <p><strong>Don’t forget to complete your Check Point test by September 15th in STARS.</strong></p>}
+                 else
+                 {
+                <p>To play the Check Point Challenge, visit <a href="http://www.lbcchallenge.com" target="_blank">www.lbcchallenge.com</a>.</p>
+                <p><strong>Don’t forget to complete your Check Point test by June 30th in STARS.</strong></p>
+                 }
+                <p>If you have any questions, please send email inquiries to <a href="mailto:PHQ@LincolnBC.com">PHQ@LincolnBC.com</a> or call 800-816-6130.</p>
+            </div>
+        </div>
+        <h4 class="">YOUR LINCOLN BRAND CHAMPION TOOLKIT RESOURCES:</h4>
+        <div class="row ">
+            <div class="three columns">
+            </div>
+                @if (Model.CHECKPOINT_ID == 1)
+                {
+
+            <div class="nine columns">
+                <div class="row ">
+                    <div class="two columns">
+                        <p class="text-right">
+                            <img src="~/Images/step5-option2.png" alt="" /></p>
+                    </div>
+                    <div class="nine columns">
+                        <p class="text-right"><strong>Check Point 1 Self-Study PPT Doc (.ppt)</strong> <a href="~/Content/toolkit/Checkpoint1SelfStudyPPTX.pptx" class="button register-button" id="step1ppt">DOWNLOAD &#8250;</a></p>
+                        <p class="text-right"><strong>Check Point 1 Self-Study PDF Doc (.pdf)</strong> <a href="~/Content/toolkit/Checkpoint1SelfStudyPDF.zip" class="button register-button" id="step1pdf" target="_blank">DOWNLOAD &#8250;</a></p>
+                    </div>
+                    <div class="one columns"></div>
+                </div>
+                <div class="row ">
+                    <div class="two columns">
+                        <p class="text-right">
+                            <img src="~/Images/step5-option2.png" alt="" /></p>
+                    </div>
+                    <div class="nine columns">
+                        <p class="text-right"><strong>Check Point 1 Team Meeting PPT Doc (.ppt)</strong> <a href="~/Content/toolkit/LBCCheckPoint1TeamMeetingPPTX.pptx" class="button register-button" id="step4ppt">DOWNLOAD &#8250;</a></p>
+                        <p class="text-right"><strong>Check Point 1 Team Meeting PDF Doc (.pdf)</strong> <a href="~/Content/toolkit/LBCCheckPoint1TeamMeetingPDF.pdf" class="button register-button" id="step4pdf" target="_blank">DOWNLOAD &#8250;</a></p>
+                    </div>
+                    <div class="one columns"></div>
+                </div>
+            </div>
+                }
+                @if (Model.CHECKPOINT_ID == 2)
+                {
+
+            <div class="nine columns">
+                <div class="row ">
+                    <div class="two columns">
+                        <p class="text-right">
+                            <img src="~/Images/step5-option2.png" alt="" /></p>
+                    </div>
+                    <div class="nine columns">
+                        <p class="text-right"><strong>Checkpoint 2 (PDF) Resource Doc “Elevating the Client Experience”</strong> <a href="~/Content/toolkit/LBC_ElevatingClientExperience_CP2_v2.pdf" class="button register-button" id="step4pdf" target="_blank">DOWNLOAD &#8250;</a></p>
+                    </div>
+                    <div class="one columns"></div>
+                </div>
+            </div>
+                }
+        </div>
+    </div>
+</div>
+
+
+@*    <div class="row ">
+        <div class="two columns">
+            <p class="text-right">
+                <img src="~/Images/step5-option2.png" alt="" />
+            </p>
+        </div>
+        <div class="nine columns">
+            <p class="text-right"><strong>LBC Step 1 PPT Doc (.ppt)</strong> <a href="~/Content/toolkit/Step1PPT.pptx" class="button register-button" id="step1ppt">DOWNLOAD &#8250;</a></p>
+            <p class="text-right"><strong>LBC Step 1 PDF Doc (.pdf)</strong> <a href="~/Content/toolkit/Step1PDF.pdf" class="button register-button" id="step1pdf">DOWNLOAD &#8250;</a></p>
+        </div>
+        <div class="one columns"></div>
+    </div>
+    <div class="row ">
+        <div class="two columns">
+            <p class="text-right">
+                <img src="~/Images/step5-option2.png" alt="" />
+            </p>
+        </div>
+        <div class="nine columns">
+            <p class="text-right"><strong>LBC Step 4 PPT Doc (.ppt)</strong> <a href="~/Content/toolkit/Step4PPT.pptx" class="button register-button" id="step4ppt">DOWNLOAD &#8250;</a></p>
+            <p class="text-right"><strong>LBC Step 4 PDF Doc (.pdf)</strong> <a href="~/Content/toolkit/Step4PDF.pdf" class="button register-button" id="step4pdf">DOWNLOAD &#8250;</a></p>
+        </div>
+        <div class="one columns"></div>
+    </div>*@
+
+
+<script type="text/javascript">
+    $(document).ready(function () {  //On document ready
+        $('#step1ppt').click(function (e) {  //For each a (anchor), set the following function
+
+            // var file = 'Step1PPT.pptx';
+            ga('send', 'event', 'button', 'click', 'Checkpoint1SelfStudyPPTX.pptx');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                    // _gaq.push(['_trackEvent', 'File', 'downloads', 'Checkpoint1SelfStudyPPTX.pptx']);
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+
+                }
+
+            });
+        });
+        $('#step4ppt').click(function (e) {  //For each a (anchor), set the following function
+
+            // var file = 'Step1PPT.pptx';
+         
+            ga('send', 'event', 'button', 'click', 'LBCCheckPoint1TeamMeetingPPTX.pptx');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                   // ga('send', 'event', 'button', 'click', 'downloads', 'LBCCheckPoint1TeamMeetingPPTX.pptx');
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+
+                }
+
+            });
+        });
+        $('#step1pdf').click(function (e) {  //For each a (anchor), set the following function
+
+            ga('send', 'event', 'button', 'click', 'Checkpoint1SelfStudyPDF.pdf');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+                }
+
+            });
+        });
+        $('#step4pdf').click(function (e) {  //For each a (anchor), set the following function
+
+            ga('send', 'event', 'button', 'click', 'LBC_ElevatingClientExperience_CP2_v2.pdf');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                   
+                    //_gaq.push(['_trackEvent', 'File', 'downloads', 'LBCCheckPoint1TeamMeetingPDF.pdf']);
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+                }
+
+            });
+        });
+    });
+</script>

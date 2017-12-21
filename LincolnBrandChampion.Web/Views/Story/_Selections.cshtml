@@ -1,0 +1,93 @@
+﻿
+@* @foreach (var item in Model.CategoryList)*@
+        @for (int i = 0; i <= Model.CategoryList.Count ; i++)
+        {
+                  
+            if (i == 0)
+            {
+                if (Session["checkall0"].ToString() =="checkall0")
+                {                             		
+                    <label class="title-field">CATEGORIES<span>SELECT BOTH <input type="checkbox" id="@("checkAll"+@i)" onclick="@("CheckAll("+(i)+")")" Value="checkall0" name="checkall0" checked></span></label>
+                }
+                else
+                {
+                    <label class="title-field">CATEGORIES<span>SELECT BOTH <input type="checkbox" id="@("checkAll"+@i)" onclick="@("CheckAll("+(i)+")")" Value="checkall0"  name="checkall0"></span></label>
+                }
+            }
+            else
+            {
+                if ((Session["cat"].ToString()).IndexOf(Model.CategoryList[i-1].SEQ_ID.ToString())>=0)
+                {
+                    <label class="category-field">@Model.CategoryList[i-1].CATEG_NAME<span><input class="@("checkBox0")" type="checkbox" name="Category" value="@(Model.CategoryList[i-1].SEQ_ID)"  onclick="@("UncheckHeader(0)")" checked></span></label>
+                }
+                else
+                {
+                    <label class="category-field">@Model.CategoryList[i-1].CATEG_NAME<span><input class="@("checkBox0")" type="checkbox" name="Category" value="@(Model.CategoryList[i-1].SEQ_ID)"  onclick="@("UncheckHeader(0)")"></span></label>
+                }
+
+            }
+        }
+    
+    @* @foreach (var item in Model.SubCategoryList)*@
+        @for (int j = 100; j <= Model.SubCategoryList.Count+100 ; j++)
+        {
+                  
+            if (j == 100)
+            {
+                if (Session["checkall100"].ToString() =="checkall100")
+                {                           		
+                    <label class="title-field">STORY SUB-CATEGORIES<span>SELECT ALL <input type="checkbox" id="checkAll100"  onclick="@("CheckAll("+(j)+")")" name="checkall100" value="checkall100" checked></span></label>
+                }
+                else
+                {
+                    <label class="title-field">STORY SUB-CATEGORIES<span>SELECT ALL <input type="checkbox" id="checkAll100"  onclick="@("CheckAll("+(j)+")")" name="checkall100" value="checkall100" ></span></label>
+                }
+            }
+            else
+            {
+                if ((Session["subcat"].ToString()).IndexOf(Model.SubCategoryList[j-100-1].SEQ_NO.ToString())>=0)
+                {
+                    <label class="subcategory-field">@Model.SubCategoryList[j-100-1].SUB_CAT_NAME<span><input class="@("checkBox100")" type="checkbox" name="SubCategory" value="@(Model.SubCategoryList[j-100-1].SEQ_NO)"  onclick="@("UncheckHeader(100)")" checked></span></label>
+                }
+                else
+                {
+                    <label class="subcategory-field">@Model.SubCategoryList[j-100-1].SUB_CAT_NAME<span><input class="@("checkBox100")" type="checkbox" name="SubCategory" value="@(Model.SubCategoryList[j-100-1].SEQ_NO)"  onclick="@("UncheckHeader(100)")" ></span></label>
+                }                
+            }
+        }
+
+    @* @foreach (var item in Model.RatingList)*@
+    @if (Session["checkall300"].ToString() =="checkall300")
+    { 
+        <label class="title-field">STORY RATING<span>SELECT ALL <input type="checkbox" id="@("checkAll"+(300))"  onclick="@("CheckAll("+(300)+")")" name="checkall300" value="checkall300" checked></span></label>
+    }
+    else
+    {
+        <label class="title-field">STORY RATING<span>SELECT ALL <input type="checkbox" id="@("checkAll"+(300))"  onclick="@("CheckAll("+(300)+")")" name="checkall300" value="checkall300"></span></label>
+    }
+        @for (int j = 0; j <= Model.RatingList.Count-1 ; j++)
+        {                  
+            string classname="";
+            if (j == 0) { classname = "rating-field notrated"; }
+            if (j == 1) { classname = "rating-field fair"; }
+            if (j == 2) { classname = "rating-field good"; }
+            if (j == 3) { classname = "rating-field verygood"; }
+            if (j == 4) { classname = "rating-field excellent"; }
+            if ((Session["rating"].ToString()).IndexOf(Model.RatingList[j].SEQ_ID.ToString())>=0)
+            {
+                <label class="@classname">@Model.RatingList[j].RATING_NAME<span><input type="checkbox" class="@("checkBox300")" name="Rating" value="@(Model.RatingList[j].SEQ_ID)" onclick="@("UncheckHeader(300)")" checked ></span></label>
+            }
+            else
+            {
+                <label class="@classname">@Model.RatingList[j].RATING_NAME<span><input type="checkbox" class="@("checkBox300")" name="Rating" value="@(Model.RatingList[j].SEQ_ID)" onclick="@("UncheckHeader(300)")" ></span></label>
+            }              
+            
+        }
+@*    <label class="rating-field excellent">EXCELLENT<span><input type="checkbox" class="@("checkBox300")" name="@("Rating"+(301))" value="@("checkAll"+(301))" onclick="@("UncheckHeader(300)")" ></span></label>
+    <label class="rating-field verygood">VERY GOOD<span><input type="checkbox" class="@("checkBox300")" name="@("checkAll"+(302))" value="@("checkAll"+(302))" onclick="@("UncheckHeader(300)")"></span></label>
+    <label class="rating-field good">GOOD<span><input type="checkbox" class="@("checkBox300")" name="@("checkAll"+(303))" value="@("checkAll"+(303))" onclick="@("UncheckHeader(300)")"></span></label>
+    <label class="rating-field fair">FAIR<span><input type="checkbox" class="@("checkBox300")" name="@("checkAll"+(304))" value="@("checkAll"+(304))" onclick="@("UncheckHeader(300)")"></span></label>
+    <label class="rating-field notrated">NOT RATED<span><input type="checkbox" class="@("checkBox300")" name="@("checkAll"+(305))" value="@("checkAll"+(305))" onclick="@("UncheckHeader(300)")"></span></label>     
+*@
+        <h5><strong>Use the selection below to add received stories associated with specific Lincoln Brand Champions.</strong></h5>  
+        <p class="text-center"><a href="~/Story/AddStoryAdmin" class="button" >ADD USER STORY &#8250;</a></p>

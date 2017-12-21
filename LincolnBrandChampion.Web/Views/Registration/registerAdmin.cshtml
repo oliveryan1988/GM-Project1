@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "registerAdmin";
+}
+
+<div class="row">
+    <div class="twelve columns">
+      <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong> The Brand Champion Immersion is a 3-day event that plays host to a series of premium, highly immersive activities and engagements, all designed to bring you precisely in tune with the Lincoln brand.   With unparalleled access to Lincoln brand stories, products, customer insights, and key company personnel, you’ll build a solid foundation for your leadership role as a Lincoln Brand Champion.</p>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+       		  <div class="four columns">
+                	
+          	
+                
+               	<h3 class="text-center">WHAT'S IN STORE</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+                  
+                  <p>During the Immersion, you can expect to gain first-hand experience with Lincoln product stories, competitive ride-and-drives, hands on product comparisons, Lincoln’s comeback and future vision, customer insights and Brand Champion roles and responsibilities.</p>
+                  <p><strong>High Level Agenda:</strong></p>
+                  <ul class="disc">
+                  <li>Kick off Reception and special Executive Guest Presentation</li>
+                  <li>Behind the scenes visits to key engineering and product development areas of Lincoln Motor Company’s World Headquarters</li>
+                  <li>Rouge Plant Tour</li>
+                  <li>Test Track</li>
+                  </ul>
+      		
+          		</div>
+        		<div class="eight columns">
+                	<h3 class="text-center">Please select from choice below:</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+      				@using (Html.BeginForm("registerAdmin", "Registration", FormMethod.Post, new { enctype = "multipart/form-data", @class="awesome" }))
+                    {
+    <div class="row">
+      <div class="twelve columns"><input type="text" placeholder="Enter P&amp;A Code" id="search" name ="search" /><label class="required">* P&amp;A Code</label></div>
+    </div>
+         
+    <div class="row">
+      <div class="twelve columns"><select id="regLBC" name="regLBC" >
+  			<option value="">-- Select --</option>
+  			
+		</select><label class="required">* Select the relevant Lincoln Brand Champion</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns text-right"><input type="submit" value="Register User &#8250;" class="button" id="bttn" disabled></div>
+    </div>
+                    }
+   				<img src="~/Images/registration-search-image.jpg" alt=""/>                </div>
+        	</div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+  </div>
+<script>
+    $(function () {
+       
+        $('#regLBC').change(function () {
+            
+            if ($('#regLBC option:selected').text() != "-- Select --") {
+                $('#bttn').attr('disabled', false);
+            }
+            else {
+                $('#bttn').attr('disabled', true);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#search').change(function () {
+
+            populateLBC();
+
+
+        });
+        function clearRegLBC() {
+            $('#regLBC').find('option').remove();
+            $('#regLBC').append($('<option/>').attr("value", "").text("-- Select --"));
+            $('#bttn').attr("disabled", true);
+        }
+        function populateLBC() {
+            var pacode = $('#search').val();
+
+
+            $.ajax({
+                url: '@Url.Action("GetLBCList", "Registration")',
+                type: 'GET',
+                cache: false,
+                data: { PaCode: pacode },
+                error: function (request, status, error) {
+                    //alert('error');
+                },
+                success: function (result) {
+
+                    clearRegLBC();
+
+                    $.each(result.lstModel, function (i, option) {
+                        $('#regLBC').append($('<option/>').attr("value", option.STARS_ID).text(option.FIRST_NAME));
+                    });
+
+                }
+            });
+        }
+    });
+
+        
+</script>
+<script>
+    $(document).ready(function () {
+
+        wrapSelects = function () {
+            $('form.awesome select:not(.is-wrapped)')
+              .addClass('is-wrapped')
+              .wrap('<div class="custom dropdown select" />')
+              .after('<span class="selector"></span>');
+        }
+
+        $(wrapSelects);
+
+    });
+    </script>

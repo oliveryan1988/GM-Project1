@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B234C29-F5D7-4BC0-9CEF-E6AC4CF5FAB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LincolnBrandChampion.BL</RootNamespace>
+    <AssemblyName>LincolnBrandChampion.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CoreWSL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CoreWSL\bin\Debug\CoreWSL.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\LincolnBrandChampion.Web\bin\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\LincolnBrandChampion.Web\bin\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PersisterHelper\WslHelper.cs" />
+    <Compile Include="PersisterHelper\WslxEntity.cs" />
+    <Compile Include="Persisters\AirlinesInfoBL.cs" />
+    <Compile Include="Persisters\AttendanceInfoBL.cs" />
+    <Compile Include="Persisters\CheckpointBL.cs" />
+    <Compile Include="Persisters\CheckpointReportBL.cs" />
+    <Compile Include="Persisters\StoryRatingBL.cs" />
+    <Compile Include="Persisters\StorySubCategoryBL.cs" />
+    <Compile Include="Persisters\StoryCategoryBL.cs" />
+    <Compile Include="Persisters\EventBL.cs" />
+    <Compile Include="Persisters\FlightInfoBL.cs" />
+    <Compile Include="Persisters\GuestBL.cs" />
+    <Compile Include="Persisters\HotelInfoBL.cs" />
+    <Compile Include="Persisters\LoginTrackingBL.cs" />
+    <Compile Include="Persisters\MetricsBL.cs" />
+    <Compile Include="Persisters\ProfilerBL.cs" />
+    <Compile Include="Persisters\ProfileRecognitionBL.cs" />
+    <Compile Include="Persisters\ProfileRecognitionMasterBL.cs" />
+    <Compile Include="Persisters\RegistrationBL.cs" />
+    <Compile Include="Persisters\ResourceBL.cs" />
+    <Compile Include="Persisters\StoryBL.cs" />
+    <Compile Include="Persisters\SurveyBL.cs" />
+    <Compile Include="Persisters\UsuarioBL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LincolnBrandChampion.DL\LincolnBrandChampion.DL.csproj">
+      <Project>{bac8c30c-4d97-4b69-be0d-807a2070f598}</Project>
+      <Name>LincolnBrandChampion.DL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LincolnBrandChampion.Model\LincolnBrandChampion.Model.csproj">
+      <Project>{fd57d78e-337e-465c-97eb-4ff32886a17a}</Project>
+      <Name>LincolnBrandChampion.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,95 @@
+﻿@using LincolnBrandChampion.Model.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@using LincolnBrandChampion.Web.Helpers;
+@model IPagedList<LincolnBrandChampion.Model.Models.StoryModel>
+            <h3 class="text-center">LINCOLN BRAND CHAMPION SUBMITTED  STORIES</h3>
+            <p class="text-center"><img src="~/images/dash.png" alt=""/></p>
+        @if (Model != null)
+        {
+            string picPath = System.AppDomain.CurrentDomain.BaseDirectory + "//Images//StoryPics//";
+            <div class="row">
+                <div class="twelve columns">
+                    <div class="pagination-right">
+                        <div id="myPager">
+                        @Html.PagedListPager(Model, page => Url.Action("AdminStories",  new { ViewBag.search, ViewBag.filter, page }), PagedListRenderOptionsHelper.Classic)
+                        @*@Html.PagedListPager(Model, page => Url.Action(), PagedListRenderOptionsHelper.Classic)*@
+
+                            </div>
+
+                    </div>
+                        @if (Model.Count() > 0)
+                        {
+                                    
+                            foreach (StoryModel item in Model)
+                            {
+                               string imgname = "star";
+                                
+                                imgname = imgname + (item.STORY_RATING==null?0:item.STORY_RATING).ToString()+".png";
+                                
+                                
+                                <div class="admin-story-list-item">
+                                <div class="row">
+      					            <div class="nine columns">
+                                <div class="row">
+   
+      					            <div class="two columns">
+                   	                <p> @Html.Partial("~/Views/BrandChampion/_ProfilePic.cshtml", string.IsNullOrEmpty(item.PHOTO_PATH ) ? string.Empty : item.PHOTO_PATH) </p>
+                                    </div>
+      					            <div class="ten columns">
+                                    <p><strong>@item.FIRST_NAME  @item.LAST_NAME <br>@item.DLR_NAME </strong></p>
+                                    </div>
+                                </div></div></div>
+  					            <div class="row">
+      					            <div class="three columns">
+                   	                <img src="@Url.Content((item.IMG_1==null || !File.Exists(picPath+item.IMG_1) ?"~/Images/blank.png":"~/Images/StoryPics/"+item.IMG_1))" alt="IMAGES" />
+                                    </div>
+      					            <div class="nine columns">
+                                    <p><strong><span class="right">@(String.IsNullOrWhiteSpace(item.UPDATED_BY)?item.CREATED_DATE:item.UPDATED_DATE)</span>@item.STORY_TITLE</strong><br>@item.STORY_CONTENT</p>
+                        
+                                    </div>
+                                </div>
+  					            <div class="row ">
+      					            <div class="three columns"><div class="rating"><img src="~/images/@imgname" alt=""/><br>
+                                          @{string rating = "Not Rated";
+                                              if (item.Rating !=null)
+                                            {
+                                                rating=item.Rating.RATING_NAME;
+                                              }
+                                              }
+                                         @rating</div>
+                                    </div>
+      					            <div class="six columns">
+                                          @{
+                                              string subcategory="UNCATEGORIZED";
+                                              if (item.SubCategory!=null)
+                                              {
+                                                  subcategory=item.SubCategory.SUB_CAT_NAME;
+                                              }
+                                              }
+               				            <div class="category right uncategorized"><p class="text-center">@subcategory</p></div>
+                                    </div>
+      					            <div class="three columns"><p><a href="/Story/AdminEdit/@item.SEQ_ID" class="button admin-button" >EDIT STORY ›</a></p>
+                                    </div>
+                                </div>
+                                <hr></div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                    <div class="row vcard">
+                                        No Match Found
+                                    </div>
+                            </div>
+                        }
+
+           
+                    <div class="pagination-center">
+                        @Html.PagedListPager(Model, page => Url.Action("AdminStories",  new { ViewBag.search, ViewBag.filter, page }), PagedListRenderOptionsHelper.Classic)
+                    </div>
+                        
+            </div>
+            </div>
+        }
+

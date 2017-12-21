@@ -1,0 +1,181 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+
+@model LincolnBrandChampion.Model.Models.RegistrationReportModel
+<!-- Popup Menu -->
+
+<div>
+    <h2>DEPARTURE MANIFEST</h2>
+    <div class="row">
+        <div class="ten columns centered">
+
+            <h3>@Html.DisplayTextFor(m => Model.FIRST_NAME) @Html.DisplayTextFor(m => Model.LAST_NAME)</h3>
+            <p class="subtitle">@Html.DisplayTextFor(m => Model.DLR_NAME)<br>
+                P&amp;A Code: @Html.DisplayTextFor(m => Model.PA_CODE)<br />
+            </p>
+            @using (Html.BeginForm(
+                "DepartureInfo", "Metrics",
+                FormMethod.Post,
+                new
+                {
+                    enctype = "multipart/form-data",
+                    @class = "profileform awesome",
+                    id = "edit-form"
+                }))
+            {
+                @Html.HiddenFor(m => Model.EVENT_ID)
+                @Html.HiddenFor(m => Model.STARS_ID)
+                <h3>Departure Details</h3>
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => m.PHONE)
+                        @Html.ValidationMessageFor(m => m.PHONE)
+                        <label>Mobile Phone</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => m.EMAIL_ID)
+                        @Html.ValidationMessageFor(m => m.EMAIL_ID)
+                        <label>Email address</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.DropDownListFor(m => Model.TRANSPORT_METHOD, new SelectList(ModelValueListProvider.TransportationModeList, "Value", "Text"))
+                        @Html.ValidationMessageFor(m => m.TRANSPORT_METHOD)
+                        <label>Method of Transportation </label>
+                    </div>
+                </div>
+                <div class="row flight">
+                    <div class="six columns">
+                        @Html.TextBoxFor(m => Model.DEP_DATE, "{0:MM/dd/yyyy}", new { @id = "datepicker2", @class = "" })
+                        @Html.ValidationMessageFor(m => m.DEP_DATE)
+                        <label>Departure Date</label>
+                    </div>
+                    <div class="six columns">
+                        @Html.TextBoxFor(m => Model.DEP_TIME, new { @class = "timepicker", maxlength = 20, @placeholder = "XX:XX AM/PM" })
+                        @Html.ValidationMessageFor(m => m.DEP_TIME)
+                        <label>Departure Time</label>
+                    </div>
+                </div>
+                <div class="row flight">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => Model.DEP_AIRLINE)
+                        @Html.ValidationMessageFor(m => Model.DEP_AIRLINE)
+                        <label>Departure Airline</label>
+                    </div>
+                </div>
+                <div class="row flight">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => Model.DEP_FLIGHT_NUM, new { @class = "", maxlength = 20 })
+                        @Html.ValidationMessageFor(m => m.DEP_FLIGHT_NUM)
+                        <label>Departure Flight #</label>
+                    </div>
+                </div>
+                <div class="row flight">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => Model.DEP_CITY, new { @class = "", maxlength = 20 })
+                        @Html.ValidationMessageFor(m => Model.DEP_CITY)
+                        <label>Departing to </label>
+                    </div>
+                </div>
+                <div class="row flight">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => Model.DEP_DEST_CITY, new { @class = "", maxlength = 20 })
+                        @Html.ValidationMessageFor(m => Model.DEP_DEST_CITY)
+                        <label>Destination</label>
+                    </div>
+                </div>                    
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => Model.CAR_CONFIRM, new { @class = "", maxlength = 20 })
+                        @Html.ValidationMessageFor(m => m.CAR_CONFIRM)
+                        <label>Transportation Confirmation Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.DropDownListFor(m => Model.TRANSPORTATION_NEED, new SelectList(ModelValueListProvider.TransportationNeedList, "Value", "Text"))
+                        @Html.ValidationMessageFor(m => Model.TRANSPORTATION_NEED)
+                        <label>Transportation Requirements</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.TextBoxFor(m => Model.BADGE_NAME, new { @class = "", maxlength = 20 })
+                        @Html.ValidationMessageFor(m => m.BADGE_NAME)
+                        <label>Badge Name </label>
+                    </div>
+                </div>
+                if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+                {
+                <div class="row">
+                    <div class="twelve columns">
+                        @Html.TextAreaFor(m => Model.ADMIN_NOTES, new { @class = "", maxlength = 500 })
+                        <label>Admin Notes</label>
+                    </div>
+                </div>
+                }
+                else
+                {
+                @Html.HiddenFor(m => Model.ADMIN_NOTES, new { @class = "" })
+                }
+                <div class="row">
+                    <div class="twelve columns">
+                        <p class="text-right">
+                            <input type="submit" value="Save &#8250;" class="button admin-button">
+                        </p>
+                    </div>
+                </div>        
+            }
+        </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<!-- Included JS Files (Compressed) -->
+@Scripts.Render("~/bundles/jqueryval")
+<!-- Initialize JS Plugins -->
+<script src="~/javascripts/app.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        wrapSelects = function () {
+            $('#divpartial form.awesome select:not(.is-wrapped)')
+              .addClass('is-wrapped')
+              .wrap('<div class="custom dropdown select" />')
+              .after('<span class="selector"></span>');
+        }
+
+        function toggleDriveFly() {
+            var method = $("#TRANSPORT_METHOD").val();
+            var flightInfo = $(".flight");
+
+            switch (method) {
+                case "DRIVE":
+                    flightInfo.hide();
+                    break;
+                case "FLY":
+                    flightInfo.show();
+                    break;
+                default:
+                    flightInfo.hide();
+            }
+        }
+        toggleDriveFly();
+        $("#TRANSPORT_METHOD").change(function () {
+            toggleDriveFly();
+        });
+
+        $(wrapSelects);
+
+        $("#datepicker1").datepicker();
+        $("#datepicker2").datepicker();
+
+
+    });
+
+
+</script>
+

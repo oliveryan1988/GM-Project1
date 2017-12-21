@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Resources";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  <div class="row">
+    <div class="twelve columns">
+      <h2>RESOURCES</h2>
+<div class="row">
+
+      <ul class="panel" style="list-style-type: none">
+          <li style="float:left; margin-right: 20px;"><img src="~/Images/resources-pdf.png" alt=""/></li>
+          <li style="float:left; line-height: 48px;">
+              <h3><a href="@Url.Content("~/Content/pdf/LBC_LuxuryTruthsPocketGuide2014_v1a.pdf")" target="_blank" id="LuxuryTruthsPocket" style="color: black">Luxury Truths Handbook</a></h3>
+            
+          </li>  
+          <li style="float: left; padding-left: 150px; padding-right: 20px;"><img src="~/Images/resources-pdf.png" alt=""/></li>
+          <li style=" line-height: 48px;">
+              
+              <h3><a href="@Url.Content("~/Content/pdf/LBC_AdvisoryBoardBrochure2015_v2.pdf")" target="_blank" id="2015AdvisoryBoardBrochure" style="color: black">2015 Advisory Board Brochure</a></h3>
+          </li>              
+          <li style="clear: both"></li>
+      </ul>
+
+      <p class="text-center">Access a wealth of Lincoln content and get the latest buzz in social media with these valuable resources.</p>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+          			<ul class="block-grid three-up mobile">
+          			<li><a href="http://www.lincoln.com" target="_blank" class="resource-image"><img src="~/Images/resources-lmc-logo.png" alt=""/></a>
+          			  <p>The go-to site that defines the Lincoln brand. Research vehicle information, stay connected to the consumer experience, learn about the Lincoln Black Label program and more.  <a href="http://www.lincoln.com" target="_blank">lincoln.com</a></p></li>
+          			<li><a href="http://now.lincoln.com" target="_blank" class="resource-image"><img src="~/Images/resources-lincoln-now.png" alt=""/></a>
+          			  <p>Discover more about the highly individualistic lifestyle of Lincoln’s core audience -- what they like, how they think and what motivates them to succeed. <a href="http://now.lincoln.com" target="_blank">now.lincoln.com</a></p></li>
+          			<li><a href="http://facebook.com/Lincoln" target="_blank" class="resource-image"><img src="~/Images/resources-fb.png" alt=""/></a><p>Lincoln offers a dedicated facebook page for Lincoln enthusiasts to connect, share stories and learn the latest news. <a href="http://facebook.com/Lincoln" target="_blank">facebook.com/Lincoln</a></p></li>
+          			<li><a href="http://twitter.com/LincolnMotorCo" target="_blank" class="resource-image"><img src="~/Images/resources-tweet.png" alt=""/></a>
+          			  <p>Follow Lincoln on twitter to get breaking news as well as the latest buzz on all things Lincoln.  <a href="http://twitter.com/LincolnMotorCo" target="_blank">twitter.com/LincolnMotorCo</a></p></li>
+          			<li><a href="http://lincolnmotorco.tumblr.com" target="_blank" class="resource-image"><img src="~/Images/resources-tumblr.png" alt=""/></a>
+          			  <p>Tumblr reaches a diverse and dedicated audience that is searching for relevant Lincoln content.
+                      <a href="http://lincolnmotorco.tumblr.com" target="_blank">lincolnmotorco.tumblr.com</a></p></li>
+          			<li><a href="http://instagram.com/lincolnmotorco" target="_blank" class="resource-image"><img src="~/Images/resources-instagram.png" alt=""/></a>
+          			  <p>Lincoln enthusiasts enjoy sharing pictures and videos of classic, current and future Lincoln vehicles on Instagram. <a href="http://instagram.com/lincolnmotorco" target="_blank">instagram.com/lincolnmotorco</a></p></li>
+          			</ul>
+      		
+          		</div>
+       	</div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {  //On document ready
+        $('#LuxuryTruthsPocket').click(function (e) {  //For each a (anchor), set the following function
+            ga('send', 'event', 'button', 'click','LBC_LuxuryTruthsPocketGuide2014_v1a.pdf');
+           
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Resources")',
+                data: { file: this.href },
+                    dataType: 'json',
+                    success: function (json) {
+                       
+                        var link = $("a", this);
+                        if (link.length != 0)
+                            window.location = link.attr("href");
+                   
+                    }
+
+            });
+        });
+        $('#015AdvisoryBoardBrochure').click(function (e) {  //For each a (anchor), set the following function
+            ga('send', 'event', 'button', 'click', 'LBC_AdvisoryBoardBrochure2015_v2.pdf');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Resources")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+
+                }
+
+            });
+        });
+
+    });
+</script>
+

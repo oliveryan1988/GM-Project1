@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Confirmation";
+}
+
+ <div class="row">
+    <div class="twelve columns">
+      <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong> The Brand Champion Immersion is a 3-day event that plays host to a series of premium, highly immersive activities and engagements, all designed to bring you precisely in tune with the Lincoln brand.   With unparalleled access to Lincoln brand stories, products, customer insights, and key company personnel, you’ll build a solid foundation for your leadership role as a Lincoln Brand Champion.</p>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+       		 <!-- Insert Partial for the navigation--> 
+                     @Html.Partial("~/Views/Registration/_Navigation.cshtml")
+        		<div class="eight columns">
+                	<h3 class="text-center">IMMERSE YOURSELF</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+      				<form action="#" class="profileform awesome">
+    <div class="row">
+      <div class="ten columns centered"><h5>WELCOME TO THE GUEST LIST</h5>
+      <p>You’ve successfully registered for the Lincoln Brand Champion Immersion.</p>
+          <p>
+We’re excited to share exclusive information with you which will deepen your understanding of the Lincoln brand and the luxury market. If you’re flying in for the Immersion, don’t forget to return to the Dashboard to provide your flight information as soon as you’re booked. We look forward to seeing you in Dearborn, Michigan soon!            
+</p>
+      </div>
+    </div>
+  </form>
+                </div>
+        	</div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+  </div>
+

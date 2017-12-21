@@ -1,0 +1,13 @@
+﻿
+
+@model string
+@{Layout = null;}
+
+@if(string.IsNullOrEmpty(Model))
+{
+    <img style="float:left" src="~/Images/blank.png" alt=""/>
+}
+else
+{
+    <img style="float:left" src= "@Url.Content("~/Images/StoryPics/"+Model)" alt="IMAGES" />
+}

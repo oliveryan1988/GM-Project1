@@ -1,0 +1,17 @@
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\obj\Debug\LincolnBrandChampion.DL.csprojResolveAssemblyReference.cache
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\LincolnBrandChampion.DL.dll.config
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\LincolnBrandChampion.DL.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\LincolnBrandChampion.DL.pdb
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\CoreWSL.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\EntityFramework.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\LincolnBrandChampion.Model.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\CoreWSL.pdb
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\CoreWSL.xml
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\LincolnBrandChampion.Model.pdb
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\EntityFramework.xml
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\PagedList.xml
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\PagedList.Mvc.xml
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\obj\Debug\LincolnBrandChampion.DL.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\obj\Debug\LincolnBrandChampion.DL.pdb
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\PagedList.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.DL\bin\Debug\PagedList.Mvc.dll

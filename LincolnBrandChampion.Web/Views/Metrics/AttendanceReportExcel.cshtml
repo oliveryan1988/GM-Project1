@@ -1,0 +1,53 @@
+﻿@using LincolnBrandChampion.Model.Models
+@using LincolnBrandChampion.Web.Helpers
+@model List<RegistrationReportModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=AttendanceReport.xls");
+}
+
+<?xml version="1.0" encoding="utf-16"?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Last Name</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">First Name</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Attendance Confirmed</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Market</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Mobile phone #</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Email Address</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">STARs ID</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Dealership Name</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Title</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Department</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">City</ss:Data></ss:Cell> 	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">State</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">ZIP</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Zone</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Admin Notes</ss:Data></ss:Cell>	
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+                <ss:Row>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToCaps(item.LAST_NAME)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToCaps(item.FIRST_NAME)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatAttended(item.ATTENDED)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatTrim(item.MARKET)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatPhoneNumber(item.PHONE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatEmail(item.EMAIL_ID)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToCaps(item.STARS_ID)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToProper(item.DLR_NAME)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToProper(item.TITLE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToProper(item.DEPT_INFO)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToProper(item.DLR_CITY)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatState(item.DLR_STATE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToProper(item.DLR_ZIP)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToProper(item.ZONE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatTrim(item.ADMIN_NOTES)</ss:Data></ss:Cell>
+                </ss:Row>
+            }
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>

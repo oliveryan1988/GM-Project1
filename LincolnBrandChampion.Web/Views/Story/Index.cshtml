@@ -1,0 +1,141 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@model LincolnBrandChampion.Model.Models.StoryModel
+@{
+    ViewBag.Title = "Share My Story";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+      @using (Html.BeginForm("SaveStoryUser", "Story", FormMethod.Post, new { enctype = "multipart/form-data", @class = "profileform awesome" }))
+      {
+            @Html.HiddenFor(m => Model.STARS_ID)
+            @Html.HiddenFor(m => Model.PA_CODE)
+            @Html.HiddenFor(m => Model.SEQ_ID)
+            @Html.HiddenFor(m => Model.IMG_1 )
+            @Html.HiddenFor(m => Model.IMG_2 )
+            @Html.HiddenFor(m => Model.IMG_3 )
+<div class="row">
+    <div class="twelve columns">
+        <p class="guest-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong>  Welcome to the Share Your Story section of the Lincoln Brand Champion site. Use this section to share a unique or memorable moment when the Lincoln Brand was elevated in your store. Whether it’s one of your colleagues going above and beyond, using best practices, demonstrating passion or contributing to an exceptional customer experience – we want you to tell your story about how your store is taking luxury to a whole new level.</p>
+        <div class="row">
+            <div class="twelve columns">
+                <div class="panel">
+                    <div class="row">
+                <div class="four columns"> 
+                    @Html.Partial("~/Views/Story/_Left.cshtml", Model.StoryList)          
+
+                </div>
+                <div class="eight columns toolback">
+                    <h3 class="text-center">SHARE YOUR STORY</h3>
+                    <div >
+                        @Html.EditorFor(model => model.STORY_TITLE)
+                        @Html.ValidationMessageFor(model => model.STORY_TITLE)
+                        <label class="required">* Story Title</label>
+                    </div>
+                    <div >
+                        @Html.TextAreaFor(m => Model.STORY_CONTENT, new {maxlength=2000,style="height:250px", id="StoryCopy", onkeydown="countChar('StoryCopy','counter');", onkeyup="countChar('StoryCopy','counter');"})
+                        @Html.ValidationMessageFor(model => model.STORY_CONTENT)
+                        <label class="required">* Type or copy and paste your story into the field above.<span class="right"> <span id="counter"> 2000 </span>  Characters</span></label>
+                    </div>
+                    <h3 class="draft-story text-center">DRAFT</h3>
+                    <p/>
+                    <div>
+                            <div class="row">
+                                <div class="twelve columns" >
+                                      <div>
+                                          <div style="text-align:right;display:inline">Post an Image (optional) 1 </div>
+                                          @if (Model.IMG_1==null)
+                                          {
+                                              <div style="display:inline"><input type="file" name="IMG1" id="IMG1" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse"  /></div>
+                                          }
+                                          else
+                                          {
+                                              <div style="display:inline"><input type="file" name="IMG1" id="IMG1"  style="" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse"  disabled /><a href="~/images/storypics/@Model.IMG_1" >View picture</a><span> Replace <input type="checkbox"  onclick="@("checkpic(1)")" Value="1"  name="removepic" id="removepic1"></span></div>
+                                                  @*<img src="~/images/close-btn.jpg" style="width:10px;height:10px;cursor:pointer" id="removepic" onclick="removepic();" /></div>*@
+                                          }
+                                      </div>
+                                      <div>
+                                          <div style="text-align:right;display:inline;visibility:hidden ">Post an Image (optional</div>
+                                          <div  style="text-align:right;display:inline">2</div>
+                                          @if (Model.IMG_2==null)
+                                          {
+                                              <div style="display:inline"><input type="file" name="IMG2" id="IMG2" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse"  /></div>
+                                          }
+                                          else
+                                          {
+                                              <div style="display:inline"><input type="file" name="IMG2" id="IMG2"  style="" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse"  disabled /><a href="~/images/storypics/@Model.IMG_2" >View picture</a><span> Replace <input type="checkbox"  onclick="@("checkpic(2)")" Value="2"  name="removepic" id="removepic2"></span></div>
+                                                  @*<img src="~/images/close-btn.jpg" style="width:10px;height:10px;cursor:pointer" id="removepic" onclick="removepic();" /></div>*@
+                                          }
+                                      </div>
+                                      <div>
+                                          <div style="text-align:right;display:inline;visibility:hidden ">Post an Image (optional</div>
+                                          <div  style="text-align:right;display:inline">3</div>
+                                          @if (Model.IMG_3==null)
+                                          {
+                                              <div style="display:inline"><input type="file" name="IMG3" id="IMG3" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse"  /></div>
+                                          }
+                                          else
+                                          {
+                                              <div style="display:inline"><input type="file" name="IMG3" id="IMG3"  style="" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse"  disabled /><a href="~/images/storypics/@Model.IMG_3" >View picture</a><span> Replace <input type="checkbox"  onclick="@("checkpic(3)")" Value="3"  name="removepic" id="removepic3"></span></div>
+                                                  @*<img src="~/images/close-btn.jpg" style="width:10px;height:10px;cursor:pointer" id="removepic" onclick="removepic();" /></div>*@
+                                          }
+                                      </div>
+                                </div>
+                              </div>
+                            <p style="text-align:right  ">(Maximum of 3 Images .jpg, .png, .gif file formats, 1MB Max)</p>
+
+                    </div>
+                    <p/>
+                    <div>
+                        <div class="six columns">
+                        <span>Save story as a</span><span style="font-weight:bold" > DRAFT </span><span>or submit a </span><span style="font-weight:bold ">FINAL</span><span> version. Once submitted as </span><span style="font-weight:bold ">FINAL</span><span> you will be unable to edit</span>
+                        </div>
+                        <div>
+                            <input  type="submit" class="button" value="Save DRAFT" name="SaveStory"> OR <a href="#" class="button final" data-reveal-id="finalSubmit" >Submit FINAL &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="finalSubmit" class="reveal-modal medium">
+  <div class="row">
+    <div class="ten columns centered">
+      <p>Your story has been submitted as <strong>FINAL</strong>. This cannot be undone. If you have submitted this as <strong>FINAL</strong> in error, please contact the site administrator at: <a href="mailto:PHQ@LincolnBC.com"><strong>PHQ@LincolnBC.com</strong></a>.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns offset-by-nine"><input type="submit"  class="button" value="OK" name="SaveStory" >
+    </div>
+  </div><a class="close-reveal-modal">&#215;</a>
+</div>          
+      }
+
+<script>  
+    function countChar(textareaName, spanName) {
+        document.getElementById(spanName).innerHTML = 2000 - document.getElementById(textareaName).value.length;
+    };
+
+    function checkpic(id) { 
+        
+        if ($("#removepic"+id).is(":checked")) {
+
+            $("#IMG"+id).removeAttr("disabled");
+
+        }
+        else {
+            $("#IMG"+id).attr("disabled", "disabled");
+            $("#IMG"+id).value=null;
+        }
+    }
+</script>
+@*<script>
+    function checkpic() {
+        alert("ok");
+        //$("#IMG1").attr("disable") = false;
+    }
+</script>  *@
+

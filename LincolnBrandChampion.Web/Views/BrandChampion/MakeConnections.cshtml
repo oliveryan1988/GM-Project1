@@ -1,0 +1,182 @@
+﻿@using LincolnBrandChampion.Model.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@using LincolnBrandChampion.Web.Helpers;
+@model IPagedList<LincolnBrandChampion.Model.Models.ProfileModel>
+@{
+    ViewBag.Title = "MakeConnections";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string current = "current";
+
+                //var nameValues = HttpUtility.ParseQueryString(Request.QueryString.ToString()); ;
+
+                //nameValues = HttpUtility.ParseQueryString(Request.QueryString.ToString());
+                //nameValues.Set("search", ViewBag.search);
+                //nameValues.Set("filter", ViewBag.filter);
+                //string searchUrl = Request.Url.LocalPath + "?" + nameValues.ToString();
+
+                //nameValues = HttpUtility.ParseQueryString(Request.QueryString.ToString());
+                //nameValues.Set("search", ViewBag.search);
+                //nameValues.Set("filter", ViewBag.filter);
+                //string filterUrl = Request.Url.LocalPath + "?" + nameValues.ToString();
+
+}
+<script type="text/javascript">
+    $(function () {
+        $("li").click(function () {
+            $("#brandChampionLst>ul>li.current").removeClass("current");
+            $(this).addClass("current");
+        });
+
+        $("#brandChampionLst>ul>li").each(function () {
+            var current = $(this);
+            if (current.text() == "@ViewBag.search") {
+                $(this).addClass("current");
+            }
+        });
+    });
+
+</script>
+
+
+<div class="row">
+    <div class="eight columns" id="brandChampionLst">
+        <ul class="pagination">
+            <li class="unavailable"><a><strong>BRAND CHAMPIONS:</strong></a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=ALL';">ALL</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=A';">A</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=B';">B</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=C';">C</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=D';">D</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=E';">E</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=F';">F</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=G';">G</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=H';">H</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=I';">I</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=J';">J</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=K';">K</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=L';">L</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=M';">M</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=N';">N</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=O';">O</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=P';">P</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=Q';">Q</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=R';">R</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=S';">S</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=T';">T</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=U';">U</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=V';">V</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=W';">W</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=X';">X</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=Y';">Y</a></li>
+            <li><a onclick="document.location='/BrandChampion/MakeConnections?search=Z';">Z</a></li>
+        </ul>
+    </div>
+    <div class="four columns">
+        @using (Html.BeginForm("MakeConnections", "BrandChampion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row ">
+                <div class="six mobile-two columns">
+                    <label class="right inline champ-label">FIND A CHAMPION:</label>
+                </div>
+                <div class="six mobile-two columns">
+                    <input id="filter" name="filter" type="text" placeholder="Search" class="champ-search" />
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+</div>
+
+
+@if (Model != null)
+{
+
+    <div class="row">
+        <div class="twelve columns">
+            <div class="pagination-right">
+                @Html.PagedListPager(Model, page => Url.Action("MakeConnections", new { ViewBag.search, ViewBag.filter, page }), PagedListRenderOptionsHelper.Classic)
+            </div>
+            <ul class="block-grid two-up mobile">
+                @if (Model.Count() > 0)
+                {
+                    foreach (ProfileModel item in Model)
+                    {
+                    <li>
+                        <div class="row vcard">
+                            <div class="four mobile-one columns">
+                                @if (string.IsNullOrEmpty(item.PHOTO_PATH))
+                                {
+                                    <img src="~/Images/person-cutout.png" alt="" />
+                                }
+                                else
+                                {
+                                    <img src= "@Url.Content("~/Images/ProfilePics/" + item.PHOTO_PATH)" alt="IMAGES" />
+                                }
+                            </div>
+                            <div class="eight mobile-three columns">
+                                <h5>@item.FIRST_NAME @item.LAST_NAME<br />
+                                    @item.DLR_NAME<br />
+                                    @item.DLR_ADDRESS @item.DLR_CITY @item.DLR_STATE @item.DLR_ZIP</h5>
+                                <p>
+                                    <strong>@if (item.PROFILE_TYPE == "PUBLIC")
+                                            {<a href="mailto:emailaddress@email.com">@item.EMAIL_ID</a>}<br />
+                                        Dealership Phone: <span class="phone">@item.DLR_PHONE</span>
+                                        @*@String.Format("{0:(###) ###-####}", @Convert.ToInt64(@item.DLR_PHONE))*@<br />
+                                        Mobile Phone: @if (item.PROFILE_TYPE == "PUBLIC")
+                                                      {<span class="phone">@item.PHONE</span>}
+@*@String.Format("{0:(###) ###-####}", @Convert.ToInt64(@item.PHONE))*@
+                                    </strong>
+                                </p>
+                                <p>
+@*                                    @if (item.PROFILE_TYPE == "PUBLIC")
+                                    {
+                                        if (string.IsNullOrEmpty(item.BIOGRAPHY))
+                                        {
+                                        @Html.Raw("Once profile has been updated, biography will appear here.")
+                                        }
+                                        else
+                                        {
+                                        @Html.DisplayFor(p => item.BIOGRAPHY)
+                                        }
+                                    }*@
+                                    @Html.DisplayFor(p => item.BIOGRAPHY)
+                                </p>
+                                @if (Convert.ToInt32(Session["ROLE_ID"]) == 5 || Convert.ToInt32(Session["ROLE_ID"]) == 2 || Convert.ToInt32(Session["ROLE_ID"]) == 4)
+                                {
+                                    <p class="text-right">
+                                        @Html.ActionLink(HttpUtility.HtmlDecode("View User Information >"), "LBCProfile", "BrandChampion", new { id = @item.STARS_ID }, new { @class = "button admin-button" })
+                                    </p>
+                                }
+
+                            </div>
+                        </div>
+                    </li>
+                    }
+                }
+                else
+                {
+                    <li>
+                        <div class="row vcard">
+                            No Match Found
+                        </div>
+                    </li>
+                }
+
+            </ul>
+            <div class="pagination-right">
+                @Html.PagedListPager(Model, page => Url.Action("MakeConnections", new { ViewBag.search, ViewBag.filter, page }), PagedListRenderOptionsHelper.Classic)
+            </div>
+        </div>
+    </div>
+
+}
+<script type="text/javascript">$(".phone").text(function (i, text) {
+    text = text.replace(/(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
+    return text;
+});</script>
+

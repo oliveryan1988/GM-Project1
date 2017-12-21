@@ -1,0 +1,176 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title></title>
+
+    <!-- Included CSS Files (Uncompressed) -->
+    <!--
+  <link rel="stylesheet" href="stylesheets/foundation.css">
+  -->
+
+    <!-- Included CSS Files (Compressed) -->
+    <link rel="stylesheet" href="~/stylesheets/foundation.css">
+    <link rel="stylesheet" href="~/stylesheets/app.css">
+
+    <script src="~/javascripts/modernizr.foundation.js"></script>
+</head>
+<body id="video">
+
+    <div id="featured">
+        <img src="~/images/static_stills_transitions1.jpg" alt="" />
+        <img src="~/images/static_stills_transitions2.jpg" alt="" />
+        <img src="~/images/static_stills_transitions3.jpg" alt="" />
+        <img src="~/images/static_stills_transitions4.jpg" alt="" />
+        <img src="~/images/static_stills_transitions5.jpg" alt="" />
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <div class="video-intro">
+                <p>
+                    <span>Dive Deep</span>  into the Lincoln Brand, where you’ll find exclusive information about our vehicles and clients that will enrich your understanding of the luxury market from every angle.
+                </p>
+
+                <div class="row">
+                    <div class="two columns"></div>
+                    <div class="four columns">
+                        <p><a href="#" class="button off" id="playvideo">Watch Video &#8250;</a></p>
+                    </div>
+                    <div class="four columns">
+                        <p><a href="~/LBC/Welcome" class="button">Go to Site &#8250;</a></p>
+                    </div>
+                    <div class="two columns"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="myModal" class="video-modal">
+        <div class="flex-video widescreen">
+            <div id="player"></div>
+        </div>
+        <a class="close-video-modal">&#215;</a>
+    </div>
+
+
+
+
+    <!-- Included JS Files (Uncompressed) -->
+    <!--
+  <script src="javascripts/jquery.js"></script><script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script><script src="javascripts/jquery.foundation.forms.js"></script><script src="javascripts/jquery.foundation.reveal.js"></script><script src="javascripts/jquery.foundation.orbit.js"></script><script src="javascripts/jquery.foundation.navigation.js"></script><script src="javascripts/jquery.foundation.buttons.js"></script><script src="javascripts/jquery.foundation.tabs.js"></script><script src="javascripts/jquery.foundation.tooltips.js"></script><script src="javascripts/jquery.foundation.accordion.js"></script><script src="javascripts/jquery.placeholder.js"></script><script src="javascripts/jquery.foundation.alerts.js"></script><script src="javascripts/jquery.foundation.topbar.js"></script><script src="javascripts/jquery.foundation.joyride.js"></script><script src="javascripts/jquery.foundation.clearing.js"></script><script src="javascripts/jquery.foundation.magellan.js"></script>
+  -->
+
+    <!-- Included JS Files (Compressed) -->
+    <script src="~/javascripts/jquery.js"></script>
+    <script src="~/javascripts/foundation.min.js"></script>
+
+    <!-- Initialize JS Plugins -->
+    <script src="~/javascripts/app.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#featured').orbit({
+                animation: 'fade',                  // fade, horizontal-slide, vertical-slide, horizontal-push
+                animationSpeed: 800,                // how fast animtions are
+                timer: true,                        // true or false to have the timer
+                resetTimerOnClick: false,           // true resets the timer instead of pausing slideshow progress
+                advanceSpeed: 4000,                 // if timer is enabled, time between transitions
+                pauseOnHover: false,                // if you hover pauses the slider
+                startClockOnMouseOut: false,        // if clock should start on MouseOut
+                startClockOnMouseOutAfter: 1000,    // how long after MouseOut should the timer start again
+                directionalNav: false,               // manual advancing directional navs
+                captions: false,                     // do you want captions?
+                captionAnimation: 'fade',           // fade, slideOpen, none
+                captionAnimationSpeed: 800,         // if so how quickly should they animate in
+                bullets: false,                     // true or false to activate the bullet navigation
+                bulletThumbs: false,                // thumbnails for the bullets
+                bulletThumbLocation: '',            // location from this file where thumbs will be
+                afterSlideChange: function () { },     // empty function
+                fluid: true                         // or set a aspect ratio for content slides (ex: '4x3')
+            });
+        });
+
+
+    </script>
+
+    <script>
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'YPpj8zrHD8Y',
+                playerVars: { 'controls': 0, 'showinfo': 0 },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            $('#playvideo').removeClass('off');
+
+        }
+
+        $('#playvideo').click(function () {
+            $('#myModal').addClass('open');
+            $('.row').addClass('hide');
+            player.seekTo(1);
+            player.playVideo();
+            t = setTimeout(stopVideo, 28500);
+        });
+
+        $('.close-video-modal').click(stopVideo);
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                t = setTimeout(stopVideo, 28500);
+                done = true;
+            }
+        }
+        function stopVideo() {
+            $('#myModal').removeClass('open');
+            $('.row').removeClass('hide');
+            player.stopVideo();
+            clearTimeout(t);
+        }
+    </script>
+
+
+
+</body>
+</html>
+

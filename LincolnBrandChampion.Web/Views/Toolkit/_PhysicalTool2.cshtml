@@ -1,0 +1,104 @@
+﻿
+    @if (ViewBag.IsSelect == false)
+    {
+       <div id="tools">
+        @using (Html.BeginForm("PhysicalTool", "Toolkit", FormMethod.Post, new { id = "tool", enctype = "multipart/form-data" }))
+        {   
+        <h3>STEP TWO: IMPLEMENT YOUR PEER-TO-PEER KIT</h3>
+        <div class="row">
+            <div class="twelve columns">
+                <p class="step-image">
+                    <img src="~/Images/step1-option1.png" alt="" />
+                </p>
+                <p>
+                    <strong>Peer-to-Peer Kit</strong><br>
+                    Your Peer-to-Peer Kit is automatically ordered when you download the PDF Resource Doc “Elevating the Client Experience.” Your kit will arrive in the mail 7-10 days after you have completed the download. Follow the instructions included with the kit to capture stories of outstanding efforts that elevated the client experience in your store and fulfill the Checkpoint 2 requirements.
+                </p>
+                <p>
+                    <label for="radio1">
+                        <input name="radio" value="Peer-to-Peer Kit" type="radio" id="radio1">
+                        Peer-to-Peer Recognition Kit</label>
+                </p>
+            </div>
+        </div>
+        <p class="text-center">
+            <input type="button" value="&#8249; Restart" class="button register-button" id="previous">
+            <input type="button" value="Next &#8250;" class="button register-button" id="next" disabled>
+        </p>
+            }
+       </div>
+        
+    }
+    else
+    {
+        <div id="tools">
+        @using (Html.BeginForm("PhysicalTool", "Toolkit", FormMethod.Post, new { id = "tool", enctype = "multipart/form-data" }))
+        {
+        <h3>STEP TWO: IMPLEMENT YOUR PEER-TO-PEER KIT</h3>
+        <div class="row">
+            <div class="three column" style="fill: transparent"></div>
+            <div class="six columns" style="">
+                <p class="step-image">
+                    <img src="~/Images/step1-option1.png" alt="" />
+                </p>
+                <p>
+                    <strong>Peer-to-Peer Kit</strong><br>
+                    Your Peer-to-Peer Kit is automatically ordered when you download the PDF Resource Doc “Elevating the Client Experience.” Your kit will arrive in the mail 7-10 days after you have completed the download. Follow the instructions included with the kit to capture stories of outstanding efforts that elevated the client experience in your store and fulfill the Checkpoint 2 requirements. 
+                </p>
+                <p>
+                    <label for="radio1">
+                        <input name="radio" value="Peer-to-Peer Kit" type="radio" id="radio1">
+                        Peer-to-Peer Recognition Kit</label>
+                </p>
+            </div>
+            <div class="three column" style="fill: transparent"></div>
+        </div>
+        <p class="text-center">
+            <input type="button" value="&#8249; Restart" class="button register-button" id="previous">
+            <input type="button" value="Next &#8250;" class="button register-button" id="next" disabled>
+        </p>
+    }
+        </div>
+   }
+    <script>
+        document.getElementById("radio1").onclick = function () { myFunc() };
+        function myFunc() {
+            $('#next').attr('disabled', false);
+        }
+
+
+        document.getElementById("previous").onclick = function () { myFunc1() };
+        function myFunc1() {
+            $("#tools").load('@Url.Action("SelfStudy", "Toolkit")')
+             }
+
+             $(document).ready(function () {
+                 $("#next").click(function () {
+                     var form = $("#tool").serialize();
+                     var radio = $('input[name="radio"]:radio').filter(':checked').length;
+                     if (radio != 0) {
+                         
+                         $.ajax({
+                             type: 'POST',
+                             url: '@Url.Action("PhysicalTool", "Toolkit")',
+                    data: form,
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.isRedirect) {
+                            $("#tools").load(json.redirectUrl);
+                        }
+                        $("#tools").load(json.redirectUrl);
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+
+                });
+            }
+            else {
+                $('#error').removeAttr('hidden');
+            }
+        });
+    });
+    </script>
+

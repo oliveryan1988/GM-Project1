@@ -1,0 +1,146 @@
+﻿@model LincolnBrandChampion.Model.Models.ProfileModel
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="twelve columns">
+      <p class="home-intro"><span>Welcome</span>  <strong> @Session["User_Id"].ToString().ToUpper()</strong>, to the <strong>Lincoln Brand Champion</strong> dashboard. This is your go-to resource for all your Brand Champion needs — to register for an Immersion or Summit event, view valuable Lincoln resources, find contact information for other Brand Champions, order materials to help you complete your quarterly checkpoints, and more.</p>
+      <h2>RECENTLY</h2>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+       		  <div class="four columns">
+               	<h3 class="text-center">YOUR PROFILE</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+      		<div class="row">
+       		  <div class="three mobile-one columns">
+                  <p class="text-right"><img src="~/Images/profile.png" alt=""/></p>
+              </div>
+   				  <div class="nine mobile-three columns">
+<p><strong>Profile Setup</strong> - Your information has been pre-populated with your name and dealership information. To enhance your profile, go to the Profile tab and add your photo, biography and contact information. Once you’re entered, the Brand Champions page will help you connect with other <a href="~/BrandChampion/MakeConnections">Brand Champions</a> and learn a little more about one other.</p>
+<p>@if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+   { @Html.ActionLink(HttpUtility.HtmlDecode("Complete your profile >"), "LBCProfile", "BrandChampion", null, new { @class = "button right" })}</p>
+
+</div></div>
+          		</div>
+        		<div class="eight columns">
+                	<h3 class="text-center">IMMERSE YOURSELF</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+      		<div class="row immevents">
+       		  <div class="two mobile-one columns">
+                  <p class="text-right"><img src="~/Images/bucket-lincoln.png" alt=""/></p>
+              </div>
+   				  <div class="ten mobile-three columns">
+<p><strong>Immersion Events</strong> - “Empower, Engage and Enable” to create passion and commitment for the brand. 
+    This exclusive event allows you to discover more about Lincoln and the luxury client, and to experience first-hand the power of Personal Service.
+     @*If you have not yet attended an event, please return to the dashboard <strong>January 29th</strong> to register – space for each event is limited!*@</p>
+</div></div>
+  @*    		<div class="row immwaves">
+       		  <div class="two mobile-one columns">
+                  <p class="text-right"><img src="~/Images/bucket-march.png" alt=""/></p>
+              </div>
+   				  <div class="ten mobile-three columns">
+<p><strong>Wave 8 will be taking place March 16th – 18th and Wave 9 on March 18th – 20th, 2015.</strong> 
+Don’t forget to check back here for registration information and updates.</p>
+</div></div>*@
+      		<div class="row immwaves">
+       		  <div class="two mobile-one columns">
+                  <p class="text-right"><img src="~/Images/bucket-sept.png" alt=""/></p>
+              </div>
+   				  <div class="ten mobile-three columns">
+<p><strong>Wave 10 occurs September 14th – 16th, 2015 and Wave 11 is scheduled for September 16th – 18th, 2015.</strong> Have questions? Feel free to go to the <a href="~/Contact/Index">Contact</a> page or call <strong class="nobr">800-816-6130</strong></p>
+<p>                    @if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+                       {<a href="~/Registration/registerAdmin" class="button right">Click here to Register @*<span class="nobr">2015 &#8250;</span>*@</a>}
+                        @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+                        { <a href="~/Registration/Index" class="button right">Click here to Register @*<span class="nobr">2015 &#8250;</span>*@</a>}
+</p>
+</div></div>
+          		</div>
+        	</div>
+
+          </div>
+        </div>
+      </div>
+      <h2>FIND IT HERE</h2>
+      <p class="text-center">Explore the links below to locate all your Lincoln Brand Champion resources. <br />
+Information is refreshed regularly, so be sure to check back for the latest updates.</p>
+      
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+          	<ul class="block-grid four-up mobile text-center">
+  				<li>                    @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+                                        {<a href="~/Registration/Index"><img src="~/Images/big-registration.png" alt=""/></a>}
+                                        else if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+                                        {<a href="~/Registration/registerAdmin"><img src="~/Images/big-registration.png" alt=""/></a> }
+                                        else
+                                        {<a href="#"><img src="~/Images/big-registration.png" alt=""/></a>}</li>
+  				<li><a href="~/Resources/Index"><img src="~/Images/big-resources.png" alt=""/></a></li>
+  				<li><a href="~/BrandChampion/MakeConnections"><img src="~/Images/big-brand.png" alt=""/></a></li>
+  				<li>@if (Convert.ToInt32(Session["ROLE_ID"]) == 1 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+                    {<a href="~/LBC/UnderConstruction"><img src="~/Images/big-toolkit.png" alt=""/></a>}
+                    else
+                    {<a href="#"><img src="~/Images/big-toolkit.png" alt=""/></a>}</li>
+			</ul>
+          
+          </div>
+        </div>
+
+      </div>
+      
+      
+    </div>
+
+  </div>
+
+<div id="exampleModal" class="reveal-modal medium">
+    <h2>LINCOLN BRAND CHAMPION DASHBOARD ACCESS</h2>
+    <div class="row">
+        <div class="ten columns centered text-center">
+            @using (Html.BeginForm("SaveProfileWslxId", "LBC", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+               @Html.ValidationSummary(false)
+                @Html.HiddenFor(p => Model.WSLX_ID)
+               @Html.HiddenFor(p => Model.PA_CODE);
+                <label class="text-center">Please enter your STARS ID below:</label>
+@*<input type="text" placeholder="Enter STARS ID Here" />*@
+                @Html.TextBoxFor(p => Model.STARS_ID, new { placeholder = "Enter STARS ID Here" })
+              
+                <br />
+                <input type="submit" class="button" id="star-submit">
+            }
+        </div>
+    </div>
+</div>
+@if (!Model.haveProfileWslxId)
+{
+    <script type="text/javascript">
+
+            $("#exampleModal").reveal({
+                closeOnBackgroundClick: false
+            });
+
+    </script>
+}
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        //$("#exampleModal").reveal({
+        //    closeOnBackgroundClick: false
+        //});
+
+        //$("#star-submit").click(function () {
+        //    $('#exampleModal').trigger('reveal:close');
+        //    return false;
+        //});
+    });
+    </script>
+

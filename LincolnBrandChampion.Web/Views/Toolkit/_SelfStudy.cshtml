@@ -1,0 +1,97 @@
+﻿
+    <div id="tools">
+        <h3>STEP ONE: DOWNLOAD AND COMPLETE THE CHECK POINT SELF-STUDY</h3>
+        <div class="row">
+            <div class="twelve columns">
+                <p class="step-image">
+                    <img src="~/Images/step2-option1.png" alt="" />
+                </p>
+                <p>
+                    <strong>OPTION ONE: Check Point 1 Self-Study (PPT or PDF) Doc</strong><br>
+                    This Self-Study program contains the core content that will prepare you to create a welcoming environment in your store, inform and coach your associates, and to successfully complete the Check Point 1 test on STARS.
+                </p>
+                <!--Break Content Two Columns-->
+
+                <div class="row">
+                    <div class="six columns">
+                        <p class="text-center">
+                            Check Point 1 Self-Study PPT Doc (.ppt)<br>
+                            <a href="~/Content/toolkit/Checkpoint1SelfStudyPPTX.pptx" class="button register-button" id="step1ppt">DOWNLOAD &#8250;</a>
+                        </p>
+                    </div>
+                    <!--OR BUTTON--SMALL-->
+                    <!--              	<p class="step-image-or-min"><img src="images/or-sm.png" alt=""/></p>-->
+                    <!--OR BUTTON--SMALL-->
+                    <div class="six columns">
+                        <p class="text-center">
+                            Check Point 1 Self-Study PDF Doc (.pdf)<br>
+                            <a href="~/Content/toolkit/Checkpoint1SelfStudyPDF.zip" class="button register-button" id="step1pdf" target="_blank">DOWNLOAD &#8250;</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ten columns centered text-center">
+                        <input type="button" value="NEXT &#8250;" class="button register-button" id="next" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById("step1ppt").onclick = function () { myFunc1() };
+    function myFunc1() {
+        $('#next').attr('disabled', false);
+    }
+
+    document.getElementById("step1pdf").onclick = function () { myFunc2() };
+    function myFunc2() {
+        $('#next').attr('disabled', false);
+    }
+
+
+    document.getElementById("next").onclick = function () { myFunc() };
+    function myFunc() {
+        $("#tools").load('@Url.Action("Game", "Toolkit")')
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {  //On document ready
+        $('#step1ppt').click(function (e) {  //For each a (anchor), set the following function
+            ga('send', 'event', 'button', 'click', 'Checkpoint1SelfStudyPPTX.pptx');
+           // var file = 'Step1PPT.pptx';
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                    dataType: 'json',
+                    success: function (json) {
+                        //gaq.push(['_trackEvent', 'File', 'downloads', 'Checkpoint1SelfStudyPPTX.pptx']);
+                        var link = $("a", this);
+                        if (link.length != 0)
+                            window.location = link.attr("href");
+                   
+                    }
+
+            });
+        });
+        $('#step1pdf').click(function (e) {  //For each a (anchor), set the following function
+
+            ga('send', 'event', 'button', 'click', 'Checkpoint1SelfStudyPDF.pdf');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Clicks", "Toolkit")',
+                data: { file: this.href },
+                dataType: 'json',
+                success: function (json) {
+                   // gaq.push(['_trackEvent', 'File', 'downloads', 'Checkpoint1SelfStudyPDF.pdf']);
+                    var link = $("a", this);
+                    if (link.length != 0)
+                        window.location = link.attr("href");
+                }
+
+            });
+        });
+    });
+</script>

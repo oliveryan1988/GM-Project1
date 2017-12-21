@@ -1,0 +1,237 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@model LincolnBrandChampion.Model.Models.FlightInfoModel
+@{
+    ViewBag.Title = "Travel";
+}
+<link rel="stylesheet" href="~/stylesheets/jquery.timepicker.css">
+ <div class="row">
+    <div class="twelve columns">
+      <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong>
+           The Brand Champion Immersion is a 3-day event that plays host to a series of premium, highly immersive activities and engagements, all designed to bring you precisely in tune with the Lincoln brand.   With unparalleled access to Lincoln brand stories, products, customer insights, and key company personnel, you’ll build a solid foundation for your leadership role as a Lincoln Brand Champion.</p>
+	
+      <!-- Grid Example -->
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+
+               <!-- Insert Partial for the navigation--> 
+                     @Html.Partial("~/Views/Registration/_Navigation.cshtml")
+                
+     	<div class="eight columns">
+                	<h3 class="text-center">IMMERSE YOURSELF</h3>
+                  <p class="text-center"><img src="~/Images/dash.png" alt=""/></p>
+                  <p class="home-intro"><strong>Enter Flight Information.</strong> </p>
+      				@using (Html.BeginForm("Travel", "Registration", FormMethod.Post, new { enctype = "multipart/form-data", @class = "awesome" }))
+                    {
+                           @Html.HiddenFor(m => Model.STARS_ID)
+                           @Html.HiddenFor(m => Model.EVENT_ID)
+                    <div class="flight-info">
+                    <h4>To the Immersion Event:</h4>
+                        <p> <i>Please enter your originating flight information first and add any connections from there, with your arrival flight in Detroit being the last flight entered.</i></p>
+    <div class="row">
+      <div class="six columns"><span class="cal-button"></span>@Html.TextBoxFor(m => Model.ARR_DATE,"{0:MM/dd/yyyy}", new { @id = "datepicker1", @class = "" })
+                                                                @Html.ValidationMessageFor(m => Model.ARR_DATE)
+          <label class="required">* Arrival Date</label>
+      </div>
+      <div class="six columns">
+           @Html.DropDownListFor(m => Model.ARR_AIRLINE, new SelectList(ModelValueListProvider.AirlineList, "Value", "Text"), new {id="ddlairline" })
+          @Html.ValidationMessageFor(m => Model.ARR_AIRLINE)
+          <label class="required">* Airline</label></div>
+    </div>
+    <div class="row">
+
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.ARR_FLIGHT_NUM, new { @class = "", maxlength=20 })@Html.ValidationMessageFor(m => Model.ARR_FLIGHT_NUM)<label class="required">* Arrival Flight Number</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.ARR_CITY, new { @class = "" ,maxlength=20})@Html.ValidationMessageFor(m => Model.ARR_CITY)<label class="required">* Arrival City</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.ARR_DEP_CITY, new { @class = "", maxlength=20 })@Html.ValidationMessageFor(m => Model.ARR_DEP_CITY)<label class="required">* Departure City</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.ARR_TIME, new { @class = "timepicker", maxlength=20, @placeholder = "XX:XX AM/PM" })@Html.ValidationMessageFor(m => Model.ARR_TIME)<label class="required">* Arrival Time</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.ARR_TERMINAL, new {id="terminal", @class = "", maxlength=20 })@Html.ValidationMessageFor(m => Model.ARR_TERMINAL)<label class="required">* Terminal</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">
+          @Html.DropDownListFor(m => Model.MULTI_FLAG, new SelectList(ModelValueListProvider.ConnectorList, "Value", "Text", new { @id = "connector1" }))
+<label class="required">* Connecting Flight Information</label></div>
+    </div>
+    </div>
+    <div class="flight-info connecting-flight" id="connecting-flight1">
+                    <h4>Connecting Flight Information (to the Immersion Event):</h4>
+    <div class="row">
+      <div class="twelve columns">@Html.TextAreaFor(m => Model.CONNECTING_FLIGHT_NOTES, new { @class="", maxlength=2000})<label class="required">* Connecting Flight Details</label></div>
+    </div>
+    
+    </div>
+    <div class="flight-info">
+                    <h4>From the Immersion Event:</h4>
+    <div class="row">
+      <div class="six columns"><span class="cal-button"></span>@Html.TextBoxFor(m => Model.DEP_DATE,"{0:MM/dd/yyyy}", new { @id = "datepicker2", @class="" })@Html.ValidationMessageFor(m => Model.DEP_DATE)<label class="required">* Departure Date</label></div>
+      <div class="six columns">
+          @Html.DropDownListFor(m => Model.DEP_AIRLINE, new SelectList(ModelValueListProvider.AirlineList, "Value", "Text"))@Html.ValidationMessageFor(m => Model.DEP_AIRLINE)
+          <label class="required">* Airline</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.DEP_FLIGHT_NUM, new { @class = "", maxlength=20 })@Html.ValidationMessageFor(m => Model.DEP_FLIGHT_NUM)<label class="required">* Departure Flight Number</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.DEP_CITY, new { @class = "" , maxlength=20})@Html.ValidationMessageFor(m => Model.DEP_CITY)<label class="required">* Departure City</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.DEP_DEST_CITY, new { @class = "" , maxlength=20})@Html.ValidationMessageFor(m => Model.DEP_DEST_CITY)<label class="required">* Destination City</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns offset-by-six">@Html.TextBoxFor(m => Model.DEP_TIME, new { @placeholder = "XX:XX AM/PM", @class = "timepicker", maxlength=20 })@Html.ValidationMessageFor(m => Model.DEP_TIME)<label class="required">* Departure Time</label></div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns text-right"><input type="submit" value="Clear &#8250;" class="button" ><input type="submit" value="Submit &#8250;" class="button register-button" id="submitTravel" data-reveal-id="travelSubmit"></div>
+    </div>
+                    }
+                </div>
+        	
+        	</div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+  </div>
+
+<div id="arrModal" class="reveal-modal medium">
+  <div class="row">
+    <div class="ten columns centered">
+      <p>Transportation and accommodations for the event are only provided within event dates. Please arrange for your own transportation upon your arrival and accommodations for the days prior to the event, we will provide your hotel accommodation beginning the first day of the event. Please contact PHQ for any questions at 800-816-6130 or <a href="mailto:phq@LincolnBC.com"><strong>phq@LincolnBC.com</strong></a>.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns offset-by-nine"><a class="button close-reveal-modal">OK</a>
+    </div>
+  </div><a class="close-reveal-modal">&#215;</a>
+</div> 
+
+<div id="depModal" class="reveal-modal medium">
+  <div class="row">
+    <div class="ten columns centered">
+      <p>Transportation and accommodations for the event are only provided within event dates. Please arrange for your own transportation upon your departure and accommodations for the days following the event, we will provide your hotel accommodation through the last day of the event. Please contact PHQ for any questions at 800-816-6130 or <a href="mailto:phq@LincolnBC.com"><strong>phq@LincolnBC.com</strong></a>.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns offset-by-nine"><a class="button close-reveal-modal">OK</a>
+    </div>
+  </div><a class="close-reveal-modal">&#215;</a>
+</div> 
+
+    <script>
+$(document).ready(function(){
+
+wrapSelects = function() {
+  $('form.awesome select:not(.is-wrapped)')
+    .addClass('is-wrapped')
+    .wrap('<div class="custom dropdown select" />')
+    .after('<span class="selector"></span>');
+}
+
+$(wrapSelects);
+
+
+  $(function() {
+    $( "#datepicker1" ).datepicker();
+    $( "#datepicker2" ).datepicker();
+    $( "#datepicker3" ).datepicker();
+  });
+  (function ($) {
+      $(function () {
+          $('input.timepicker').timepicker({interval:15});
+      });
+  })(jQuery)
+
+  if ($("#MULTI_FLAG").val() == "1") {
+      $("#connecting-flight1").addClass("show");
+  }
+  else {
+      $("#connecting-flight1").removeClass("show");
+  }
+
+  $('#MULTI_FLAG').change(function () {
+      if($(this).val() == "1")
+      {
+  				$("#connecting-flight1").addClass("show");
+      } else if($(this).val() == "2")
+      {
+  				$("#connecting-flight1").removeClass("show");
+      } 
+  });
+
+  $('#ddlairline').change(function () {
+
+      populateTerminal();
+
+
+  });
+
+  $("#datepicker1").change(function () {      
+      arrDate = $.datepicker.parseDate('mm/dd/yy', $(this).val());
+      event = $("#Model_EVENT_ID").val();
+
+      if (event = 3) {
+          startDate = $.datepicker.parseDate('mm/dd/yy', '09/14/2015');
+      }
+      if (event = 4) {
+          startDate = $.datepicker.parseDate('mm/dd/yy', '09/16/2015');
+      }
+
+      if (arrDate < startDate) {
+          $('#arrModal').reveal();
+      }
+  });
+
+  $("#datepicker2").change(function () {      
+      depDate = $.datepicker.parseDate('mm/dd/yy', $(this).val());
+      event = $("#Model_EVENT_ID").val();
+
+      if (event = 3) {
+          endDate = $.datepicker.parseDate('mm/dd/yy', '09/16/2015');
+      }
+      if (event = 4) {
+          endDate = $.datepicker.parseDate('mm/dd/yy', '09/18/2015');
+      }
+
+      if (depDate > endDate) {
+          $('#depModal').reveal();
+      }
+  });
+
+  function populateTerminal() {
+      var airline = $('#ddlairline').val();
+
+
+      $.ajax({
+          url: '@Url.Action("GetTerminal", "Registration")',
+                type: 'GET',
+                cache: false,
+                data: { Airline: airline },
+                error: function (request, status, error) {
+                    //alert('error');
+                },
+                success: function (result) {
+
+                    $("#terminal").val(result.term);
+
+                }
+            });
+        }
+	
+});
+    </script> 
+<script type="text/javascript" src="~/javascripts/jquery.timepicker.js"></script>

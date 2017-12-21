@@ -1,0 +1,121 @@
+﻿
+<div id="tools">
+    @model LincolnBrandChampion.Model.Models.CheckpointCompletedModel
+    <h3>STEP TWO: PLAY THE CHECK POINT CHALLENGE GAME</h3>
+                @using (Html.BeginForm("Game", "Toolkit", FormMethod.Post, new { id = "game", enctype = "multipart/form-data" }))
+            {
+                    @Html.HiddenFor(m=>Model.STARS_ID)
+                    @Html.HiddenFor(m=>Model.PA_CODE)
+    <div class="row">
+        <div class="twelve columns">
+            <p class="step-image">
+                <img src="~/Images/step2-option2.png" alt="" />
+            </p>
+            <p>
+                <strong>Check Point @Model.CHECKPOINT_ID  Challenge</strong><br>
+                This challenge offers you a fun and engaging way to hone your Check Point @Model.CHECKPOINT_ID knowledge. Play often. Challenge Brand Champions from across the country and set yourself apart on the challenge leaderboard.
+            </p>
+            <p>
+                This web-based "Brain Training" platform is designed for play on your smartphone, but also supports play on a PC. Simply enter lbcchallenge.com into your web browser to get started. Note: you must be a member of the Lincoln Brand Champion Facebook Page to unlock the game.
+            </p>
+            <!--Break Content Two Columns-->
+            <!--ADD FORM EDITS-->
+
+            <div>
+                <div class="six columns">
+                    <input type="email" name="email" id="email" value ="@Model.EMAIL_ID" maxlength="60" />
+                </div>
+            </div>
+            <div>
+                <div class="six columns">
+                    <div id="error" style="color:red" hidden><strong>Please enter your email address.</strong></div>
+                    <p>*Confirm / Enter Your Email Address</p>
+                </div>
+            </div>
+        </div>
+        <p class="text-center">
+            <input type="button" value="&#8249; Restart" class="button register-button" id="previous">
+            <input type="button" value="Next &#8250;" class="button register-button" id="next">
+        </p>
+            
+    </div>
+                    }
+</div>
+<script type="text/javascript">
+    $('#email').keypress(function (e) {
+        if (e.which == 13) return false;
+        //or...
+        if (e.which == 13) e.preventDefault();
+    });
+
+    //$('#email').bind('keypress', false);
+
+    document.getElementById("previous").onclick = function () { myFunc1() };
+    function myFunc1() {
+        $("#tools").load('@Url.Action("SelfStudy", "Toolkit")')
+    }
+
+    function validateEmail(email) { 
+        var re = new RegExp(/^([A-Za-z0-9_\-\.])+\@@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/); 
+    return re.test(email); 
+    }
+   
+
+    $(document).ready(function () {
+        $("#next").click(function () {
+            var email = $("#email").val();
+            if (validateEmail($('#email').val()) == true) {
+
+                var form = $("#game").serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Game", "Toolkit")',
+                    data: form,
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.isRedirect) {
+                            $("#tools").load(json.redirectUrl);
+                        }
+                        $("#tools").load(json.redirectUrl);
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+
+                                });
+
+
+            }
+            else {
+                $('#error').removeAttr('hidden');
+            }
+
+@*
+            var form = $("#game").serialize();
+            var email = $("#email").val();
+            if (email != "" && validateEmail(email)) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Game", "Toolkit")',
+                    data: form,
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.isRedirect) {
+                            $("#tools").load(json.redirectUrl);
+                        }
+                        $("#tools").load(json.redirectUrl);
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+
+                });
+            }
+            else
+            {
+                $('#error').removeAttr('hidden');
+            }*@
+            });
+    });
+</script>

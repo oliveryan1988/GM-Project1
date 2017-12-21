@@ -1,0 +1,125 @@
+﻿
+    @if (ViewBag.IsSelect == false)
+    {
+       <div id="tools">
+        @using (Html.BeginForm("PhysicalTool", "Toolkit", FormMethod.Post, new { id = "tool", enctype = "multipart/form-data" }))
+        {   
+        <h3>STEP THREE: CHOOSE ONE PHYSICAL CHECK POINT OPTION BELOW</h3>
+        <div class="row">
+            <div class="six columns">
+                <p class="step-image">
+                    <img src="~/Images/step1-option1.png" alt="" />
+                </p>
+                <p>
+                    <strong>Peer-to-Peer Recognition Kit</strong><br>
+                    The Peer-to-Peer Kit for Check Point 1 focuses on gathering "welcome" stories and awarding Sales and Service associates who demonstrate efforts that go above and beyond in creating a welcoming experience for clients throughout the store. 
+                </p>
+                <p>
+                    <label for="radio1">
+                        <input name="radio" value="Peer-to-Peer Kit" type="radio" id="radio1">
+                        Peer-to-Peer Recognition Kit</label>
+                </p>
+            </div>
+            <p class="step-image-or">
+                <img src="~/Images/or.png" alt="" />
+            </p>
+            <div class="six columns">
+                <p class="step-image">
+                    <img src="~/Images/step1-option2.png" alt="" />
+                </p>
+                <p>
+                    <strong>The Restaurant Experience: A Personal Service Case Study Activity</strong><br>
+                    This case study activity is designed for Sales and Service Brand Champions to share a dining experience and evaluate it in terms of how it met their expectations, how the touch-points correlate to the client experience in their store, and what they learned looking at the experience through the eyes of the customer that they can share with their associates.
+                </p>
+                <p>
+                    <label for="radio2">
+                        <input name="radio" value="Restaurant Experience Kit" type="radio" id="radio2">
+                        The Restaurant Experience Activity</label><div id="error" style="color: red" hidden><strong>Please make a selection.</strong></div>
+                </p>
+            </div>
+        </div>
+        <p class="text-center">
+            <input type="button" value="&#8249; Restart" class="button register-button" id="previous">
+            <input type="button" value="Next &#8250;" class="button register-button" id="next" disabled>
+        </p>
+            }
+       </div>
+        
+    }
+    else
+    {
+        <div id="tools">
+        @using (Html.BeginForm("PhysicalTool", "Toolkit", FormMethod.Post, new { id = "tool", enctype = "multipart/form-data" }))
+        {
+        <h3>STEP THREE: CONFIRM PHYSICAL CHECK POINT OPTION BELOW</h3>
+        <div class="row">
+            <div class="three column" style="fill: transparent"></div>
+            <div class="six columns" style="">
+                <p class="step-image">
+                    <img src="~/Images/step1-option1.png" alt="" />
+                </p>
+                <p>
+                    <strong>Peer-to-Peer Recognition Kit</strong><br>
+                    The Peer-to-Peer Kit for Check Point 1 focuses on gathering "welcome" stories and awarding Sales and Service associates who demonstrate efforts that go above and beyond in creating a welcoming experience for clients throughout the store. 
+                </p>
+                <p>
+                    <label for="radio1">
+                        <input name="radio" value="Peer-to-Peer Kit" type="radio" id="radio1">
+                        <input name="radio" value="Peer-to-Peer Kit" type="radio" id="radio2" hidden>
+                        Peer-to-Peer Recognition Kit</label>
+                </p>
+            </div>
+            <div class="three column" style="fill: transparent"></div>
+        </div>
+        <p class="text-center">
+            <input type="button" value="&#8249; Restart" class="button register-button" id="previous">
+            <input type="button" value="Next &#8250;" class="button register-button" id="next" disabled>
+        </p>
+    }
+        </div>
+   }
+    <script>
+        document.getElementById("radio1").onclick = function () { myFunc() };
+        function myFunc() {
+            $('#next').attr('disabled', false);
+        }
+        document.getElementById("radio2").onclick = function () { myFunc2() };
+        function myFunc2() {
+            $('#next').attr('disabled', false);
+        }
+
+        document.getElementById("previous").onclick = function () { myFunc1() };
+        function myFunc1() {
+            $("#tools").load('@Url.Action("SelfStudy", "Toolkit")')
+             }
+
+             $(document).ready(function () {
+                 $("#next").click(function () {
+                     var form = $("#tool").serialize();
+                     var radio = $('input[name="radio"]:radio').filter(':checked').length;
+                     if (radio != 0) {
+
+                         $.ajax({
+                             type: 'POST',
+                             url: '@Url.Action("PhysicalTool", "Toolkit")',
+                    data: form,
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.isRedirect) {
+                            $("#tools").load(json.redirectUrl);
+                        }
+                        $("#tools").load(json.redirectUrl);
+                    },
+                    error: function (er) {
+                        alert(er);
+                    }
+
+                });
+            }
+            else {
+                $('#error').removeAttr('hidden');
+            }
+        });
+    });
+    </script>
+

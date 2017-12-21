@@ -1,0 +1,163 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<SurveyReportModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=SurveyReport.xls");
+}
+
+<?xml version="1.0" encoding="utf-16" ?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Date Completed</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Brand Champion Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Registration Information</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Which would you rather do on the weekend?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Which would you rather do after a long day?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Outside of work, what are you most proud of?</ss:Data>
+                </ss:Cell>                                
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What's your favorite kind of snack?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What's your favorite form of entertainment?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What kinds of restaurants do you like?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What do you prefer to drink at a party?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What do you enjoy most when going out to dinner?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What do you do when something great happens?</ss:Data>
+                </ss:Cell>
+                 <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What's your favorite way to receive and/or share information?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What do you use your phone for?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">On average, how often do you post content on social media ?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">How many years of experience do you have working at Lincoln stores?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Why do you think most of your clients drive a Lincoln?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">What reason do your newest clients give for considering a Lincoln?</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Beyond money, what motivates you to go above and beyond for your clients?</ss:Data>
+                </ss:Cell>
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+                <ss:Row>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DATE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.EVENT_SESSION
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER1
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER2
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER3
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER4
+                        </ss:Data>
+                    </ss:Cell>
+                                        <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER5
+                        </ss:Data>
+                    </ss:Cell>
+                                        <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER6
+                        </ss:Data>
+                    </ss:Cell>
+                                        <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER7
+                        </ss:Data>
+                    </ss:Cell>
+                                         <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER8
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER9
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER10
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER11
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER12
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER13
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER14
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER15
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.ANSWER16
+                        </ss:Data>
+                    </ss:Cell>
+                </ss:Row>
+            }
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>
+

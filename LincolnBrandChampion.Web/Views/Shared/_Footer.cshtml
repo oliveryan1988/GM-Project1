@@ -1,0 +1,92 @@
+﻿<div id="footer">
+    <div class="row">
+        <div class="two columns">
+            <h5>EVENT REGISTRATION</h5>
+         @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+         {
+            <p>
+                <img src="~/Images/footer1.png" alt="" />
+                <a href="~/Registration/Index">Immersion Event</a>
+            </p>
+            <p>
+                @*<img src="~/Images/footer10.png" alt="" />
+                <a href="#">Summit Event</a>*@
+            </p>
+         }
+         else if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+         { 
+                        <p>
+                <img src="~/Images/footer1.png" alt="" />
+                <a href="~/Registration/registerAdmin">Immersion Event</a>
+            </p>
+            <p>
+                @*<img src="~/Images/footer10.png" alt="" />
+                <a href="#">Summit Event</a>*@
+            </p>
+         }
+        </div>
+        <div class="two columns">
+            <h5>RESOURCES</h5>
+            <p>
+                <img src="~/Images/footer2.png" alt="" />
+                <a href="~/Resources/Index">A Wealth of Knowledge</a>
+            </p>
+         @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+         {
+            <p>
+                <img src="~/Images/footer3.png" alt="" />
+                <a href="~/Resources/Survey">Affinity Survey</a>
+            </p>
+         }
+        </div>
+        <div class="two columns">
+            <h5>BRAND CHAMPIONS</h5>
+            <p>
+                <img src="~/Images/footer4.png" alt="" />
+                <a href="~/BrandChampion/MakeConnections">Make Connections</a>
+            </p>
+         @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+         {
+            <p>
+                <img src="~/Images/footer5.png" alt="" />
+                <a href="~/BrandChampion/LBCProfile">My Profile</a>
+            </p>
+         }
+        </div>
+        <div class="two columns">
+            <h5>TOOLKIT</h5>
+            <p>
+                <img src="~/Images/footer6.png" alt="" />
+                <a href="~/Toolkit/Index">Checkpoint Resources</a>
+            </p>
+            <p>
+                <img src="~/Images/footer7.png" alt="" />
+                <a href="~/LBC/UnderConstruction">Rewards</a>
+            </p>
+        </div>
+        <div class="two columns">
+            <h5>SHARE YOUR STORY</h5>
+              @if (Convert.ToInt32(Session["ROLE_ID"]) == 1 )
+              {
+            <p><img src="~/Images/footer11.png" alt=""/> <a href="~/Story/Index">Submit Story</a></p>
+      <p><img src="~/Images/footer12.png" alt=""/> <a href="~/Story/MyStories">My Stories</a></p>
+              }
+            @if (Convert.ToInt32(Session["ROLE_ID"]) == 5 )
+            {
+                  <p><img src="~/Images/footer11.png" alt=""/> <a href="~/Story/AddStoryAdmin">Submit Story</a></p>
+                  <p><img src="~/Images/footer12.png" alt=""/> <a href="~/Story/AdminStories">Submitted Stories</a></p>
+              }
+        </div>
+        <div class="two columns">
+            <h5>ADDITIONAL INFO</h5>
+            <p><img src="~/Images/footer8.png" alt=""/> 
+                <a href="~/Content/pdf/LN_Brand_Champ_FAQ.pdf" target="_blank">FAQs</a>
+
+            </p>
+            <p>
+                <img src="~/Images/footer9.png" alt="" />
+                <a href="~/Contact/Index">LBC Contact Information</a>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAC8C30C-4D97-4B69-BE0D-807A2070F598}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LincolnBrandChampion.DL</RootNamespace>
+    <AssemblyName>LincolnBrandChampion.DL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\LincolnBrandChampion.Web\bin\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\LincolnBrandChampion.Web\bin\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\AIRLINES_INFO.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBCDataedmx.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LBCDataedmx.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBCDataedmx.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBCDataedmx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LBCDataedmx.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_CHECKPOINT.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_CHECKPOINT_COMPLETED.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_CHECKPOINT_TRACKING.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_CHECKPOINT_VW.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_DIETARY_RESTRICTIONS.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_EVENT.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_EVENT_SESSION_LOOKUP.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_FLIGHT_INFO.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_FLIGHT_INFO_DETAILS.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_GUEST_REGD_SESSION.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_GUEST_REGISTRATION.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_HOTEL_CAR_INFO.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_IMMERSION_COURSE.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_INSTITUTION_ENROLL_REPORT.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_LOGIN_TRACKING.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_PROFILE.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_PROFILE_HISTORY.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_PROFILE_RECOGNITION.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_PROFILE_RECOGNITION_MASTER.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_REGISTRATION.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_RESOURCE_TRACKING.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SHIRT_SIZE.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_STORY.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_STORY_CATEGORY.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_STORY_RATING.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_STORY_REJECT_REASON.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_STORY_SUBCATEGORY.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVERY_COMPLETED.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVEY_COMPLETED_VIEW.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVEY_MASTER.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVEY_QUESTIONS.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVEY_QUESTION_ANSWER.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVEY_REPORT_VW.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_SURVEY_TAKEN.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_TRANSPORTATION_NEED.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_USERS.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LBC_USER_ROLE.cs">
+      <DependentUpon>LBCDataedmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ConnectionHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\AirlinesInfoRepository.cs" />
+    <Compile Include="Repositories\AttendanceInfoRepository.cs" />
+    <Compile Include="Repositories\CheckpointRepository.cs" />
+    <Compile Include="Repositories\StoryRatingRepository.cs" />
+    <Compile Include="Repositories\StorySubCategoryRepository.cs" />
+    <Compile Include="Repositories\StoryCategoryRepository.cs" />
+    <Compile Include="Repositories\DietaryRestrictionsRepository.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\FlightInfoRepository.cs" />
+    <Compile Include="Repositories\GuestRepository.cs" />
+    <Compile Include="Repositories\HotelInfoRepository.cs" />
+    <Compile Include="Repositories\LoginTrackingRepository.cs" />
+    <Compile Include="Repositories\MetricsRepository.cs" />
+    <Compile Include="Repositories\ProfileHistoryRepository.cs" />
+    <Compile Include="Repositories\ProfileRecognitionMasterRpository.cs" />
+    <Compile Include="Repositories\ProfileRecognitionRepository.cs" />
+    <Compile Include="Repositories\ProfileRepository.cs" />
+    <Compile Include="Repositories\RegistrationRepository.cs" />
+    <Compile Include="Repositories\ResourceRepository.cs" />
+    <Compile Include="Repositories\ShirtSizeRepository.cs" />
+    <Compile Include="Repositories\StateRepository.cs" />
+    <Compile Include="Repositories\StoryRepository.cs" />
+    <Compile Include="Repositories\SurveyRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Data\LBCDataedmx.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LBCDataedmx.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\LBCDataedmx.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LBCDataedmx.edmx</DependentUpon>
+      <LastGenOutput>LBCDataedmx.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Data\LBCDataedmx.edmx.diagram">
+      <DependentUpon>LBCDataedmx.edmx</DependentUpon>
+    </None>
+    <None Include="Data\LBCDataedmx.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LBCDataedmx.edmx</DependentUpon>
+      <LastGenOutput>LBCDataedmx.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreWSL\CoreWSL.vbproj">
+      <Project>{9b670917-ebd3-487b-ad9c-460e6c18ba0f}</Project>
+      <Name>CoreWSL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LincolnBrandChampion.Model\LincolnBrandChampion.Model.csproj">
+      <Project>{fd57d78e-337e-465c-97eb-4ff32886a17a}</Project>
+      <Name>LincolnBrandChampion.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

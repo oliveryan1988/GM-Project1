@@ -1,0 +1,882 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LBCData" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="LBC_DIETARY_RESTRICTIONS" EntityType="Model.LBC_DIETARY_RESTRICTIONS" />
+    <EntitySet Name="LBC_LOGIN_TRACKING" EntityType="Model.LBC_LOGIN_TRACKING" />
+    <EntitySet Name="LBC_PROFILE_HISTORY" EntityType="Model.LBC_PROFILE_HISTORY" />
+    <EntitySet Name="LBC_PROFILE_RECOGNITION" EntityType="Model.LBC_PROFILE_RECOGNITION" />
+    <EntitySet Name="LBC_PROFILE_RECOGNITION_MASTER" EntityType="Model.LBC_PROFILE_RECOGNITION_MASTER" />
+    <EntitySet Name="LBC_SHIRT_SIZE" EntityType="Model.LBC_SHIRT_SIZE" />
+    <EntitySet Name="LBC_USER_ROLE" EntityType="Model.LBC_USER_ROLE" />
+    <EntitySet Name="LBC_USERS" EntityType="Model.LBC_USERS" />
+    <AssociationSet Name="LBC_USERS_USR_ROLE_ID_FK" Association="Model.LBC_USERS_USR_ROLE_ID_FK">
+      <End Role="LBC_USER_ROLE" EntitySet="LBC_USER_ROLE" />
+      <End Role="LBC_USERS" EntitySet="LBC_USERS" />
+    </AssociationSet>
+    <EntitySet Name="LBC_EVENT" EntityType="Model.LBC_EVENT" />
+    <EntitySet Name="LBC_FLIGHT_INFO_DETAILS" EntityType="Model.LBC_FLIGHT_INFO_DETAILS" />
+    <EntitySet Name="LBC_IMMERSION_COURSE" EntityType="Model.LBC_IMMERSION_COURSE" />
+    <AssociationSet Name="LBC_RECOGNITION_ID_FK" Association="Model.LBC_RECOGNITION_ID_FK">
+      <End Role="LBC_PROFILE_RECOGNITION_MASTER" EntitySet="LBC_PROFILE_RECOGNITION_MASTER" />
+      <End Role="LBC_PROFILE_RECOGNITION" EntitySet="LBC_PROFILE_RECOGNITION" />
+    </AssociationSet>
+    <AssociationSet Name="EVENT_ID_FD_FK" Association="Model.EVENT_ID_FD_FK">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_FLIGHT_INFO_DETAILS" EntitySet="LBC_FLIGHT_INFO_DETAILS" />
+    </AssociationSet>
+    <EntitySet Name="LBC_HOTEL_CAR_INFO" EntityType="Model.LBC_HOTEL_CAR_INFO" />
+    <EntitySet Name="LBC_REGISTRATION" EntityType="Model.LBC_REGISTRATION" />
+    <AssociationSet Name="LBC_REGIST_ID" Association="Model.LBC_REGIST_ID">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_REGISTRATION" EntitySet="LBC_REGISTRATION" />
+    </AssociationSet>
+    <EntitySet Name="LBC_FLIGHT_INFO" EntityType="Model.LBC_FLIGHT_INFO" />
+    <AssociationSet Name="EVENT_ID_FK" Association="Model.EVENT_ID_FK">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_FLIGHT_INFO" EntitySet="LBC_FLIGHT_INFO" />
+    </AssociationSet>
+    <EntitySet Name="AIRLINES_INFO" EntityType="Model.AIRLINES_INFO" />
+    <EntitySet Name="LBC_EVENT_SESSION_LOOKUP" EntityType="Model.LBC_EVENT_SESSION_LOOKUP" />
+    <EntitySet Name="LBC_GUEST_REGD_SESSION" EntityType="Model.LBC_GUEST_REGD_SESSION" />
+    <AssociationSet Name="LBC_SESSEVT_ID" Association="Model.LBC_SESSEVT_ID">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_EVENT_SESSION_LOOKUP" EntitySet="LBC_EVENT_SESSION_LOOKUP" />
+    </AssociationSet>
+    <EntitySet Name="LBC_GUEST_REGISTRATION" EntityType="Model.LBC_GUEST_REGISTRATION" />
+    <AssociationSet Name="LBC_WSLX_REGD_ID" Association="Model.LBC_WSLX_REGD_ID">
+      <End Role="LBC_GUEST_REGISTRATION" EntitySet="LBC_GUEST_REGISTRATION" />
+      <End Role="LBC_GUEST_REGD_SESSION" EntitySet="LBC_GUEST_REGD_SESSION" />
+    </AssociationSet>
+    <EntitySet Name="LBC_INSTITUTION_ENROLL_REPORT" EntityType="Model.LBC_INSTITUTION_ENROLL_REPORT" />
+    <EntitySet Name="LBC_SURVEY_MASTER" EntityType="Model.LBC_SURVEY_MASTER" />
+    <EntitySet Name="LBC_SURVEY_QUESTIONS" EntityType="Model.LBC_SURVEY_QUESTIONS" />
+    <AssociationSet Name="SURVEY_ID_FK" Association="Model.SURVEY_ID_FK">
+      <End Role="LBC_SURVEY_MASTER" EntitySet="LBC_SURVEY_MASTER" />
+      <End Role="LBC_SURVEY_QUESTIONS" EntitySet="LBC_SURVEY_QUESTIONS" />
+    </AssociationSet>
+    <EntitySet Name="LBC_SURVEY_QUESTION_ANSWER" EntityType="Model.LBC_SURVEY_QUESTION_ANSWER" />
+    <EntitySet Name="LBC_SURVERY_COMPLETED" EntityType="Model.LBC_SURVERY_COMPLETED" />
+    <EntitySet Name="LBC_SURVEY_TAKEN" EntityType="Model.LBC_SURVEY_TAKEN" />
+    <EntitySet Name="LBC_SURVEY_REPORT_VW" EntityType="Model.LBC_SURVEY_REPORT_VW" />
+    <EntitySet Name="LBC_SURVEY_COMPLETED_VIEW" EntityType="Model.LBC_SURVEY_COMPLETED_VIEW" />
+    <EntitySet Name="LBC_CHECKPOINT" EntityType="Model.LBC_CHECKPOINT" />
+    <EntitySet Name="LBC_CHECKPOINT_COMPLETED" EntityType="Model.LBC_CHECKPOINT_COMPLETED" />
+    <EntitySet Name="LBC_CHECKPOINT_TRACKING" EntityType="Model.LBC_CHECKPOINT_TRACKING" />
+    <EntitySet Name="LBC_RESOURCE_TRACKING" EntityType="Model.LBC_RESOURCE_TRACKING" />
+    <EntitySet Name="LBC_STORY" EntityType="Model.LBC_STORY" />
+    <EntitySet Name="LBC_STORY_CATEGORY" EntityType="Model.LBC_STORY_CATEGORY" />
+    <EntitySet Name="LBC_STORY_RATING" EntityType="Model.LBC_STORY_RATING" />
+    <EntitySet Name="LBC_STORY_REJECT_REASON" EntityType="Model.LBC_STORY_REJECT_REASON" />
+    <EntitySet Name="LBC_STORY_SUBCATEGORY" EntityType="Model.LBC_STORY_SUBCATEGORY" />
+    <EntitySet Name="LBC_TRANSPORTATION_NEED" EntityType="Model.LBC_TRANSPORTATION_NEED" />
+    <EntitySet Name="LBC_CHECKPOINT_VW" EntityType="Model.LBC_CHECKPOINT_VW" />
+    <EntitySet Name="LBC_PROFILE" EntityType="Model.LBC_PROFILE" />
+  </EntityContainer>
+  <EntityType Name="LBC_DIETARY_RESTRICTIONS">
+    <Key>
+      <PropertyRef Name="DIETARY_CODE" />
+    </Key>
+    <Property Name="DIETARY_CODE" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="DIETARY_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="LBC_LOGIN_TRACKING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="LOGIN_DATE" Type="DateTime" Nullable="false" />
+    <Property Name="LOGIN_TIME" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="USERID" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ACI" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SITE" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ORGCODE" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="EMPCODE" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MRROLE" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ORG" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+    <Property Name="CREATED_BY" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE_HISTORY">
+    <Key>
+      <PropertyRef Name="REV_NUM" />
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="REV_NUM" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="STARS_ID" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+    <Property Name="PA_CODE" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="WSLX_ID" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="FIRST_NAME" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="EMAIL_ID" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="PHOTO_PATH" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PHONE" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="LBC_CERT" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_REGION" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_ADDRESS" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_CITY" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_STATE" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_ZIP" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="DLR_PHONE" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="BIOGRAPHY" Type="String" MaxLength="2048" Unicode="false" FixedLength="false" />
+    <Property Name="SHIRT_SIZE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="DIETARY_RESTRICTION" Type="String" MaxLength="2048" Unicode="false" FixedLength="false" />
+    <Property Name="PROFILE_NOTE" Type="String" MaxLength="2048" Unicode="false" FixedLength="false" />
+    <Property Name="PROFILE_TYPE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="EMP_STATUS_CODE" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="TITLE" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="DEPARTMENT" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="ADMIN_NOTES" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+    <Property Type="String" Name="ZONE" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SALESCODE" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEPT_INFO" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE_RECOGNITION">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="RECOGNITION_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+    <Property Name="RECOGNITION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="STATUS" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <NavigationProperty Name="LBC_PROFILE_RECOGNITION_MASTER" Relationship="Model.LBC_RECOGNITION_ID_FK" FromRole="LBC_PROFILE_RECOGNITION" ToRole="LBC_PROFILE_RECOGNITION_MASTER" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE_RECOGNITION_MASTER">
+    <Key>
+      <PropertyRef Name="RECOGNITION_ID" />
+    </Key>
+    <Property Name="RECOGNITION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="RECOGNITION_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="RECOGNITION_TITLE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="CATEGORY" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <NavigationProperty Name="LBC_PROFILE_RECOGNITION" Relationship="Model.LBC_RECOGNITION_ID_FK" FromRole="LBC_PROFILE_RECOGNITION_MASTER" ToRole="LBC_PROFILE_RECOGNITION" />
+  </EntityType>
+  <EntityType Name="LBC_SHIRT_SIZE">
+    <Key>
+      <PropertyRef Name="SHIRT_SIZE" />
+    </Key>
+    <Property Name="SHIRT_SIZE" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="SIZE_DESC" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="LBC_USER_ROLE">
+    <Key>
+      <PropertyRef Name="USR_ROLE_ID" />
+    </Key>
+    <Property Name="USR_ROLE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="USR_ROLE" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="USR_ROLE_DESC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <NavigationProperty Name="LBC_USERS" Relationship="Model.LBC_USERS_USR_ROLE_ID_FK" FromRole="LBC_USER_ROLE" ToRole="LBC_USERS" />
+  </EntityType>
+  <EntityType Name="LBC_USERS">
+    <Key>
+      <PropertyRef Name="USR_WSLX_ID" />
+    </Key>
+    <Property Name="USR_WSLX_ID" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="USR_FIRST_NAME" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="USR_LAST_NAME" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="USR_ROLE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="USR_STATUS" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <NavigationProperty Name="LBC_USER_ROLE" Relationship="Model.LBC_USERS_USR_ROLE_ID_FK" FromRole="LBC_USERS" ToRole="LBC_USER_ROLE" />
+  </EntityType>
+  <Association Name="LBC_USERS_USR_ROLE_ID_FK">
+    <End Role="LBC_USER_ROLE" Type="Model.LBC_USER_ROLE" Multiplicity="0..1" />
+    <End Role="LBC_USERS" Type="Model.LBC_USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_USER_ROLE">
+        <PropertyRef Name="USR_ROLE_ID" />
+      </Principal>
+      <Dependent Role="LBC_USERS">
+        <PropertyRef Name="USR_ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LBC_EVENT">
+    <Key>
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Type="Decimal" Name="EVENT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="EVENT_YEAR" Precision="38" Scale="0" />
+    <Property Type="String" Name="EVENT_MONTH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="EVENT_START_DATE" />
+    <Property Type="DateTime" Name="EVENT_END_DATE" />
+    <Property Type="String" Name="EVENT_TIME" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EVENT_SESSION" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EVENT_LOCATION" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="OPEN_LIMIT" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="CURRENT_COUNT" Precision="38" Scale="0" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <NavigationProperty Name="LBC_FLIGHT_INFO_DETAILS" Relationship="Model.EVENT_ID_FD_FK" FromRole="LBC_EVENT" ToRole="LBC_FLIGHT_INFO_DETAILS" />
+    <NavigationProperty Name="LBC_REGISTRATION" Relationship="Model.LBC_REGIST_ID" FromRole="LBC_EVENT" ToRole="LBC_REGISTRATION" />
+    <NavigationProperty Name="LBC_FLIGHT_INFO" Relationship="Model.EVENT_ID_FK" FromRole="LBC_EVENT" ToRole="LBC_FLIGHT_INFO" />
+    <NavigationProperty Name="LBC_EVENT_SESSION_LOOKUP" Relationship="Model.LBC_SESSEVT_ID" FromRole="LBC_EVENT" ToRole="LBC_EVENT_SESSION_LOOKUP" />
+  </EntityType>
+  <EntityType Name="LBC_FLIGHT_INFO_DETAILS">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="TRIP_NUM" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="EVENT_ID" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="ARR_DATE" />
+    <Property Type="String" Name="ARR_TIME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_AIRLINE" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_FLIGHT_NUM" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_CITY" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CONN_ARR_DATE" />
+    <Property Type="String" Name="CONN_ARR_TIME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONN_ARR_AIRLINE" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONN_ARR_FLIGHT_NUM" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONN_ARR_CITY" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <NavigationProperty Name="LBC_EVENT" Relationship="Model.EVENT_ID_FD_FK" FromRole="LBC_FLIGHT_INFO_DETAILS" ToRole="LBC_EVENT" />
+  </EntityType>
+  <EntityType Name="LBC_IMMERSION_COURSE">
+    <Key>
+      <PropertyRef Name="SEQ_NO" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_NO" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="DIVISION" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEALER_NUM" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEALER_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FIRST_NAME" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LAST_NAME" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TEST_DATE" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COURSE_CODE" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STARS_ID" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="LBC_RECOGNITION_ID_FK">
+    <End Type="Model.LBC_PROFILE_RECOGNITION_MASTER" Role="LBC_PROFILE_RECOGNITION_MASTER" Multiplicity="1" />
+    <End Type="Model.LBC_PROFILE_RECOGNITION" Role="LBC_PROFILE_RECOGNITION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_PROFILE_RECOGNITION_MASTER">
+        <PropertyRef Name="RECOGNITION_ID" />
+      </Principal>
+      <Dependent Role="LBC_PROFILE_RECOGNITION">
+        <PropertyRef Name="RECOGNITION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EVENT_ID_FD_FK">
+    <End Type="Model.LBC_EVENT" Role="LBC_EVENT" Multiplicity="0..1" />
+    <End Type="Model.LBC_FLIGHT_INFO_DETAILS" Role="LBC_FLIGHT_INFO_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_FLIGHT_INFO_DETAILS">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LBC_HOTEL_CAR_INFO">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="EVENT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="HOTEL_CONF" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HOTEL_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="HOTEL_CHECK_IN" />
+    <Property Type="DateTime" Name="HOTEL_CHECK_OUT" />
+    <Property Type="String" Name="CAR_CONFIRM" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ADMIN_NOTES" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="CAR_NOTES" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_REGISTRATION">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="WSLX_ID" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="EVENT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="REGD_STATUS" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TRANSPORTATION_MODE" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ATTENDED" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="NOTES" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LBC_EVENT" Relationship="Model.LBC_REGIST_ID" FromRole="LBC_REGISTRATION" ToRole="LBC_EVENT" />
+    <Property Type="String" Name="ADMIN_NOTES" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CANCEL_REASON" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TRANSPORTATION_NEED" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="LBC_REGIST_ID">
+    <End Type="Model.LBC_EVENT" Role="LBC_EVENT" Multiplicity="1" />
+    <End Type="Model.LBC_REGISTRATION" Role="LBC_REGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_REGISTRATION">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LBC_FLIGHT_INFO">
+    <Key>
+      <PropertyRef Name="REGD_SEQ_NUM" />
+    </Key>
+    <Property Type="Decimal" Name="REGD_SEQ_NUM" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="EVENT_ID" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="ARR_DATE" />
+    <Property Type="String" Name="ARR_TIME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_AIRLINE" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_FLIGHT_NUM" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_CITY" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DEP_DATE" />
+    <Property Type="String" Name="DEP_TIME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEP_AIRLINE" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEP_FLIGHT_NUM" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEP_CITY" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEP_DEST_CITY" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MULTI_FLAG" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="ARR_DEP_CITY" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ARR_TERMINAL" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONNECTING_FLIGHT_NOTES" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LBC_EVENT" Relationship="Model.EVENT_ID_FK" FromRole="LBC_FLIGHT_INFO" ToRole="LBC_EVENT" />
+  </EntityType>
+  <Association Name="EVENT_ID_FK">
+    <End Type="Model.LBC_EVENT" Role="LBC_EVENT" Multiplicity="0..1" />
+    <End Type="Model.LBC_FLIGHT_INFO" Role="LBC_FLIGHT_INFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_FLIGHT_INFO">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AIRLINES_INFO">
+    <Key>
+      <PropertyRef Name="SEQ_NO" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_NO" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="AIRLINE_CODE" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AIRLINE_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TERMINAL_CODE" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TERMINAL_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_EVENT_SESSION_LOOKUP">
+    <Key>
+      <PropertyRef Name="SESSION_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SESSION_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="EVENT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="SESSION_DESC" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="SESSION_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <NavigationProperty Name="LBC_EVENT" Relationship="Model.LBC_SESSEVT_ID" FromRole="LBC_EVENT_SESSION_LOOKUP" ToRole="LBC_EVENT" />
+  </EntityType>
+  <EntityType Name="LBC_GUEST_REGD_SESSION">
+    <Key>
+      <PropertyRef Name="WSLX_ID" />
+      <PropertyRef Name="SESSION_ID" />
+    </Key>
+    <Property Type="String" Name="WSLX_ID" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="SESSION_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <NavigationProperty Name="LBC_GUEST_REGISTRATION" Relationship="Model.LBC_WSLX_REGD_ID" FromRole="LBC_GUEST_REGD_SESSION" ToRole="LBC_GUEST_REGISTRATION" />
+  </EntityType>
+  <Association Name="LBC_SESSEVT_ID">
+    <End Type="Model.LBC_EVENT" Role="LBC_EVENT" Multiplicity="1" />
+    <End Type="Model.LBC_EVENT_SESSION_LOOKUP" Role="LBC_EVENT_SESSION_LOOKUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_EVENT_SESSION_LOOKUP">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LBC_GUEST_REGISTRATION">
+    <Key>
+      <PropertyRef Name="WSLX_ID" />
+    </Key>
+    <Property Type="String" Name="WSLX_ID" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FIRST_NAME" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LAST_NAME" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COMPANY_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TITLE" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EMAIL_ID" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PHONE" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DIETARY_RESTRICTION" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROFILE_NOTE" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HOTEL_REQUIRED" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="DEPARTMENT" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LBC_GUEST_REGD_SESSION" Relationship="Model.LBC_WSLX_REGD_ID" FromRole="LBC_GUEST_REGISTRATION" ToRole="LBC_GUEST_REGD_SESSION" />
+  </EntityType>
+  <Association Name="LBC_WSLX_REGD_ID">
+    <End Type="Model.LBC_GUEST_REGISTRATION" Role="LBC_GUEST_REGISTRATION" Multiplicity="1" />
+    <End Type="Model.LBC_GUEST_REGD_SESSION" Role="LBC_GUEST_REGD_SESSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_GUEST_REGISTRATION">
+        <PropertyRef Name="WSLX_ID" />
+      </Principal>
+      <Dependent Role="LBC_GUEST_REGD_SESSION">
+        <PropertyRef Name="WSLX_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LBC_INSTITUTION_ENROLL_REPORT">
+    <Key>
+      <PropertyRef Name="PA_CODE" />
+    </Key>
+    <Property Type="String" Name="PA_CODE" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEALERSHIP_NAME" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SALESCODE" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEALER_TYPE" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DUAL_DEALER" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRC_FIRST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRC_LAST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRC_JOB_TITLE" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRC_PHONE" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRC_EMAIL" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HOSPITALITY" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROCESS" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PRODSKILLS_TRAINING" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRAND_CHAMPION" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BC_SALES_FIRST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BC_SALES_LAST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BC_SALES_STARSID" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BC_SERVICE_FIRST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BC_SERVICE_LAST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BC_SERVICE_STARSID" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PAY_LUMPSUM" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PAY_QUARTERLY" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DEALER_AGREE" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="ENROLLMENT_DATE" />
+    <Property Type="Decimal" Name="REP_ID" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="STATUS_DATE" />
+    <Property Type="String" Name="DEALER_STATUS" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="UPDATED_ID" Precision="38" Scale="0" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="DLRENL_FIRST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRENL_LAST_NAME" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRENL_PHONE" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLRENL_EMAIL" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_MASTER">
+    <Key>
+      <PropertyRef Name="SURVEY_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SURVEY_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="SURVEY_DESC" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <NavigationProperty Name="LBC_SURVEY_QUESTIONS" Relationship="Model.SURVEY_ID_FK" FromRole="LBC_SURVEY_MASTER" ToRole="LBC_SURVEY_QUESTIONS" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_QUESTIONS">
+    <Key>
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="QUESTION_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SURVEY_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="QUESTION_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="QUESTION_DESC" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="QUESTION_TYPE" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="QUESTION_EXAMPLE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <NavigationProperty Name="LBC_SURVEY_MASTER" Relationship="Model.SURVEY_ID_FK" FromRole="LBC_SURVEY_QUESTIONS" ToRole="LBC_SURVEY_MASTER" />
+  </EntityType>
+  <Association Name="SURVEY_ID_FK">
+    <End Type="Model.LBC_SURVEY_MASTER" Role="LBC_SURVEY_MASTER" Multiplicity="1" />
+    <End Type="Model.LBC_SURVEY_QUESTIONS" Role="LBC_SURVEY_QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_SURVEY_MASTER">
+        <PropertyRef Name="SURVEY_ID" />
+      </Principal>
+      <Dependent Role="LBC_SURVEY_QUESTIONS">
+        <PropertyRef Name="SURVEY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LBC_SURVEY_QUESTION_ANSWER">
+    <Key>
+      <PropertyRef Name="QUESTION_ID" />
+      <PropertyRef Name="ANSWER_ID" />
+      <PropertyRef Name="ANSWER" />
+    </Key>
+    <Property Type="Decimal" Name="QUESTION_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="ANSWER_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="ANSWER" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+    <Property Type="String" Name="INPUT_TYPE" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_SURVERY_COMPLETED">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="SURVEY_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="COMPLETED_DATE" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_TAKEN">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="QUESTION_ID" />
+      <PropertyRef Name="ANSWER_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="SURVEY_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="QUESTION_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="ANSWER_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="ANSWER_MSG" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATE_DATE" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_REPORT_VW">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="EVENT_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="QUESTION_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FIRST_NAME" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LAST_NAME" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DLR_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EVENT_SESSION" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="EVENT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="EVENT_MONTH" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="EVENT_YEAR" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="SURVEY_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="completed_date" />
+    <Property Type="Decimal" Name="QUESTION_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="QUESTION_DESC" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Answer" MaxLength="4000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_COMPLETED_VIEW">
+    <Key>
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="EVENT_ID" />
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SURVEY_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="EVENT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="DATE_COMPLETED" />
+    <Property Type="String" Name="Lincoln_Brand_Champion_Name" MaxLength="71" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DealerShip_Name" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Registration_Information" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q1" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q2" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q3" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q4" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q5" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q6" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q7" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q8" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q9" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q10" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q11" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q12" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q13" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q14" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q15" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Q16" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT">
+    <Key>
+      <PropertyRef Name="CHECKPOINT_ID" />
+    </Key>
+    <Property Type="Decimal" Name="CHECKPOINT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="CHK_DESC" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CHK_START_DATE" />
+    <Property Type="DateTime" Name="CHK_END_DATE" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="CHK_TITLE" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IMAGE_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT_COMPLETED">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="PA_CODE" />
+      <PropertyRef Name="CHECKPOINT_ID" />
+    </Key>
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TOOL_ORDERED" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="Decimal" Name="CHECKPOINT_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="EMAIL_ID" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SHIPPING_STATUS" MaxLength="12" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT_TRACKING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DOC_URL" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FILE_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DOWNLOAD_TIME" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="CHECKPOINT_ID" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="LBC_RESOURCE_TRACKING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="STARS_ID" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="WSL_ID" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DOC_URL" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FILE_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DOWNLOAD_TIME" />
+    <Property Type="String" Name="SECTION" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_STORY">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="STARS_ID" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PA_CODE" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STORY_TITLE" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STORY_CONTENT" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IMG_1" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IMG_2" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IMG_3" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STORY_STATUS" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="STORY_RATING" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="STORY_CATEGORY" Precision="38" Scale="0" />
+    <Property Type="Decimal" Name="STORY_SUBCATEGORY" Precision="38" Scale="0" />
+    <Property Type="DateTime" Name="SUBMISION_DATE" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_CATEGORY">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="CATEG_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CATEG_DESCRIPTION" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_RATING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="RATING_NAME" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RATING_DESCRIPTION" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_REJECT_REASON">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="REASON_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="REASON_DESCRIPTION" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_SUBCATEGORY">
+    <Key>
+      <PropertyRef Name="SEQ_NO" />
+    </Key>
+    <Property Type="Decimal" Name="SEQ_NO" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="SUB_CAT_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SUB_CAT_DESCRIPTION" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_TRANSPORTATION_NEED">
+    <Key>
+      <PropertyRef Name="TRANS_ID" />
+    </Key>
+    <Property Type="Decimal" Name="TRANS_ID" Nullable="false" Precision="38" Scale="0" />
+    <Property Type="String" Name="TRANS_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TRANS_DESCRIPTION" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CREATED_DATE" Nullable="false" />
+    <Property Type="String" Name="CREATED_BY" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="UPDATED_DATE" />
+    <Property Type="String" Name="UPDATED_BY" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT_VW">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="FIRST_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_STATE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_ZIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="SELECT_CONTACT_DLR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TOOL_ORDERED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="EMAIL_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="SHIPPING_STATUS" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="STARS_ID" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="PA_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CHECKPOINT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CheckPoint1TeamMeetingPDF" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Checkpoint1SelfStudyPDF" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Checkpoint1SelfStudyPPTX" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CheckPoint1TeamMeetingPPTX" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="PA_CODE" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="WSLX_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="FIRST_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL_ID" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTO_PATH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="LBC_CERT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_REGION" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_STATE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_ZIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DLR_PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="BIOGRAPHY" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Name="SHIRT_SIZE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DIETARY_RESTRICTION" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Name="PROFILE_NOTE" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Name="PROFILE_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_STATUS_CODE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_BY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="UPDATED_BY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="TITLE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="DEPARTMENT" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ADMIN_NOTES" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ZONE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SALESCODE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="DEPT_INFO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SELECT_CONTACT_DLR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="BADGE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

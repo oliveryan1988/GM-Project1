@@ -1,0 +1,75 @@
+﻿@using LincolnBrandChampion.Model.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@using LincolnBrandChampion.Web.Helpers;
+@model IPagedList<LincolnBrandChampion.Model.Models.StoryModel>
+@{Layout = null;}
+
+
+    
+        @if (Model!= null)
+        {
+            <div class="row" >
+                    <div class="five columns centered">
+                         @Html.Partial("~/Views/BrandChampion/_ProfilePic.cshtml", "")
+                    </div>
+                </div>
+            <div id="story-user" class="row" >
+            <div class="ten columns centered">
+               
+            <p><strong>@ViewBag.FIRST_NAME @ViewBag.LAST_NAME<br />
+                @ViewBag.DLR_NAME <br />
+                @ViewBag.DLR_ADDRESS @ViewBag.DLR_CITY @ViewBag.DLR_STATE @ViewBag.DLR_ZIP </strong></p>
+            <p><strong><a href="mailto:@ViewBag.EMAIL_ID">@ViewBag.EMAIL_ID</a><br />
+                Dealership Phone: @ViewBag.phone1-@ViewBag.phone2-@ViewBag.phone3<br />
+                Mobile Phone: @ViewBag.mobile1-@ViewBag.mobile2-@ViewBag.mobile3</strong></p>
+            </div>
+                </div>
+            
+        }
+    @if (ViewBag.ViewMode==true)
+    {
+        <p class="text-center"><a href="/Story/Index" class="button my-stories-button" >ADD A NEW STORY &#8250;</a></p>
+    }
+    <h3 class="draft-story">DRAFT VERSION STORIES</h3>
+        <dl>
+        @if (Model.Count() > 0)
+        {
+            foreach (StoryModel item in Model)
+            {
+                if (item.STORY_STATUS == "DRAFT")
+                {
+                    DateTime updDate=DateTime.Now ;
+                    if (item.UPDATED_DATE.HasValue) { updDate = (DateTime)item.UPDATED_DATE; }
+                    
+                    <dt>@(item.UPDATED_BY==""?item.CREATED_DATE.ToString("MM/dd/yy"):updDate.ToString("MM/dd/yy"))</dt>
+                    <dd>@item.STORY_TITLE<a href="/Story/Index/@item.SEQ_ID" class="right">EDIT</a></dd>
+                }
+            }
+        }
+        else
+        {
+            <dt>No Match Found</dt>
+        }
+        </dl>
+
+    <h3 class="final-story">FINAL SUBMITTED STORIES</h3>
+    <dl>
+    @if (Model.Count() > 0)
+    {
+        foreach (StoryModel item in Model)
+        {
+            if (item.STORY_STATUS != "DRAFT")
+            {
+                DateTime sbmDate = DateTime.Now;
+                if (item.SUBMISION_DATE.HasValue) { sbmDate = (DateTime)item.SUBMISION_DATE; }               
+            <dt>@sbmDate.ToString("MM/dd/yy")</dt>
+            <dd>@item.STORY_TITLE<a href="/Story/ViewStory/@item.SEQ_ID" class="right">VIEW</a></dd>
+            }
+        }
+    }
+    else
+    {
+        <dt>No Match Found</dt>
+    }                    
+    </dl>

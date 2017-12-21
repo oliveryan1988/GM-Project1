@@ -1,0 +1,86 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<ProfileModel>
+@{
+    Layout = null;
+}
+
+<link href="~/Content/DT_bootstrap.css" rel="stylesheet" />
+<link href="~/stylesheets/app.css" rel="stylesheet" />
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+
+<div class="row">
+    <div class="twelve columns">
+        <br />
+
+        <div class="admin wdataTable" id="content">
+            <div class="table-holder">
+                <font size="1">
+                <table class="metrics-data" cellspacing="3" cellpadding="3" id="regTable">
+
+                    <tbody> 
+                        <tr border="0" bgcolor="#C5C3C1" color="#222222">
+                            <td width="5%" align="center">P&amp;A Code</td>
+                            <td width="7.5%" align="center">First Name</td>
+                            <td width="7.5%" align="center">Last Name</td>
+                            <td width="10%" align="center">Email Address</td>
+                            <td width="7.5%" align="center">Mobile Phone</td>
+                            <td width="7.5%" align="center">Dealer Type</td>
+                            <td width="10%" align="center">Dealership Name</td>
+                            <td width="15%" align="center">Dealership Address</td>
+                            <td width="7.5%" align="center">City</td>
+                            <td width="5%" align="center">ZIP</td>
+                            <td width="7.5%" align="center">Dealer Phone</td>
+                            <td width="17.5%" align="center">Admin Notes</td>
+                        </tr>
+                            @{
+                                var OddColor = "#FFFFFF";
+                                var evenColor = "#F3F0E8";
+                                var Odd = OddColor;
+                                }
+                        @if (Model.Count() > 0)
+                        {
+                            foreach (ProfileModel item in Model)
+                            {
+                        <tr border="0" bgcolor="@Odd">
+                            <td>@item.PA_CODE</td>
+                            <td>@item.FIRST_NAME</td>
+                            <td>@item.LAST_NAME</td>
+                            <td>@item.EMAIL_ID</td>
+                            <td>@item.PHONE</td>
+                            <td>@item.DEALER_TYPE</td>
+                            <td>@item.DLR_NAME</td>
+                            <td>@item.DLR_ADDRESS</td>
+                            <td>@item.DLR_CITY</td>
+                            <td>@item.DLR_ZIP</td>
+                            <td>@item.DLR_PHONE</td>
+                            <td>@item.ADMIN_NOTES</td>
+                        </tr>
+                                if (Odd == OddColor)
+                                {
+                                    Odd = evenColor;
+                                }
+                                else
+                                {
+                                    Odd = OddColor;
+                                } 
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="12">No Match Found
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+              </font>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

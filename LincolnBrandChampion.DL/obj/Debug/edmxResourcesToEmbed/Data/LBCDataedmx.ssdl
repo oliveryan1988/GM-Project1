@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AIRLINES_INFO">
+    <Key>
+      <PropertyRef Name="SEQ_NO" />
+    </Key>
+    <Property Name="SEQ_NO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="AIRLINE_CODE" Type="varchar2" MaxLength="50" />
+    <Property Name="AIRLINE_NAME" Type="varchar2" MaxLength="100" />
+    <Property Name="TERMINAL_CODE" Type="varchar2" MaxLength="50" />
+    <Property Name="TERMINAL_NAME" Type="varchar2" MaxLength="100" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT">
+    <Key>
+      <PropertyRef Name="CHECKPOINT_ID" />
+    </Key>
+    <Property Name="CHECKPOINT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CHK_DESC" Type="varchar2" MaxLength="2000" />
+    <Property Name="CHK_START_DATE" Type="date" />
+    <Property Name="CHK_END_DATE" Type="date" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="CHK_TITLE" Type="varchar2" MaxLength="200" />
+    <Property Name="IMAGE_NAME" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT_COMPLETED">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="PA_CODE" />
+      <PropertyRef Name="CHECKPOINT_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="TOOL_ORDERED" Type="varchar2" MaxLength="50" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="CHECKPOINT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EMAIL_ID" Type="varchar2" MaxLength="60" />
+    <Property Name="SHIPPING_STATUS" Type="varchar2" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="LBC_CHECKPOINT_TRACKING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" />
+    <Property Name="DOC_URL" Type="varchar2" MaxLength="250" />
+    <Property Name="FILE_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="DOWNLOAD_TIME" Type="date" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CHECKPOINT_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="LBC_DIETARY_RESTRICTIONS">
+    <Key>
+      <PropertyRef Name="DIETARY_CODE" />
+    </Key>
+    <Property Name="DIETARY_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="DIETARY_DESC" Type="varchar2" MaxLength="50" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_EVENT">
+    <Key>
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EVENT_YEAR" Type="number" Precision="38" Scale="0" />
+    <Property Name="EVENT_MONTH" Type="varchar2" MaxLength="10" />
+    <Property Name="EVENT_START_DATE" Type="date" />
+    <Property Name="EVENT_END_DATE" Type="date" />
+    <Property Name="EVENT_TIME" Type="varchar2" MaxLength="10" />
+    <Property Name="EVENT_SESSION" Type="varchar2" MaxLength="40" />
+    <Property Name="EVENT_LOCATION" Type="varchar2" MaxLength="20" />
+    <Property Name="OPEN_LIMIT" Type="number" Precision="38" Scale="0" />
+    <Property Name="CURRENT_COUNT" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_EVENT_SESSION_LOOKUP">
+    <Key>
+      <PropertyRef Name="SESSION_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="SESSION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SESSION_DESC" Type="varchar2" MaxLength="250" />
+    <Property Name="SESSION_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_FLIGHT_INFO">
+    <Key>
+      <PropertyRef Name="REGD_SEQ_NUM" />
+    </Key>
+    <Property Name="REGD_SEQ_NUM" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="ARR_DATE" Type="date" />
+    <Property Name="ARR_TIME" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_AIRLINE" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_FLIGHT_NUM" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_CITY" Type="varchar2" MaxLength="20" />
+    <Property Name="DEP_DATE" Type="date" />
+    <Property Name="DEP_TIME" Type="varchar2" MaxLength="20" />
+    <Property Name="DEP_AIRLINE" Type="varchar2" MaxLength="20" />
+    <Property Name="DEP_FLIGHT_NUM" Type="varchar2" MaxLength="20" />
+    <Property Name="DEP_CITY" Type="varchar2" MaxLength="20" />
+    <Property Name="DEP_DEST_CITY" Type="varchar2" MaxLength="20" />
+    <Property Name="MULTI_FLAG" Type="varchar2" MaxLength="1" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="ARR_DEP_CITY" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_TERMINAL" Type="varchar2" MaxLength="20" />
+    <Property Name="CONNECTING_FLIGHT_NOTES" Type="varchar2" MaxLength="2000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LBC_WEB.LBC_FLIGHT_INFO_DETAILS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LBC_FLIGHT_INFO_DETAILS">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="TRIP_NUM" Type="number" Precision="38" Scale="0" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="ARR_DATE" Type="date" />
+    <Property Name="ARR_TIME" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_AIRLINE" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_FLIGHT_NUM" Type="varchar2" MaxLength="20" />
+    <Property Name="ARR_CITY" Type="varchar2" MaxLength="20" />
+    <Property Name="CONN_ARR_DATE" Type="date" />
+    <Property Name="CONN_ARR_TIME" Type="varchar2" MaxLength="20" />
+    <Property Name="CONN_ARR_AIRLINE" Type="varchar2" MaxLength="20" />
+    <Property Name="CONN_ARR_FLIGHT_NUM" Type="varchar2" MaxLength="20" />
+    <Property Name="CONN_ARR_CITY" Type="varchar2" MaxLength="20" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_GUEST_REGD_SESSION">
+    <Key>
+      <PropertyRef Name="WSLX_ID" />
+      <PropertyRef Name="SESSION_ID" />
+    </Key>
+    <Property Name="WSLX_ID" Type="varchar2" MaxLength="8" Nullable="false" />
+    <Property Name="SESSION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_GUEST_REGISTRATION">
+    <Key>
+      <PropertyRef Name="WSLX_ID" />
+    </Key>
+    <Property Name="WSLX_ID" Type="varchar2" MaxLength="8" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="COMPANY_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="TITLE" Type="varchar2" MaxLength="40" />
+    <Property Name="EMAIL_ID" Type="varchar2" MaxLength="60" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="DIETARY_RESTRICTION" Type="varchar2" MaxLength="2048" />
+    <Property Name="PROFILE_NOTE" Type="varchar2" MaxLength="2048" />
+    <Property Name="HOTEL_REQUIRED" Type="varchar2" MaxLength="10" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="DEPARTMENT" Type="varchar2" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="LBC_HOTEL_CAR_INFO">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="HOTEL_CONF" Type="varchar2" MaxLength="20" />
+    <Property Name="HOTEL_NAME" Type="varchar2" MaxLength="40" />
+    <Property Name="HOTEL_CHECK_IN" Type="date" />
+    <Property Name="HOTEL_CHECK_OUT" Type="date" />
+    <Property Name="CAR_CONFIRM" Type="varchar2" MaxLength="20" />
+    <Property Name="ADMIN_NOTES" Type="varchar2" MaxLength="80" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="CAR_NOTES" Type="varchar2" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="LBC_IMMERSION_COURSE">
+    <Key>
+      <PropertyRef Name="SEQ_NO" />
+    </Key>
+    <Property Name="SEQ_NO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DIVISION" Type="varchar2" MaxLength="1" />
+    <Property Name="DEALER_NUM" Type="varchar2" MaxLength="5" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" />
+    <Property Name="DEALER_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="TEST_DATE" Type="varchar2" MaxLength="15" />
+    <Property Name="COURSE_CODE" Type="varchar2" MaxLength="10" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="30" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LBC_WEB.LBC_INSTITUTION_ENROLL_REPORT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LBC_INSTITUTION_ENROLL_REPORT">
+    <Key>
+      <PropertyRef Name="PA_CODE" />
+    </Key>
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="DEALERSHIP_NAME" Type="varchar2" MaxLength="80" />
+    <Property Name="SALESCODE" Type="varchar2" MaxLength="10" />
+    <Property Name="DEALER_TYPE" Type="varchar2" MaxLength="1" />
+    <Property Name="DUAL_DEALER" Type="varchar2" MaxLength="1" />
+    <Property Name="DLRC_FIRST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="DLRC_LAST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="DLRC_JOB_TITLE" Type="varchar2" MaxLength="20" />
+    <Property Name="DLRC_PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="DLRC_EMAIL" Type="varchar2" MaxLength="50" />
+    <Property Name="HOSPITALITY" Type="varchar2" MaxLength="1" />
+    <Property Name="PROCESS" Type="varchar2" MaxLength="1" />
+    <Property Name="PRODSKILLS_TRAINING" Type="varchar2" MaxLength="1" />
+    <Property Name="BRAND_CHAMPION" Type="varchar2" MaxLength="1" />
+    <Property Name="BC_SALES_FIRST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="BC_SALES_LAST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="BC_SALES_STARSID" Type="varchar2" MaxLength="9" />
+    <Property Name="BC_SERVICE_FIRST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="BC_SERVICE_LAST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="BC_SERVICE_STARSID" Type="varchar2" MaxLength="9" />
+    <Property Name="PAY_LUMPSUM" Type="varchar2" MaxLength="1" />
+    <Property Name="PAY_QUARTERLY" Type="varchar2" MaxLength="1" />
+    <Property Name="DEALER_AGREE" Type="varchar2" MaxLength="1" />
+    <Property Name="ENROLLMENT_DATE" Type="date" />
+    <Property Name="REP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="STATUS_DATE" Type="date" />
+    <Property Name="DEALER_STATUS" Type="varchar2" MaxLength="20" />
+    <Property Name="UPDATED_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="DLRENL_FIRST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="DLRENL_LAST_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="DLRENL_PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="DLRENL_EMAIL" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LBC_LOGIN_TRACKING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOGIN_DATE" Type="date" Nullable="false" />
+    <Property Name="LOGIN_TIME" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERID" Type="nvarchar2" MaxLength="255" />
+    <Property Name="ACI" Type="nvarchar2" MaxLength="255" />
+    <Property Name="SITE" Type="nvarchar2" MaxLength="255" />
+    <Property Name="ORGCODE" Type="nvarchar2" MaxLength="255" />
+    <Property Name="EMPCODE" Type="nvarchar2" MaxLength="255" />
+    <Property Name="MRROLE" Type="nvarchar2" MaxLength="255" />
+    <Property Name="ORG" Type="nvarchar2" MaxLength="255" />
+    <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="WSLX_ID" Type="varchar2" MaxLength="8" />
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="EMAIL_ID" Type="varchar2" MaxLength="60" />
+    <Property Name="PHOTO_PATH" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="LBC_CERT" Type="varchar2" MaxLength="10" />
+    <Property Name="DLR_REGION" Type="varchar2" MaxLength="35" />
+    <Property Name="DLR_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_ADDRESS" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_CITY" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_STATE" Type="varchar2" MaxLength="25" />
+    <Property Name="DLR_ZIP" Type="varchar2" MaxLength="15" />
+    <Property Name="DLR_PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="BIOGRAPHY" Type="varchar2" MaxLength="2048" />
+    <Property Name="SHIRT_SIZE" Type="varchar2" MaxLength="20" />
+    <Property Name="DIETARY_RESTRICTION" Type="varchar2" MaxLength="2048" />
+    <Property Name="PROFILE_NOTE" Type="varchar2" MaxLength="2048" />
+    <Property Name="PROFILE_TYPE" Type="varchar2" MaxLength="10" />
+    <Property Name="EMP_STATUS_CODE" Type="varchar2" MaxLength="2" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="TITLE" Type="varchar2" MaxLength="40" />
+    <Property Name="DEPARTMENT" Type="varchar2" MaxLength="40" />
+    <Property Name="ADMIN_NOTES" Type="varchar2" MaxLength="2000" />
+    <Property Name="ZONE" Type="varchar2" MaxLength="1" />
+    <Property Name="SALESCODE" Type="varchar2" MaxLength="5" />
+    <Property Name="DEPT_INFO" Type="varchar2" MaxLength="10" />
+    <Property Name="SELECT_CONTACT_DLR" Type="varchar2" MaxLength="1" />
+    <Property Name="BADGE_NAME" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LBC_WEB.LBC_PROFILE_HISTORY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LBC_PROFILE_HISTORY">
+    <Key>
+      <PropertyRef Name="REV_NUM" />
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="REV_NUM" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="40" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="WSLX_ID" Type="varchar2" MaxLength="8" />
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="EMAIL_ID" Type="varchar2" MaxLength="60" />
+    <Property Name="PHOTO_PATH" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="LBC_CERT" Type="varchar2" MaxLength="10" />
+    <Property Name="DLR_REGION" Type="varchar2" MaxLength="35" />
+    <Property Name="DLR_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_ADDRESS" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_CITY" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_STATE" Type="varchar2" MaxLength="25" />
+    <Property Name="DLR_ZIP" Type="varchar2" MaxLength="15" />
+    <Property Name="DLR_PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="BIOGRAPHY" Type="varchar2" MaxLength="2048" />
+    <Property Name="SHIRT_SIZE" Type="varchar2" MaxLength="20" />
+    <Property Name="DIETARY_RESTRICTION" Type="varchar2" MaxLength="2048" />
+    <Property Name="PROFILE_NOTE" Type="varchar2" MaxLength="2048" />
+    <Property Name="PROFILE_TYPE" Type="varchar2" MaxLength="10" />
+    <Property Name="EMP_STATUS_CODE" Type="varchar2" MaxLength="2" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="TITLE" Type="varchar2" MaxLength="40" />
+    <Property Name="DEPARTMENT" Type="varchar2" MaxLength="40" />
+    <Property Name="ADMIN_NOTES" Type="varchar2" MaxLength="2000" />
+    <Property Name="ZONE" Type="varchar2" MaxLength="1" />
+    <Property Name="SALESCODE" Type="varchar2" MaxLength="5" />
+    <Property Name="DEPT_INFO" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE_RECOGNITION">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="RECOGNITION_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="RECOGNITION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="10" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_PROFILE_RECOGNITION_MASTER">
+    <Key>
+      <PropertyRef Name="RECOGNITION_ID" />
+    </Key>
+    <Property Name="RECOGNITION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RECOGNITION_DESC" Type="varchar2" MaxLength="500" />
+    <Property Name="RECOGNITION_TITLE" Type="varchar2" MaxLength="300" />
+    <Property Name="CATEGORY" Type="varchar2" MaxLength="80" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_REGISTRATION">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="WSLX_ID" Type="varchar2" MaxLength="8" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="REGD_STATUS" Type="varchar2" MaxLength="10" />
+    <Property Name="TRANSPORTATION_MODE" Type="varchar2" MaxLength="10" />
+    <Property Name="ATTENDED" Type="varchar2" MaxLength="10" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="NOTES" Type="varchar2" MaxLength="500" />
+    <Property Name="ADMIN_NOTES" Type="varchar2" MaxLength="500" />
+    <Property Name="CANCEL_REASON" Type="varchar2" MaxLength="500" />
+    <Property Name="TRANSPORTATION_NEED" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LBC_RESOURCE_TRACKING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="20" />
+    <Property Name="WSL_ID" Type="varchar2" MaxLength="10" />
+    <Property Name="DOC_URL" Type="varchar2" MaxLength="250" />
+    <Property Name="FILE_NAME" Type="varchar2" MaxLength="100" />
+    <Property Name="DOWNLOAD_TIME" Type="date" />
+    <Property Name="SECTION" Type="varchar2" MaxLength="50" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="LBC_SHIRT_SIZE">
+    <Key>
+      <PropertyRef Name="SHIRT_SIZE" />
+    </Key>
+    <Property Name="SHIRT_SIZE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="SIZE_DESC" Type="varchar2" MaxLength="50" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_STORY">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" Nullable="false" />
+    <Property Name="STORY_TITLE" Type="varchar2" MaxLength="250" />
+    <Property Name="STORY_CONTENT" Type="varchar2" MaxLength="2000" />
+    <Property Name="IMG_1" Type="varchar2" MaxLength="250" />
+    <Property Name="IMG_2" Type="varchar2" MaxLength="250" />
+    <Property Name="IMG_3" Type="varchar2" MaxLength="250" />
+    <Property Name="STORY_STATUS" Type="varchar2" MaxLength="50" />
+    <Property Name="STORY_RATING" Type="number" Precision="38" Scale="0" />
+    <Property Name="STORY_CATEGORY" Type="number" Precision="38" Scale="0" />
+    <Property Name="STORY_SUBCATEGORY" Type="number" Precision="38" Scale="0" />
+    <Property Name="SUBMISION_DATE" Type="date" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_CATEGORY">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CATEG_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="CATEG_DESCRIPTION" Type="varchar2" MaxLength="250" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_RATING">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RATING_NAME" Type="varchar2" MaxLength="25" Nullable="false" />
+    <Property Name="RATING_DESCRIPTION" Type="varchar2" MaxLength="250" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_REJECT_REASON">
+    <Key>
+      <PropertyRef Name="SEQ_ID" />
+    </Key>
+    <Property Name="SEQ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="REASON_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="REASON_DESCRIPTION" Type="varchar2" MaxLength="200" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LBC_STORY_SUBCATEGORY">
+    <Key>
+      <PropertyRef Name="SEQ_NO" />
+    </Key>
+    <Property Name="SEQ_NO" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SUB_CAT_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="SUB_CAT_DESCRIPTION" Type="varchar2" MaxLength="200" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LBC_SURVERY_COMPLETED">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" />
+    <Property Name="SURVEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPLETED_DATE" Type="date" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_MASTER">
+    <Key>
+      <PropertyRef Name="SURVEY_ID" />
+    </Key>
+    <Property Name="SURVEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SURVEY_DESC" Type="varchar2" MaxLength="1000" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_QUESTION_ANSWER">
+    <Key>
+      <PropertyRef Name="QUESTION_ID" />
+      <PropertyRef Name="ANSWER_ID" />
+      <PropertyRef Name="ANSWER" />
+    </Key>
+    <Property Name="QUESTION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ANSWER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ANSWER" Type="varchar2" MaxLength="2000" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+    <Property Name="INPUT_TYPE" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_QUESTIONS">
+    <Key>
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="QUESTION_ID" />
+    </Key>
+    <Property Name="SURVEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUESTION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUESTION_DESC" Type="varchar2" MaxLength="2000" />
+    <Property Name="QUESTION_TYPE" Type="varchar2" MaxLength="40" />
+    <Property Name="QUESTION_EXAMPLE" Type="varchar2" MaxLength="200" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_TAKEN">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="QUESTION_ID" />
+      <PropertyRef Name="ANSWER_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="SURVEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUESTION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ANSWER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ANSWER_MSG" Type="varchar2" MaxLength="2000" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_TRANSPORTATION_NEED">
+    <Key>
+      <PropertyRef Name="TRANS_ID" />
+    </Key>
+    <Property Name="TRANS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TRANS_NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="TRANS_DESCRIPTION" Type="varchar2" MaxLength="200" />
+    <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="UPDATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LBC_USER_ROLE">
+    <Key>
+      <PropertyRef Name="USR_ROLE_ID" />
+    </Key>
+    <Property Name="USR_ROLE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USR_ROLE" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="USR_ROLE_DESC" Type="varchar2" MaxLength="100" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LBC_USERS">
+    <Key>
+      <PropertyRef Name="USR_WSLX_ID" />
+    </Key>
+    <Property Name="USR_WSLX_ID" Type="varchar2" MaxLength="8" Nullable="false" />
+    <Property Name="USR_FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="USR_LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="USR_ROLE_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="USR_STATUS" Type="varchar2" MaxLength="10" />
+    <Property Name="CREATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="UPDATED_BY" Type="varchar2" MaxLength="25" />
+    <Property Name="UPDATE_DATE" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LBC_WEB.LBC_CHECKPOINT_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LBC_CHECKPOINT_VW">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+    </Key>
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="DLR_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_ADDRESS" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_CITY" Type="varchar2" MaxLength="50" />
+    <Property Name="DLR_STATE" Type="varchar2" MaxLength="25" />
+    <Property Name="DLR_ZIP" Type="varchar2" MaxLength="15" />
+    <Property Name="DLR_PHONE" Type="varchar2" MaxLength="15" />
+    <Property Name="SELECT_CONTACT_DLR" Type="varchar2" MaxLength="1" />
+    <Property Name="Status" Type="varchar2" MaxLength="10" />
+    <Property Name="TOOL_ORDERED" Type="varchar2" MaxLength="50" />
+    <Property Name="CREATED_DATE" Type="date" />
+    <Property Name="EMAIL_ID" Type="varchar2" MaxLength="60" />
+    <Property Name="SHIPPING_STATUS" Type="varchar2" MaxLength="12" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="PA_CODE" Type="varchar2" MaxLength="5" />
+    <Property Name="CHECKPOINT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="CheckPoint1TeamMeetingPDF" Type="number" Precision="38" Scale="0" />
+    <Property Name="Checkpoint1SelfStudyPDF" Type="number" Precision="38" Scale="0" />
+    <Property Name="Checkpoint1SelfStudyPPTX" Type="number" Precision="38" Scale="0" />
+    <Property Name="CheckPoint1TeamMeetingPPTX" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="LBC_SURVEY_COMPLETED_VIEW">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="EVENT_ID" />
+    </Key>
+    <Property Name="SURVEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DATE COMPLETED" Type="date" />
+    <Property Name="Lincoln Brand Champion Name" Type="varchar2" MaxLength="71" />
+    <Property Name="DealerShip Name" Type="varchar2" MaxLength="50" />
+    <Property Name="Registration Information" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q1" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q2" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q3" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q4" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q5" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q6" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q7" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q8" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q9" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q10" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q11" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q12" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q13" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q14" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q15" Type="varchar2" MaxLength="4000" />
+    <Property Name="Q16" Type="varchar2" MaxLength="4000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LBC_WEB.LBC_SURVEY_REPORT_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LBC_SURVEY_REPORT_VW">
+    <Key>
+      <PropertyRef Name="STARS_ID" />
+      <PropertyRef Name="EVENT_ID" />
+      <PropertyRef Name="SURVEY_ID" />
+      <PropertyRef Name="QUESTION_ID" />
+    </Key>
+    <Property Name="STARS_ID" Type="varchar2" MaxLength="9" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="LAST_NAME" Type="varchar2" MaxLength="35" />
+    <Property Name="DLR_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="EVENT_SESSION" Type="varchar2" MaxLength="40" />
+    <Property Name="EVENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="EVENT_MONTH" Type="varchar2" MaxLength="10" />
+    <Property Name="EVENT_YEAR" Type="number" Precision="38" Scale="0" />
+    <Property Name="SURVEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="completed date" Type="date" />
+    <Property Name="QUESTION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUESTION_DESC" Type="varchar2" MaxLength="2000" />
+    <Property Name="Answer" Type="varchar2" MaxLength="4000" />
+  </EntityType>
+  <Association Name="EVENT_ID_FD_FK">
+    <End Role="LBC_EVENT" Type="Self.LBC_EVENT" Multiplicity="0..1" />
+    <End Role="LBC_FLIGHT_INFO_DETAILS" Type="Self.LBC_FLIGHT_INFO_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_FLIGHT_INFO_DETAILS">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EVENT_ID_FK">
+    <End Role="LBC_EVENT" Type="Self.LBC_EVENT" Multiplicity="0..1" />
+    <End Role="LBC_FLIGHT_INFO" Type="Self.LBC_FLIGHT_INFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_FLIGHT_INFO">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LBC_RECOGNITION_ID_FK">
+    <End Role="LBC_PROFILE_RECOGNITION_MASTER" Type="Self.LBC_PROFILE_RECOGNITION_MASTER" Multiplicity="1" />
+    <End Role="LBC_PROFILE_RECOGNITION" Type="Self.LBC_PROFILE_RECOGNITION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_PROFILE_RECOGNITION_MASTER">
+        <PropertyRef Name="RECOGNITION_ID" />
+      </Principal>
+      <Dependent Role="LBC_PROFILE_RECOGNITION">
+        <PropertyRef Name="RECOGNITION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LBC_REGIST_ID">
+    <End Role="LBC_EVENT" Type="Self.LBC_EVENT" Multiplicity="1" />
+    <End Role="LBC_REGISTRATION" Type="Self.LBC_REGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_REGISTRATION">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LBC_SESSEVT_ID">
+    <End Role="LBC_EVENT" Type="Self.LBC_EVENT" Multiplicity="1" />
+    <End Role="LBC_EVENT_SESSION_LOOKUP" Type="Self.LBC_EVENT_SESSION_LOOKUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_EVENT">
+        <PropertyRef Name="EVENT_ID" />
+      </Principal>
+      <Dependent Role="LBC_EVENT_SESSION_LOOKUP">
+        <PropertyRef Name="EVENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LBC_USERS_USR_ROLE_ID_FK">
+    <End Role="LBC_USER_ROLE" Type="Self.LBC_USER_ROLE" Multiplicity="0..1" />
+    <End Role="LBC_USERS" Type="Self.LBC_USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_USER_ROLE">
+        <PropertyRef Name="USR_ROLE_ID" />
+      </Principal>
+      <Dependent Role="LBC_USERS">
+        <PropertyRef Name="USR_ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SURVEY_ID_FK">
+    <End Role="LBC_SURVEY_MASTER" Type="Self.LBC_SURVEY_MASTER" Multiplicity="1" />
+    <End Role="LBC_SURVEY_QUESTIONS" Type="Self.LBC_SURVEY_QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LBC_SURVEY_MASTER">
+        <PropertyRef Name="SURVEY_ID" />
+      </Principal>
+      <Dependent Role="LBC_SURVEY_QUESTIONS">
+        <PropertyRef Name="SURVEY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AIRLINES_INFO" EntityType="Self.AIRLINES_INFO" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_CHECKPOINT" EntityType="Self.LBC_CHECKPOINT" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_CHECKPOINT_COMPLETED" EntityType="Self.LBC_CHECKPOINT_COMPLETED" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_CHECKPOINT_TRACKING" EntityType="Self.LBC_CHECKPOINT_TRACKING" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_DIETARY_RESTRICTIONS" EntityType="Self.LBC_DIETARY_RESTRICTIONS" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_EVENT" EntityType="Self.LBC_EVENT" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_EVENT_SESSION_LOOKUP" EntityType="Self.LBC_EVENT_SESSION_LOOKUP" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_FLIGHT_INFO" EntityType="Self.LBC_FLIGHT_INFO" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_GUEST_REGD_SESSION" EntityType="Self.LBC_GUEST_REGD_SESSION" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_GUEST_REGISTRATION" EntityType="Self.LBC_GUEST_REGISTRATION" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_HOTEL_CAR_INFO" EntityType="Self.LBC_HOTEL_CAR_INFO" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_IMMERSION_COURSE" EntityType="Self.LBC_IMMERSION_COURSE" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_LOGIN_TRACKING" EntityType="Self.LBC_LOGIN_TRACKING" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_PROFILE" EntityType="Self.LBC_PROFILE" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_PROFILE_RECOGNITION" EntityType="Self.LBC_PROFILE_RECOGNITION" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_PROFILE_RECOGNITION_MASTER" EntityType="Self.LBC_PROFILE_RECOGNITION_MASTER" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_REGISTRATION" EntityType="Self.LBC_REGISTRATION" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_RESOURCE_TRACKING" EntityType="Self.LBC_RESOURCE_TRACKING" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SHIRT_SIZE" EntityType="Self.LBC_SHIRT_SIZE" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_STORY" EntityType="Self.LBC_STORY" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_STORY_CATEGORY" EntityType="Self.LBC_STORY_CATEGORY" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_STORY_RATING" EntityType="Self.LBC_STORY_RATING" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_STORY_REJECT_REASON" EntityType="Self.LBC_STORY_REJECT_REASON" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_STORY_SUBCATEGORY" EntityType="Self.LBC_STORY_SUBCATEGORY" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SURVERY_COMPLETED" EntityType="Self.LBC_SURVERY_COMPLETED" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SURVEY_MASTER" EntityType="Self.LBC_SURVEY_MASTER" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SURVEY_QUESTION_ANSWER" EntityType="Self.LBC_SURVEY_QUESTION_ANSWER" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SURVEY_QUESTIONS" EntityType="Self.LBC_SURVEY_QUESTIONS" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SURVEY_TAKEN" EntityType="Self.LBC_SURVEY_TAKEN" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_TRANSPORTATION_NEED" EntityType="Self.LBC_TRANSPORTATION_NEED" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_USER_ROLE" EntityType="Self.LBC_USER_ROLE" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_USERS" EntityType="Self.LBC_USERS" Schema="LBC_WEB" store:Type="Tables" />
+    <EntitySet Name="LBC_SURVEY_COMPLETED_VIEW" EntityType="Self.LBC_SURVEY_COMPLETED_VIEW" Schema="LBC_WEB" store:Type="Views" />
+    <EntitySet Name="LBC_FLIGHT_INFO_DETAILS" EntityType="Self.LBC_FLIGHT_INFO_DETAILS" store:Type="Tables" store:Schema="LBC_WEB">
+      <DefiningQuery>SELECT 
+"LBC_FLIGHT_INFO_DETAILS"."STARS_ID" AS "STARS_ID", 
+"LBC_FLIGHT_INFO_DETAILS"."TRIP_NUM" AS "TRIP_NUM", 
+"LBC_FLIGHT_INFO_DETAILS"."EVENT_ID" AS "EVENT_ID", 
+"LBC_FLIGHT_INFO_DETAILS"."ARR_DATE" AS "ARR_DATE", 
+"LBC_FLIGHT_INFO_DETAILS"."ARR_TIME" AS "ARR_TIME", 
+"LBC_FLIGHT_INFO_DETAILS"."ARR_AIRLINE" AS "ARR_AIRLINE", 
+"LBC_FLIGHT_INFO_DETAILS"."ARR_FLIGHT_NUM" AS "ARR_FLIGHT_NUM", 
+"LBC_FLIGHT_INFO_DETAILS"."ARR_CITY" AS "ARR_CITY", 
+"LBC_FLIGHT_INFO_DETAILS"."CONN_ARR_DATE" AS "CONN_ARR_DATE", 
+"LBC_FLIGHT_INFO_DETAILS"."CONN_ARR_TIME" AS "CONN_ARR_TIME", 
+"LBC_FLIGHT_INFO_DETAILS"."CONN_ARR_AIRLINE" AS "CONN_ARR_AIRLINE", 
+"LBC_FLIGHT_INFO_DETAILS"."CONN_ARR_FLIGHT_NUM" AS "CONN_ARR_FLIGHT_NUM", 
+"LBC_FLIGHT_INFO_DETAILS"."CONN_ARR_CITY" AS "CONN_ARR_CITY", 
+"LBC_FLIGHT_INFO_DETAILS"."CREATED_BY" AS "CREATED_BY", 
+"LBC_FLIGHT_INFO_DETAILS"."CREATED_DATE" AS "CREATED_DATE", 
+"LBC_FLIGHT_INFO_DETAILS"."UPDATED_BY" AS "UPDATED_BY", 
+"LBC_FLIGHT_INFO_DETAILS"."UPDATE_DATE" AS "UPDATE_DATE"
+FROM "LBC_WEB"."LBC_FLIGHT_INFO_DETAILS" "LBC_FLIGHT_INFO_DETAILS"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LBC_INSTITUTION_ENROLL_REPORT" EntityType="Self.LBC_INSTITUTION_ENROLL_REPORT" store:Type="Tables" store:Schema="LBC_WEB">
+      <DefiningQuery>SELECT 
+"LBC_INSTITUTION_ENROLL_REPORT"."PA_CODE" AS "PA_CODE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DEALERSHIP_NAME" AS "DEALERSHIP_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."SALESCODE" AS "SALESCODE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DEALER_TYPE" AS "DEALER_TYPE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DUAL_DEALER" AS "DUAL_DEALER", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRC_FIRST_NAME" AS "DLRC_FIRST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRC_LAST_NAME" AS "DLRC_LAST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRC_JOB_TITLE" AS "DLRC_JOB_TITLE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRC_PHONE" AS "DLRC_PHONE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRC_EMAIL" AS "DLRC_EMAIL", 
+"LBC_INSTITUTION_ENROLL_REPORT"."HOSPITALITY" AS "HOSPITALITY", 
+"LBC_INSTITUTION_ENROLL_REPORT"."PROCESS" AS "PROCESS", 
+"LBC_INSTITUTION_ENROLL_REPORT"."PRODSKILLS_TRAINING" AS "PRODSKILLS_TRAINING", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BRAND_CHAMPION" AS "BRAND_CHAMPION", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BC_SALES_FIRST_NAME" AS "BC_SALES_FIRST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BC_SALES_LAST_NAME" AS "BC_SALES_LAST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BC_SALES_STARSID" AS "BC_SALES_STARSID", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BC_SERVICE_FIRST_NAME" AS "BC_SERVICE_FIRST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BC_SERVICE_LAST_NAME" AS "BC_SERVICE_LAST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."BC_SERVICE_STARSID" AS "BC_SERVICE_STARSID", 
+"LBC_INSTITUTION_ENROLL_REPORT"."PAY_LUMPSUM" AS "PAY_LUMPSUM", 
+"LBC_INSTITUTION_ENROLL_REPORT"."PAY_QUARTERLY" AS "PAY_QUARTERLY", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DEALER_AGREE" AS "DEALER_AGREE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."ENROLLMENT_DATE" AS "ENROLLMENT_DATE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."REP_ID" AS "REP_ID", 
+"LBC_INSTITUTION_ENROLL_REPORT"."STATUS_DATE" AS "STATUS_DATE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DEALER_STATUS" AS "DEALER_STATUS", 
+"LBC_INSTITUTION_ENROLL_REPORT"."UPDATED_ID" AS "UPDATED_ID", 
+"LBC_INSTITUTION_ENROLL_REPORT"."CREATED_BY" AS "CREATED_BY", 
+"LBC_INSTITUTION_ENROLL_REPORT"."CREATED_DATE" AS "CREATED_DATE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."UPDATED_BY" AS "UPDATED_BY", 
+"LBC_INSTITUTION_ENROLL_REPORT"."UPDATE_DATE" AS "UPDATE_DATE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRENL_FIRST_NAME" AS "DLRENL_FIRST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRENL_LAST_NAME" AS "DLRENL_LAST_NAME", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRENL_PHONE" AS "DLRENL_PHONE", 
+"LBC_INSTITUTION_ENROLL_REPORT"."DLRENL_EMAIL" AS "DLRENL_EMAIL"
+FROM "LBC_WEB"."LBC_INSTITUTION_ENROLL_REPORT" "LBC_INSTITUTION_ENROLL_REPORT"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LBC_PROFILE_HISTORY" EntityType="Self.LBC_PROFILE_HISTORY" store:Type="Tables" store:Schema="LBC_WEB">
+      <DefiningQuery>SELECT 
+"LBC_PROFILE_HISTORY"."REV_NUM" AS "REV_NUM", 
+"LBC_PROFILE_HISTORY"."STARS_ID" AS "STARS_ID", 
+"LBC_PROFILE_HISTORY"."PA_CODE" AS "PA_CODE", 
+"LBC_PROFILE_HISTORY"."WSLX_ID" AS "WSLX_ID", 
+"LBC_PROFILE_HISTORY"."FIRST_NAME" AS "FIRST_NAME", 
+"LBC_PROFILE_HISTORY"."LAST_NAME" AS "LAST_NAME", 
+"LBC_PROFILE_HISTORY"."EMAIL_ID" AS "EMAIL_ID", 
+"LBC_PROFILE_HISTORY"."PHOTO_PATH" AS "PHOTO_PATH", 
+"LBC_PROFILE_HISTORY"."PHONE" AS "PHONE", 
+"LBC_PROFILE_HISTORY"."LBC_CERT" AS "LBC_CERT", 
+"LBC_PROFILE_HISTORY"."DLR_REGION" AS "DLR_REGION", 
+"LBC_PROFILE_HISTORY"."DLR_NAME" AS "DLR_NAME", 
+"LBC_PROFILE_HISTORY"."DLR_ADDRESS" AS "DLR_ADDRESS", 
+"LBC_PROFILE_HISTORY"."DLR_CITY" AS "DLR_CITY", 
+"LBC_PROFILE_HISTORY"."DLR_STATE" AS "DLR_STATE", 
+"LBC_PROFILE_HISTORY"."DLR_ZIP" AS "DLR_ZIP", 
+"LBC_PROFILE_HISTORY"."DLR_PHONE" AS "DLR_PHONE", 
+"LBC_PROFILE_HISTORY"."BIOGRAPHY" AS "BIOGRAPHY", 
+"LBC_PROFILE_HISTORY"."SHIRT_SIZE" AS "SHIRT_SIZE", 
+"LBC_PROFILE_HISTORY"."DIETARY_RESTRICTION" AS "DIETARY_RESTRICTION", 
+"LBC_PROFILE_HISTORY"."PROFILE_NOTE" AS "PROFILE_NOTE", 
+"LBC_PROFILE_HISTORY"."PROFILE_TYPE" AS "PROFILE_TYPE", 
+"LBC_PROFILE_HISTORY"."EMP_STATUS_CODE" AS "EMP_STATUS_CODE", 
+"LBC_PROFILE_HISTORY"."CREATED_BY" AS "CREATED_BY", 
+"LBC_PROFILE_HISTORY"."CREATED_DATE" AS "CREATED_DATE", 
+"LBC_PROFILE_HISTORY"."UPDATED_BY" AS "UPDATED_BY", 
+"LBC_PROFILE_HISTORY"."UPDATE_DATE" AS "UPDATE_DATE", 
+"LBC_PROFILE_HISTORY"."TITLE" AS "TITLE", 
+"LBC_PROFILE_HISTORY"."DEPARTMENT" AS "DEPARTMENT", 
+"LBC_PROFILE_HISTORY"."ADMIN_NOTES" AS "ADMIN_NOTES", 
+"LBC_PROFILE_HISTORY"."ZONE" AS "ZONE", 
+"LBC_PROFILE_HISTORY"."SALESCODE" AS "SALESCODE", 
+"LBC_PROFILE_HISTORY"."DEPT_INFO" AS "DEPT_INFO"
+FROM "LBC_WEB"."LBC_PROFILE_HISTORY" "LBC_PROFILE_HISTORY"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LBC_CHECKPOINT_VW" EntityType="Self.LBC_CHECKPOINT_VW" store:Type="Views" store:Schema="LBC_WEB">
+      <DefiningQuery>SELECT 
+"LBC_CHECKPOINT_VW"."FIRST_NAME" AS "FIRST_NAME", 
+"LBC_CHECKPOINT_VW"."LAST_NAME" AS "LAST_NAME", 
+"LBC_CHECKPOINT_VW"."DLR_NAME" AS "DLR_NAME", 
+"LBC_CHECKPOINT_VW"."DLR_ADDRESS" AS "DLR_ADDRESS", 
+"LBC_CHECKPOINT_VW"."DLR_CITY" AS "DLR_CITY", 
+"LBC_CHECKPOINT_VW"."DLR_STATE" AS "DLR_STATE", 
+"LBC_CHECKPOINT_VW"."DLR_ZIP" AS "DLR_ZIP", 
+"LBC_CHECKPOINT_VW"."DLR_PHONE" AS "DLR_PHONE", 
+"LBC_CHECKPOINT_VW"."SELECT_CONTACT_DLR" AS "SELECT_CONTACT_DLR", 
+"LBC_CHECKPOINT_VW"."Status" AS "Status", 
+"LBC_CHECKPOINT_VW"."TOOL_ORDERED" AS "TOOL_ORDERED", 
+"LBC_CHECKPOINT_VW"."CREATED_DATE" AS "CREATED_DATE", 
+"LBC_CHECKPOINT_VW"."EMAIL_ID" AS "EMAIL_ID", 
+"LBC_CHECKPOINT_VW"."SHIPPING_STATUS" AS "SHIPPING_STATUS", 
+"LBC_CHECKPOINT_VW"."STARS_ID" AS "STARS_ID", 
+"LBC_CHECKPOINT_VW"."PA_CODE" AS "PA_CODE", 
+"LBC_CHECKPOINT_VW"."CHECKPOINT_ID" AS "CHECKPOINT_ID", 
+"LBC_CHECKPOINT_VW"."CheckPoint1TeamMeetingPDF" AS "CheckPoint1TeamMeetingPDF", 
+"LBC_CHECKPOINT_VW"."Checkpoint1SelfStudyPDF" AS "Checkpoint1SelfStudyPDF", 
+"LBC_CHECKPOINT_VW"."Checkpoint1SelfStudyPPTX" AS "Checkpoint1SelfStudyPPTX", 
+"LBC_CHECKPOINT_VW"."CheckPoint1TeamMeetingPPTX" AS "CheckPoint1TeamMeetingPPTX"
+FROM "LBC_WEB"."LBC_CHECKPOINT_VW" "LBC_CHECKPOINT_VW"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LBC_SURVEY_REPORT_VW" EntityType="Self.LBC_SURVEY_REPORT_VW" store:Type="Views" store:Schema="LBC_WEB">
+      <DefiningQuery>SELECT 
+"LBC_SURVEY_REPORT_VW"."STARS_ID" AS "STARS_ID", 
+"LBC_SURVEY_REPORT_VW"."FIRST_NAME" AS "FIRST_NAME", 
+"LBC_SURVEY_REPORT_VW"."LAST_NAME" AS "LAST_NAME", 
+"LBC_SURVEY_REPORT_VW"."DLR_NAME" AS "DLR_NAME", 
+"LBC_SURVEY_REPORT_VW"."EVENT_SESSION" AS "EVENT_SESSION", 
+"LBC_SURVEY_REPORT_VW"."EVENT_ID" AS "EVENT_ID", 
+"LBC_SURVEY_REPORT_VW"."EVENT_MONTH" AS "EVENT_MONTH", 
+"LBC_SURVEY_REPORT_VW"."EVENT_YEAR" AS "EVENT_YEAR", 
+"LBC_SURVEY_REPORT_VW"."SURVEY_ID" AS "SURVEY_ID", 
+"LBC_SURVEY_REPORT_VW"."completed date" AS "completed date", 
+"LBC_SURVEY_REPORT_VW"."QUESTION_ID" AS "QUESTION_ID", 
+"LBC_SURVEY_REPORT_VW"."QUESTION_DESC" AS "QUESTION_DESC", 
+"LBC_SURVEY_REPORT_VW"."Answer" AS "Answer"
+FROM "LBC_WEB"."LBC_SURVEY_REPORT_VW" "LBC_SURVEY_REPORT_VW"</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="EVENT_ID_FD_FK" Association="Self.EVENT_ID_FD_FK">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_FLIGHT_INFO_DETAILS" EntitySet="LBC_FLIGHT_INFO_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="EVENT_ID_FK" Association="Self.EVENT_ID_FK">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_FLIGHT_INFO" EntitySet="LBC_FLIGHT_INFO" />
+    </AssociationSet>
+    <AssociationSet Name="LBC_RECOGNITION_ID_FK" Association="Self.LBC_RECOGNITION_ID_FK">
+      <End Role="LBC_PROFILE_RECOGNITION_MASTER" EntitySet="LBC_PROFILE_RECOGNITION_MASTER" />
+      <End Role="LBC_PROFILE_RECOGNITION" EntitySet="LBC_PROFILE_RECOGNITION" />
+    </AssociationSet>
+    <AssociationSet Name="LBC_REGIST_ID" Association="Self.LBC_REGIST_ID">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_REGISTRATION" EntitySet="LBC_REGISTRATION" />
+    </AssociationSet>
+    <AssociationSet Name="LBC_SESSEVT_ID" Association="Self.LBC_SESSEVT_ID">
+      <End Role="LBC_EVENT" EntitySet="LBC_EVENT" />
+      <End Role="LBC_EVENT_SESSION_LOOKUP" EntitySet="LBC_EVENT_SESSION_LOOKUP" />
+    </AssociationSet>
+    <AssociationSet Name="LBC_USERS_USR_ROLE_ID_FK" Association="Self.LBC_USERS_USR_ROLE_ID_FK">
+      <End Role="LBC_USER_ROLE" EntitySet="LBC_USER_ROLE" />
+      <End Role="LBC_USERS" EntitySet="LBC_USERS" />
+    </AssociationSet>
+    <AssociationSet Name="SURVEY_ID_FK" Association="Self.SURVEY_ID_FK">
+      <End Role="LBC_SURVEY_MASTER" EntitySet="LBC_SURVEY_MASTER" />
+      <End Role="LBC_SURVEY_QUESTIONS" EntitySet="LBC_SURVEY_QUESTIONS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

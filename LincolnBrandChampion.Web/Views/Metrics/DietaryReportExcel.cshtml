@@ -1,0 +1,45 @@
+﻿@using LincolnBrandChampion.Model.Models
+@using LincolnBrandChampion.Web.Helpers
+@model List<RegistrationReportModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=DietaryReport.xls");
+}
+
+<?xml version="1.0" encoding="utf-16"?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Last Name</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">First Name</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Market</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Mobile phone #</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Email Address</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Arrival Date</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Departure Date</ss:Data></ss:Cell>	                    	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Registration Date</ss:Data></ss:Cell>
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Dietary Restrictions</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Dietary Restrictions Notes</ss:Data></ss:Cell>	
+                    <ss:Cell ecProperty=""><ss:Data ss:Type="String">Admin Notes</ss:Data></ss:Cell>	
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+                <ss:Row>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToCaps(item.LAST_NAME)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatToCaps(item.FIRST_NAME)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatTrim(item.MARKET)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatPhoneNumber(item.PHONE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatEmail(item.EMAIL_ID)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatDate(item.ARR_DATE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatDate(item.DEP_DATE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatDate(item.CREATED_DATE)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatTrim(item.DIETARY_RESTRICTION)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatTrim(item.REGISTRATION_NOTES)</ss:Data></ss:Cell>
+                    <ss:Cell><ss:Data ss:Type="String">@ReportFormatHelper.FormatTrim(item.ADMIN_NOTES)</ss:Data></ss:Cell>
+                </ss:Row>
+            }
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>

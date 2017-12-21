@@ -1,0 +1,123 @@
+﻿@using LincolnBrandChampion.Model.Models
+@using LincolnBrandChampion.Web.Helpers
+
+@model List<RegistrationReportModel>
+@*@model HotelCarModel*@
+
+@{
+    Layout = null;
+}
+
+
+<link href="~/Content/DT_bootstrap.css" rel="stylesheet" />
+<link href="~/stylesheets/app.css" rel="stylesheet" />
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+
+<div class="row">
+    <div class="twelve columns">
+        <br />
+
+        <div class="admin wdataTable" id="content">
+            <div class="table-holder">
+                <font size="1">
+                <table class="metrics-data" cellspacing="3" cellpadding="3" id="regTable">
+
+                    <tbody> 
+                        <tr border="0" bgcolor="#C5C3C1" color="#222222">
+                            <td>Last Name</td>
+                            <td>First Name</td>
+                            <td>Market</td>
+                            <td>Mobile phone #</td>	
+                            <td>Dealership Phone #</td> 	
+                            <td>Email Address</td>	
+                            <td>Method of Transportation</td>	
+                            <td>Departure Date</td>	
+                            <td>Departure Time</td> 	
+                            <td>Airline</td> 	
+                            <td>Flight Number</td>	
+                            <td>Departing to (Departure City)</td>	
+                            <td>Destination</td>	
+                            <td>Transportation confirmation #</td>	
+                            <td>Transportation Requirements</td>	
+                            <td>Dealership Name</td>	
+                            <td>Title</td>	
+                            <td>Department</td>	
+                            <td>P&A Code</td>	
+                            <td>STARs ID</td>	
+                            <td>City</td> 	
+                            <td>State</td>	
+                            <td>ZIP</td>
+                            <td>Zone</td>	
+                            <td>Registration Date</td>	
+                            <td>Edited by Guest on (Date)</td>	
+                            <td>Badge Name</td>	
+                            <td>Admin Notes</td>
+                        </tr>
+                            @{
+                                var OddColor = "#FFFFFF";
+                                var evenColor = "#F3F0E8";
+                                var Odd = OddColor;
+                                }
+                        @if (Model.Count() > 0)
+                        {
+                            foreach (RegistrationReportModel item in Model)
+                            {
+                        <tr border="0" bgcolor="@Odd">
+                                    <td>@ReportFormatHelper.FormatToCaps(item.LAST_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.FIRST_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.MARKET)</td>
+                                    <td>@ReportFormatHelper.FormatPhoneNumber(item.PHONE)</td>
+                                    <td>@ReportFormatHelper.FormatPhoneNumber(item.DLR_PHONE)</td>
+                                    <td>@ReportFormatHelper.FormatEmail(item.EMAIL_ID)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.TRANSPORT_METHOD)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.DEP_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatTime(item.DEP_TIME)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.DEP_AIRLINE)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.DEP_FLIGHT_NUM)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.DEP_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.DEP_DEST_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.CAR_CONFIRM)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.TRANSPORTATION_NEED</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DLR_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.TITLE)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DEPT_INFO)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.PA_CODE)</td>
+                                    <td>@ReportFormatHelper.FormatToCaps(item.STARS_ID)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DLR_CITY)</td>
+                                    <td>@ReportFormatHelper.FormatState(item.DLR_STATE)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.DLR_ZIP)</td>
+                                    <td>@ReportFormatHelper.FormatToProper(item.ZONE)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.CREATED_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatDate(item.UPDATE_DATE)</td>
+                                    <td>@ReportFormatHelper.FormatBadgeName(item.BADGE_NAME)</td>
+                                    <td>@ReportFormatHelper.FormatTrim(item.ADMIN_NOTES)</td>
+                        </tr>
+                                if (Odd == OddColor)
+                                {
+                                    Odd = evenColor;
+                                }
+                                else
+                                {
+                                    Odd = OddColor;
+                                } 
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="29">No Match Found
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+              </font>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

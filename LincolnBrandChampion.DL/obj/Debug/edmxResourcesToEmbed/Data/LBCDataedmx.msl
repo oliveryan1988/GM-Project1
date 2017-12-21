@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="LBCData">
+    <EntitySetMapping Name="LBC_DIETARY_RESTRICTIONS">
+      <EntityTypeMapping TypeName="Model.LBC_DIETARY_RESTRICTIONS">
+        <MappingFragment StoreEntitySet="LBC_DIETARY_RESTRICTIONS">
+          <ScalarProperty Name="DIETARY_CODE" ColumnName="DIETARY_CODE" />
+          <ScalarProperty Name="DIETARY_DESC" ColumnName="DIETARY_DESC" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_LOGIN_TRACKING">
+      <EntityTypeMapping TypeName="Model.LBC_LOGIN_TRACKING">
+        <MappingFragment StoreEntitySet="LBC_LOGIN_TRACKING">
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+          <ScalarProperty Name="LOGIN_DATE" ColumnName="LOGIN_DATE" />
+          <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ACI" ColumnName="ACI" />
+          <ScalarProperty Name="SITE" ColumnName="SITE" />
+          <ScalarProperty Name="ORGCODE" ColumnName="ORGCODE" />
+          <ScalarProperty Name="EMPCODE" ColumnName="EMPCODE" />
+          <ScalarProperty Name="MRROLE" ColumnName="MRROLE" />
+          <ScalarProperty Name="ORG" ColumnName="ORG" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_PROFILE_HISTORY">
+      <EntityTypeMapping TypeName="Model.LBC_PROFILE_HISTORY">
+        <MappingFragment StoreEntitySet="LBC_PROFILE_HISTORY">
+          <ScalarProperty Name="DEPT_INFO" ColumnName="DEPT_INFO" />
+          <ScalarProperty Name="SALESCODE" ColumnName="SALESCODE" />
+          <ScalarProperty Name="ZONE" ColumnName="ZONE" />
+          <ScalarProperty Name="REV_NUM" ColumnName="REV_NUM" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="WSLX_ID" ColumnName="WSLX_ID" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="LBC_CERT" ColumnName="LBC_CERT" />
+          <ScalarProperty Name="DLR_REGION" ColumnName="DLR_REGION" />
+          <ScalarProperty Name="DLR_NAME" ColumnName="DLR_NAME" />
+          <ScalarProperty Name="DLR_ADDRESS" ColumnName="DLR_ADDRESS" />
+          <ScalarProperty Name="DLR_CITY" ColumnName="DLR_CITY" />
+          <ScalarProperty Name="DLR_STATE" ColumnName="DLR_STATE" />
+          <ScalarProperty Name="DLR_ZIP" ColumnName="DLR_ZIP" />
+          <ScalarProperty Name="DLR_PHONE" ColumnName="DLR_PHONE" />
+          <ScalarProperty Name="BIOGRAPHY" ColumnName="BIOGRAPHY" />
+          <ScalarProperty Name="SHIRT_SIZE" ColumnName="SHIRT_SIZE" />
+          <ScalarProperty Name="DIETARY_RESTRICTION" ColumnName="DIETARY_RESTRICTION" />
+          <ScalarProperty Name="PROFILE_NOTE" ColumnName="PROFILE_NOTE" />
+          <ScalarProperty Name="PROFILE_TYPE" ColumnName="PROFILE_TYPE" />
+          <ScalarProperty Name="EMP_STATUS_CODE" ColumnName="EMP_STATUS_CODE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="ADMIN_NOTES" ColumnName="ADMIN_NOTES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_PROFILE_RECOGNITION">
+      <EntityTypeMapping TypeName="Model.LBC_PROFILE_RECOGNITION">
+        <MappingFragment StoreEntitySet="LBC_PROFILE_RECOGNITION">
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="RECOGNITION_ID" ColumnName="RECOGNITION_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_PROFILE_RECOGNITION_MASTER">
+      <EntityTypeMapping TypeName="Model.LBC_PROFILE_RECOGNITION_MASTER">
+        <MappingFragment StoreEntitySet="LBC_PROFILE_RECOGNITION_MASTER">
+          <ScalarProperty Name="RECOGNITION_ID" ColumnName="RECOGNITION_ID" />
+          <ScalarProperty Name="RECOGNITION_DESC" ColumnName="RECOGNITION_DESC" />
+          <ScalarProperty Name="RECOGNITION_TITLE" ColumnName="RECOGNITION_TITLE" />
+          <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SHIRT_SIZE">
+      <EntityTypeMapping TypeName="Model.LBC_SHIRT_SIZE">
+        <MappingFragment StoreEntitySet="LBC_SHIRT_SIZE">
+          <ScalarProperty Name="SHIRT_SIZE" ColumnName="SHIRT_SIZE" />
+          <ScalarProperty Name="SIZE_DESC" ColumnName="SIZE_DESC" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_USER_ROLE">
+      <EntityTypeMapping TypeName="Model.LBC_USER_ROLE">
+        <MappingFragment StoreEntitySet="LBC_USER_ROLE">
+          <ScalarProperty Name="USR_ROLE_ID" ColumnName="USR_ROLE_ID" />
+          <ScalarProperty Name="USR_ROLE" ColumnName="USR_ROLE" />
+          <ScalarProperty Name="USR_ROLE_DESC" ColumnName="USR_ROLE_DESC" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_USERS">
+      <EntityTypeMapping TypeName="Model.LBC_USERS">
+        <MappingFragment StoreEntitySet="LBC_USERS">
+          <ScalarProperty Name="USR_WSLX_ID" ColumnName="USR_WSLX_ID" />
+          <ScalarProperty Name="USR_FIRST_NAME" ColumnName="USR_FIRST_NAME" />
+          <ScalarProperty Name="USR_LAST_NAME" ColumnName="USR_LAST_NAME" />
+          <ScalarProperty Name="USR_ROLE_ID" ColumnName="USR_ROLE_ID" />
+          <ScalarProperty Name="USR_STATUS" ColumnName="USR_STATUS" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_EVENT">
+      <EntityTypeMapping TypeName="Model.LBC_EVENT">
+        <MappingFragment StoreEntitySet="LBC_EVENT">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CURRENT_COUNT" ColumnName="CURRENT_COUNT" />
+          <ScalarProperty Name="OPEN_LIMIT" ColumnName="OPEN_LIMIT" />
+          <ScalarProperty Name="EVENT_LOCATION" ColumnName="EVENT_LOCATION" />
+          <ScalarProperty Name="EVENT_SESSION" ColumnName="EVENT_SESSION" />
+          <ScalarProperty Name="EVENT_TIME" ColumnName="EVENT_TIME" />
+          <ScalarProperty Name="EVENT_END_DATE" ColumnName="EVENT_END_DATE" />
+          <ScalarProperty Name="EVENT_START_DATE" ColumnName="EVENT_START_DATE" />
+          <ScalarProperty Name="EVENT_MONTH" ColumnName="EVENT_MONTH" />
+          <ScalarProperty Name="EVENT_YEAR" ColumnName="EVENT_YEAR" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_FLIGHT_INFO_DETAILS">
+      <EntityTypeMapping TypeName="Model.LBC_FLIGHT_INFO_DETAILS">
+        <MappingFragment StoreEntitySet="LBC_FLIGHT_INFO_DETAILS">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CONN_ARR_CITY" ColumnName="CONN_ARR_CITY" />
+          <ScalarProperty Name="CONN_ARR_FLIGHT_NUM" ColumnName="CONN_ARR_FLIGHT_NUM" />
+          <ScalarProperty Name="CONN_ARR_AIRLINE" ColumnName="CONN_ARR_AIRLINE" />
+          <ScalarProperty Name="CONN_ARR_TIME" ColumnName="CONN_ARR_TIME" />
+          <ScalarProperty Name="CONN_ARR_DATE" ColumnName="CONN_ARR_DATE" />
+          <ScalarProperty Name="ARR_CITY" ColumnName="ARR_CITY" />
+          <ScalarProperty Name="ARR_FLIGHT_NUM" ColumnName="ARR_FLIGHT_NUM" />
+          <ScalarProperty Name="ARR_AIRLINE" ColumnName="ARR_AIRLINE" />
+          <ScalarProperty Name="ARR_TIME" ColumnName="ARR_TIME" />
+          <ScalarProperty Name="ARR_DATE" ColumnName="ARR_DATE" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="TRIP_NUM" ColumnName="TRIP_NUM" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_IMMERSION_COURSE">
+      <EntityTypeMapping TypeName="Model.LBC_IMMERSION_COURSE">
+        <MappingFragment StoreEntitySet="LBC_IMMERSION_COURSE">
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="COURSE_CODE" ColumnName="COURSE_CODE" />
+          <ScalarProperty Name="TEST_DATE" ColumnName="TEST_DATE" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="DEALER_NAME" ColumnName="DEALER_NAME" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="DEALER_NUM" ColumnName="DEALER_NUM" />
+          <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+          <ScalarProperty Name="SEQ_NO" ColumnName="SEQ_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_HOTEL_CAR_INFO">
+      <EntityTypeMapping TypeName="Model.LBC_HOTEL_CAR_INFO">
+        <MappingFragment StoreEntitySet="LBC_HOTEL_CAR_INFO">
+          <ScalarProperty Name="CAR_NOTES" ColumnName="CAR_NOTES" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ADMIN_NOTES" ColumnName="ADMIN_NOTES" />
+          <ScalarProperty Name="CAR_CONFIRM" ColumnName="CAR_CONFIRM" />
+          <ScalarProperty Name="HOTEL_CHECK_OUT" ColumnName="HOTEL_CHECK_OUT" />
+          <ScalarProperty Name="HOTEL_CHECK_IN" ColumnName="HOTEL_CHECK_IN" />
+          <ScalarProperty Name="HOTEL_NAME" ColumnName="HOTEL_NAME" />
+          <ScalarProperty Name="HOTEL_CONF" ColumnName="HOTEL_CONF" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_REGISTRATION">
+      <EntityTypeMapping TypeName="Model.LBC_REGISTRATION">
+        <MappingFragment StoreEntitySet="LBC_REGISTRATION">
+          <ScalarProperty Name="TRANSPORTATION_NEED" ColumnName="TRANSPORTATION_NEED" />
+          <ScalarProperty Name="CANCEL_REASON" ColumnName="CANCEL_REASON" />
+          <ScalarProperty Name="ADMIN_NOTES" ColumnName="ADMIN_NOTES" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ATTENDED" ColumnName="ATTENDED" />
+          <ScalarProperty Name="TRANSPORTATION_MODE" ColumnName="TRANSPORTATION_MODE" />
+          <ScalarProperty Name="REGD_STATUS" ColumnName="REGD_STATUS" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="WSLX_ID" ColumnName="WSLX_ID" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_FLIGHT_INFO">
+      <EntityTypeMapping TypeName="Model.LBC_FLIGHT_INFO">
+        <MappingFragment StoreEntitySet="LBC_FLIGHT_INFO">
+          <ScalarProperty Name="CONNECTING_FLIGHT_NOTES" ColumnName="CONNECTING_FLIGHT_NOTES" />
+          <ScalarProperty Name="ARR_TERMINAL" ColumnName="ARR_TERMINAL" />
+          <ScalarProperty Name="ARR_DEP_CITY" ColumnName="ARR_DEP_CITY" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="MULTI_FLAG" ColumnName="MULTI_FLAG" />
+          <ScalarProperty Name="DEP_DEST_CITY" ColumnName="DEP_DEST_CITY" />
+          <ScalarProperty Name="DEP_CITY" ColumnName="DEP_CITY" />
+          <ScalarProperty Name="DEP_FLIGHT_NUM" ColumnName="DEP_FLIGHT_NUM" />
+          <ScalarProperty Name="DEP_AIRLINE" ColumnName="DEP_AIRLINE" />
+          <ScalarProperty Name="DEP_TIME" ColumnName="DEP_TIME" />
+          <ScalarProperty Name="DEP_DATE" ColumnName="DEP_DATE" />
+          <ScalarProperty Name="ARR_CITY" ColumnName="ARR_CITY" />
+          <ScalarProperty Name="ARR_FLIGHT_NUM" ColumnName="ARR_FLIGHT_NUM" />
+          <ScalarProperty Name="ARR_AIRLINE" ColumnName="ARR_AIRLINE" />
+          <ScalarProperty Name="ARR_TIME" ColumnName="ARR_TIME" />
+          <ScalarProperty Name="ARR_DATE" ColumnName="ARR_DATE" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="REGD_SEQ_NUM" ColumnName="REGD_SEQ_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AIRLINES_INFO">
+      <EntityTypeMapping TypeName="Model.AIRLINES_INFO">
+        <MappingFragment StoreEntitySet="AIRLINES_INFO">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="TERMINAL_NAME" ColumnName="TERMINAL_NAME" />
+          <ScalarProperty Name="TERMINAL_CODE" ColumnName="TERMINAL_CODE" />
+          <ScalarProperty Name="AIRLINE_NAME" ColumnName="AIRLINE_NAME" />
+          <ScalarProperty Name="AIRLINE_CODE" ColumnName="AIRLINE_CODE" />
+          <ScalarProperty Name="SEQ_NO" ColumnName="SEQ_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_EVENT_SESSION_LOOKUP">
+      <EntityTypeMapping TypeName="Model.LBC_EVENT_SESSION_LOOKUP">
+        <MappingFragment StoreEntitySet="LBC_EVENT_SESSION_LOOKUP">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="SESSION_DATE" ColumnName="SESSION_DATE" />
+          <ScalarProperty Name="SESSION_DESC" ColumnName="SESSION_DESC" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="SESSION_ID" ColumnName="SESSION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_GUEST_REGD_SESSION">
+      <EntityTypeMapping TypeName="Model.LBC_GUEST_REGD_SESSION">
+        <MappingFragment StoreEntitySet="LBC_GUEST_REGD_SESSION">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="SESSION_ID" ColumnName="SESSION_ID" />
+          <ScalarProperty Name="WSLX_ID" ColumnName="WSLX_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_GUEST_REGISTRATION">
+      <EntityTypeMapping TypeName="Model.LBC_GUEST_REGISTRATION">
+        <MappingFragment StoreEntitySet="LBC_GUEST_REGISTRATION">
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="HOTEL_REQUIRED" ColumnName="HOTEL_REQUIRED" />
+          <ScalarProperty Name="PROFILE_NOTE" ColumnName="PROFILE_NOTE" />
+          <ScalarProperty Name="DIETARY_RESTRICTION" ColumnName="DIETARY_RESTRICTION" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="WSLX_ID" ColumnName="WSLX_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_INSTITUTION_ENROLL_REPORT">
+      <EntityTypeMapping TypeName="Model.LBC_INSTITUTION_ENROLL_REPORT">
+        <MappingFragment StoreEntitySet="LBC_INSTITUTION_ENROLL_REPORT">
+          <ScalarProperty Name="DLRENL_EMAIL" ColumnName="DLRENL_EMAIL" />
+          <ScalarProperty Name="DLRENL_PHONE" ColumnName="DLRENL_PHONE" />
+          <ScalarProperty Name="DLRENL_LAST_NAME" ColumnName="DLRENL_LAST_NAME" />
+          <ScalarProperty Name="DLRENL_FIRST_NAME" ColumnName="DLRENL_FIRST_NAME" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="UPDATED_ID" ColumnName="UPDATED_ID" />
+          <ScalarProperty Name="DEALER_STATUS" ColumnName="DEALER_STATUS" />
+          <ScalarProperty Name="STATUS_DATE" ColumnName="STATUS_DATE" />
+          <ScalarProperty Name="REP_ID" ColumnName="REP_ID" />
+          <ScalarProperty Name="ENROLLMENT_DATE" ColumnName="ENROLLMENT_DATE" />
+          <ScalarProperty Name="DEALER_AGREE" ColumnName="DEALER_AGREE" />
+          <ScalarProperty Name="PAY_QUARTERLY" ColumnName="PAY_QUARTERLY" />
+          <ScalarProperty Name="PAY_LUMPSUM" ColumnName="PAY_LUMPSUM" />
+          <ScalarProperty Name="BC_SERVICE_STARSID" ColumnName="BC_SERVICE_STARSID" />
+          <ScalarProperty Name="BC_SERVICE_LAST_NAME" ColumnName="BC_SERVICE_LAST_NAME" />
+          <ScalarProperty Name="BC_SERVICE_FIRST_NAME" ColumnName="BC_SERVICE_FIRST_NAME" />
+          <ScalarProperty Name="BC_SALES_STARSID" ColumnName="BC_SALES_STARSID" />
+          <ScalarProperty Name="BC_SALES_LAST_NAME" ColumnName="BC_SALES_LAST_NAME" />
+          <ScalarProperty Name="BC_SALES_FIRST_NAME" ColumnName="BC_SALES_FIRST_NAME" />
+          <ScalarProperty Name="BRAND_CHAMPION" ColumnName="BRAND_CHAMPION" />
+          <ScalarProperty Name="PRODSKILLS_TRAINING" ColumnName="PRODSKILLS_TRAINING" />
+          <ScalarProperty Name="PROCESS" ColumnName="PROCESS" />
+          <ScalarProperty Name="HOSPITALITY" ColumnName="HOSPITALITY" />
+          <ScalarProperty Name="DLRC_EMAIL" ColumnName="DLRC_EMAIL" />
+          <ScalarProperty Name="DLRC_PHONE" ColumnName="DLRC_PHONE" />
+          <ScalarProperty Name="DLRC_JOB_TITLE" ColumnName="DLRC_JOB_TITLE" />
+          <ScalarProperty Name="DLRC_LAST_NAME" ColumnName="DLRC_LAST_NAME" />
+          <ScalarProperty Name="DLRC_FIRST_NAME" ColumnName="DLRC_FIRST_NAME" />
+          <ScalarProperty Name="DUAL_DEALER" ColumnName="DUAL_DEALER" />
+          <ScalarProperty Name="DEALER_TYPE" ColumnName="DEALER_TYPE" />
+          <ScalarProperty Name="SALESCODE" ColumnName="SALESCODE" />
+          <ScalarProperty Name="DEALERSHIP_NAME" ColumnName="DEALERSHIP_NAME" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVEY_MASTER">
+      <EntityTypeMapping TypeName="Model.LBC_SURVEY_MASTER">
+        <MappingFragment StoreEntitySet="LBC_SURVEY_MASTER">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="SURVEY_DESC" ColumnName="SURVEY_DESC" />
+          <ScalarProperty Name="SURVEY_ID" ColumnName="SURVEY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVEY_QUESTIONS">
+      <EntityTypeMapping TypeName="Model.LBC_SURVEY_QUESTIONS">
+        <MappingFragment StoreEntitySet="LBC_SURVEY_QUESTIONS">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="QUESTION_EXAMPLE" ColumnName="QUESTION_EXAMPLE" />
+          <ScalarProperty Name="QUESTION_TYPE" ColumnName="QUESTION_TYPE" />
+          <ScalarProperty Name="QUESTION_DESC" ColumnName="QUESTION_DESC" />
+          <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+          <ScalarProperty Name="SURVEY_ID" ColumnName="SURVEY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVEY_QUESTION_ANSWER">
+      <EntityTypeMapping TypeName="Model.LBC_SURVEY_QUESTION_ANSWER">
+        <MappingFragment StoreEntitySet="LBC_SURVEY_QUESTION_ANSWER">
+          <ScalarProperty Name="INPUT_TYPE" ColumnName="INPUT_TYPE" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ANSWER" ColumnName="ANSWER" />
+          <ScalarProperty Name="ANSWER_ID" ColumnName="ANSWER_ID" />
+          <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVERY_COMPLETED">
+      <EntityTypeMapping TypeName="Model.LBC_SURVERY_COMPLETED">
+        <MappingFragment StoreEntitySet="LBC_SURVERY_COMPLETED">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="COMPLETED_DATE" ColumnName="COMPLETED_DATE" />
+          <ScalarProperty Name="SURVEY_ID" ColumnName="SURVEY_ID" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVEY_TAKEN">
+      <EntityTypeMapping TypeName="Model.LBC_SURVEY_TAKEN">
+        <MappingFragment StoreEntitySet="LBC_SURVEY_TAKEN">
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="ANSWER_MSG" ColumnName="ANSWER_MSG" />
+          <ScalarProperty Name="ANSWER_ID" ColumnName="ANSWER_ID" />
+          <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+          <ScalarProperty Name="SURVEY_ID" ColumnName="SURVEY_ID" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVEY_REPORT_VW">
+      <EntityTypeMapping TypeName="Model.LBC_SURVEY_REPORT_VW">
+        <MappingFragment StoreEntitySet="LBC_SURVEY_REPORT_VW">
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="QUESTION_DESC" ColumnName="QUESTION_DESC" />
+          <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+          <ScalarProperty Name="completed_date" ColumnName="completed date" />
+          <ScalarProperty Name="SURVEY_ID" ColumnName="SURVEY_ID" />
+          <ScalarProperty Name="EVENT_YEAR" ColumnName="EVENT_YEAR" />
+          <ScalarProperty Name="EVENT_MONTH" ColumnName="EVENT_MONTH" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="EVENT_SESSION" ColumnName="EVENT_SESSION" />
+          <ScalarProperty Name="DLR_NAME" ColumnName="DLR_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_SURVEY_COMPLETED_VIEW">
+      <EntityTypeMapping TypeName="Model.LBC_SURVEY_COMPLETED_VIEW">
+        <MappingFragment StoreEntitySet="LBC_SURVEY_COMPLETED_VIEW">
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="Q16" ColumnName="Q16" />
+          <ScalarProperty Name="Q15" ColumnName="Q15" />
+          <ScalarProperty Name="Q14" ColumnName="Q14" />
+          <ScalarProperty Name="Q13" ColumnName="Q13" />
+          <ScalarProperty Name="Q12" ColumnName="Q12" />
+          <ScalarProperty Name="Q11" ColumnName="Q11" />
+          <ScalarProperty Name="Q10" ColumnName="Q10" />
+          <ScalarProperty Name="Q9" ColumnName="Q9" />
+          <ScalarProperty Name="Q8" ColumnName="Q8" />
+          <ScalarProperty Name="Q7" ColumnName="Q7" />
+          <ScalarProperty Name="Q6" ColumnName="Q6" />
+          <ScalarProperty Name="Q5" ColumnName="Q5" />
+          <ScalarProperty Name="Q4" ColumnName="Q4" />
+          <ScalarProperty Name="Q3" ColumnName="Q3" />
+          <ScalarProperty Name="Q2" ColumnName="Q2" />
+          <ScalarProperty Name="Q1" ColumnName="Q1" />
+          <ScalarProperty Name="Registration_Information" ColumnName="Registration Information" />
+          <ScalarProperty Name="DealerShip_Name" ColumnName="DealerShip Name" />
+          <ScalarProperty Name="Lincoln_Brand_Champion_Name" ColumnName="Lincoln Brand Champion Name" />
+          <ScalarProperty Name="DATE_COMPLETED" ColumnName="DATE COMPLETED" />
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="SURVEY_ID" ColumnName="SURVEY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_CHECKPOINT">
+      <EntityTypeMapping TypeName="Model.LBC_CHECKPOINT">
+        <MappingFragment StoreEntitySet="LBC_CHECKPOINT">
+          <ScalarProperty Name="IMAGE_NAME" ColumnName="IMAGE_NAME" />
+          <ScalarProperty Name="CHK_TITLE" ColumnName="CHK_TITLE" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CHK_END_DATE" ColumnName="CHK_END_DATE" />
+          <ScalarProperty Name="CHK_START_DATE" ColumnName="CHK_START_DATE" />
+          <ScalarProperty Name="CHK_DESC" ColumnName="CHK_DESC" />
+          <ScalarProperty Name="CHECKPOINT_ID" ColumnName="CHECKPOINT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_CHECKPOINT_COMPLETED">
+      <EntityTypeMapping TypeName="Model.LBC_CHECKPOINT_COMPLETED">
+        <MappingFragment StoreEntitySet="LBC_CHECKPOINT_COMPLETED">
+          <ScalarProperty Name="SHIPPING_STATUS" ColumnName="SHIPPING_STATUS" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="CHECKPOINT_ID" ColumnName="CHECKPOINT_ID" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="TOOL_ORDERED" ColumnName="TOOL_ORDERED" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_CHECKPOINT_TRACKING">
+      <EntityTypeMapping TypeName="Model.LBC_CHECKPOINT_TRACKING">
+        <MappingFragment StoreEntitySet="LBC_CHECKPOINT_TRACKING">
+          <ScalarProperty Name="CHECKPOINT_ID" ColumnName="CHECKPOINT_ID" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DOWNLOAD_TIME" ColumnName="DOWNLOAD_TIME" />
+          <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+          <ScalarProperty Name="DOC_URL" ColumnName="DOC_URL" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_RESOURCE_TRACKING">
+      <EntityTypeMapping TypeName="Model.LBC_RESOURCE_TRACKING">
+        <MappingFragment StoreEntitySet="LBC_RESOURCE_TRACKING">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="SECTION" ColumnName="SECTION" />
+          <ScalarProperty Name="DOWNLOAD_TIME" ColumnName="DOWNLOAD_TIME" />
+          <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+          <ScalarProperty Name="DOC_URL" ColumnName="DOC_URL" />
+          <ScalarProperty Name="WSL_ID" ColumnName="WSL_ID" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_STORY">
+      <EntityTypeMapping TypeName="Model.LBC_STORY">
+        <MappingFragment StoreEntitySet="LBC_STORY">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="SUBMISION_DATE" ColumnName="SUBMISION_DATE" />
+          <ScalarProperty Name="STORY_SUBCATEGORY" ColumnName="STORY_SUBCATEGORY" />
+          <ScalarProperty Name="STORY_CATEGORY" ColumnName="STORY_CATEGORY" />
+          <ScalarProperty Name="STORY_RATING" ColumnName="STORY_RATING" />
+          <ScalarProperty Name="STORY_STATUS" ColumnName="STORY_STATUS" />
+          <ScalarProperty Name="IMG_3" ColumnName="IMG_3" />
+          <ScalarProperty Name="IMG_2" ColumnName="IMG_2" />
+          <ScalarProperty Name="IMG_1" ColumnName="IMG_1" />
+          <ScalarProperty Name="STORY_CONTENT" ColumnName="STORY_CONTENT" />
+          <ScalarProperty Name="STORY_TITLE" ColumnName="STORY_TITLE" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_STORY_CATEGORY">
+      <EntityTypeMapping TypeName="Model.LBC_STORY_CATEGORY">
+        <MappingFragment StoreEntitySet="LBC_STORY_CATEGORY">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CATEG_DESCRIPTION" ColumnName="CATEG_DESCRIPTION" />
+          <ScalarProperty Name="CATEG_NAME" ColumnName="CATEG_NAME" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_STORY_RATING">
+      <EntityTypeMapping TypeName="Model.LBC_STORY_RATING">
+        <MappingFragment StoreEntitySet="LBC_STORY_RATING">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="RATING_DESCRIPTION" ColumnName="RATING_DESCRIPTION" />
+          <ScalarProperty Name="RATING_NAME" ColumnName="RATING_NAME" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_STORY_REJECT_REASON">
+      <EntityTypeMapping TypeName="Model.LBC_STORY_REJECT_REASON">
+        <MappingFragment StoreEntitySet="LBC_STORY_REJECT_REASON">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="REASON_DESCRIPTION" ColumnName="REASON_DESCRIPTION" />
+          <ScalarProperty Name="REASON_NAME" ColumnName="REASON_NAME" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_STORY_SUBCATEGORY">
+      <EntityTypeMapping TypeName="Model.LBC_STORY_SUBCATEGORY">
+        <MappingFragment StoreEntitySet="LBC_STORY_SUBCATEGORY">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="SUB_CAT_DESCRIPTION" ColumnName="SUB_CAT_DESCRIPTION" />
+          <ScalarProperty Name="SUB_CAT_NAME" ColumnName="SUB_CAT_NAME" />
+          <ScalarProperty Name="SEQ_NO" ColumnName="SEQ_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_TRANSPORTATION_NEED">
+      <EntityTypeMapping TypeName="Model.LBC_TRANSPORTATION_NEED">
+        <MappingFragment StoreEntitySet="LBC_TRANSPORTATION_NEED">
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="TRANS_DESCRIPTION" ColumnName="TRANS_DESCRIPTION" />
+          <ScalarProperty Name="TRANS_NAME" ColumnName="TRANS_NAME" />
+          <ScalarProperty Name="TRANS_ID" ColumnName="TRANS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_CHECKPOINT_VW">
+      <EntityTypeMapping TypeName="Model.LBC_CHECKPOINT_VW">
+        <MappingFragment StoreEntitySet="LBC_CHECKPOINT_VW">
+          <ScalarProperty Name="CheckPoint1TeamMeetingPPTX" ColumnName="CheckPoint1TeamMeetingPPTX" />
+          <ScalarProperty Name="Checkpoint1SelfStudyPPTX" ColumnName="Checkpoint1SelfStudyPPTX" />
+          <ScalarProperty Name="Checkpoint1SelfStudyPDF" ColumnName="Checkpoint1SelfStudyPDF" />
+          <ScalarProperty Name="CheckPoint1TeamMeetingPDF" ColumnName="CheckPoint1TeamMeetingPDF" />
+          <ScalarProperty Name="CHECKPOINT_ID" ColumnName="CHECKPOINT_ID" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+          <ScalarProperty Name="SHIPPING_STATUS" ColumnName="SHIPPING_STATUS" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="TOOL_ORDERED" ColumnName="TOOL_ORDERED" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SELECT_CONTACT_DLR" ColumnName="SELECT_CONTACT_DLR" />
+          <ScalarProperty Name="DLR_PHONE" ColumnName="DLR_PHONE" />
+          <ScalarProperty Name="DLR_ZIP" ColumnName="DLR_ZIP" />
+          <ScalarProperty Name="DLR_STATE" ColumnName="DLR_STATE" />
+          <ScalarProperty Name="DLR_CITY" ColumnName="DLR_CITY" />
+          <ScalarProperty Name="DLR_ADDRESS" ColumnName="DLR_ADDRESS" />
+          <ScalarProperty Name="DLR_NAME" ColumnName="DLR_NAME" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LBC_PROFILE">
+      <EntityTypeMapping TypeName="Model.LBC_PROFILE">
+        <MappingFragment StoreEntitySet="LBC_PROFILE">
+          <ScalarProperty Name="BADGE_NAME" ColumnName="BADGE_NAME" />
+          <ScalarProperty Name="SELECT_CONTACT_DLR" ColumnName="SELECT_CONTACT_DLR" />
+          <ScalarProperty Name="DEPT_INFO" ColumnName="DEPT_INFO" />
+          <ScalarProperty Name="SALESCODE" ColumnName="SALESCODE" />
+          <ScalarProperty Name="ZONE" ColumnName="ZONE" />
+          <ScalarProperty Name="ADMIN_NOTES" ColumnName="ADMIN_NOTES" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="EMP_STATUS_CODE" ColumnName="EMP_STATUS_CODE" />
+          <ScalarProperty Name="PROFILE_TYPE" ColumnName="PROFILE_TYPE" />
+          <ScalarProperty Name="PROFILE_NOTE" ColumnName="PROFILE_NOTE" />
+          <ScalarProperty Name="DIETARY_RESTRICTION" ColumnName="DIETARY_RESTRICTION" />
+          <ScalarProperty Name="SHIRT_SIZE" ColumnName="SHIRT_SIZE" />
+          <ScalarProperty Name="BIOGRAPHY" ColumnName="BIOGRAPHY" />
+          <ScalarProperty Name="DLR_PHONE" ColumnName="DLR_PHONE" />
+          <ScalarProperty Name="DLR_ZIP" ColumnName="DLR_ZIP" />
+          <ScalarProperty Name="DLR_STATE" ColumnName="DLR_STATE" />
+          <ScalarProperty Name="DLR_CITY" ColumnName="DLR_CITY" />
+          <ScalarProperty Name="DLR_ADDRESS" ColumnName="DLR_ADDRESS" />
+          <ScalarProperty Name="DLR_NAME" ColumnName="DLR_NAME" />
+          <ScalarProperty Name="DLR_REGION" ColumnName="DLR_REGION" />
+          <ScalarProperty Name="LBC_CERT" ColumnName="LBC_CERT" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+          <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="WSLX_ID" ColumnName="WSLX_ID" />
+          <ScalarProperty Name="PA_CODE" ColumnName="PA_CODE" />
+          <ScalarProperty Name="STARS_ID" ColumnName="STARS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

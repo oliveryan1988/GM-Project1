@@ -1,0 +1,142 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<ProfileModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=ReportTickets.xls");
+}
+
+<?xml version="1.0" encoding="utf-16"?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">P&A Code</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">First Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Last Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Email Address</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Mobile Phone</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealer Type</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealership Address</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">City</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Zip</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dealer Phone</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Admin Notes</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Market</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Zone</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Sales Code</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Department Info</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Date Added</ss:Data>
+                </ss:Cell>            
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+                <ss:Row>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.PA_CODE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.FIRST_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.LAST_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.EMAIL_ID
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.PHONE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DEALER_TYPE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.DLR_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                            <ss:Data ss:Type="String">@item.DLR_ADDRESS
+                            </ss:Data>
+                        
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_CITY
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_ZIP
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_PHONE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.ADMIN_NOTES
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.ZONE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DLR_REGION
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.SALESCODE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.DEPT_INFO
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@string.Format("{0:MM/dd/yyyy}",@item.CREATED_DATE)
+                        </ss:Data>
+                    </ss:Cell>
+                </ss:Row>
+            }
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>

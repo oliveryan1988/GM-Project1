@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "NoAuthorized";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Welcome to Lincoln Brand Champion</title>
+
+
+    @Styles.Render("~/bundles/Stylesheets")
+
+
+    @Scripts.Render("~/bundles/modernizr.foundation")
+
+</head>
+<body id="login">
+
+  <div class="row">
+    <div id="header" class="twelve columns">
+          <h1><a href="~/LBC/Welcome" target="_parent"><img src="~/Images/lincoln-brand-champion.png" alt=""/></a></h1>
+      <div class="login"> <span></span><div class="log"><a href="~/LBC/Welcome">Login</a></div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+    	<ul class="nav-bar">
+  <li class="has-flyout nav-reg">
+    <a href="#">Registration</a>
+    <a href="#" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+      <a href="#" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-immersion.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Immersion Event</p>
+          <p class="nav-text">Register to attend an Immersion or Summit Event as part of the Lincoln Brand Champion initiative.</p>
+        </div>
+      </div></a>
+    </div>
+  </li>
+  <li class="has-flyout nav-resource">
+    <a href="#">Resources</a>
+    <a href="#" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+      <a href="#" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-resources.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">A Wealth of Knowledge</p>
+          <p class="nav-text">Your pathway to a wealth of valuable Lincoln content.</p>
+        </div>
+      </div></a>
+    </div>
+  </li>
+  <li class="has-flyout nav-brand">
+    <a href="#">Brand&nbsp;Champions</a>
+    <a href="#" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+      <a href="#" target"_parent" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-network.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Make Connections</p>
+          <p class="nav-text">Locate other Lincoln Brand Champions, view their profiles and start the conversation.</p>
+        </div>
+      </div></a>
+      <a href="#" target"_parent"  class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-profile.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">My Profile</p>
+          <p class="nav-text">Enhance your informational story to build networking opportunities with other Lincoln Brand Champions.</p>
+        </div>
+      </div></a>
+    </div>
+  </li>
+  <li class="has-flyout nav-tool"><a href="#">Toolkit</a>
+    <a href="#" class="flyout-toggle"><span> </span></a>
+    <div class="flyout">
+      <a href="#" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-training.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Checkpoint Resources</p>
+          <p class="nav-text">Everything you need to educate you and your team and become strong advocates of the Lincoln Brand.</p>
+        </div>
+      </div></a>
+      <a href="#" class="sub"><div class="row">
+        <div class="three columns">
+          <p><img src="~/Images/icon-rewards.png" alt=""/></p>
+        </div>
+        <div class="nine columns">
+        	<p class="nav-title">Rewards</p>
+          <p class="nav-text">Learn about the benefits to be gained and rewards to be earned for completing programs, achieving results and helping others.</p>
+        </div>
+      </div></a>
+    </div>
+  </li>
+  <li class="nav-metrics"><a href="#">Metrics</a></li>
+</ul>
+    </div>
+  </div>    
+
+  <div class="row">
+    <div class="twelve columns">
+      <div class="log-image"><img src="~/Images/access-denied.jpg" alt=""/>
+      <p class="log-message"><span>Hello</span>, You must be a Lincoln Brand Champion to enter the dashboard site. <br />
+For more information on the Lincoln Brand Champion initiative contact: <a href="mailto:phq@LincolnBC.com">phq@LincolnBC.com</a> </p>
+     
+     @* <p> @Session["User_Id"].ToString()</p>*@
+
+      </div>
+        </div>
+      </div>
+
+
+    <div id="footer">
+        <div class="row">
+            <div class="twelve columns">
+                <p class="right">
+                    <img src="~/Images/lincoln-symbol.png" alt="" />
+                </p>
+                <ul class="inline-list">
+                    <li><a href="#">Event Registration</a></li>
+                    <li>|</li>
+                    <li><a href="#">Resources</a></li>
+                    <li>|</li>
+                    <li><a href="#">Brand Champions</a></li>
+                    <li>|</li>
+                    <li><a href="#">Toolkit</a></li>
+                    <li>|</li>
+                    <li><a href="#">FAQs</a></li>
+                    <li>|</li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div id="copy-foot">
+        <div class="row">
+            <div class="twelve columns">
+                <ul class="inline-list right">
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li>|</li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+                <p>&copy; 2015 Ford Motor Company</p>
+            </div>
+
+        </div>
+    </div>
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/foundation.min")
+
+
+    <!-- Initialize JS Plugins -->
+@*    <script src="javascripts/app.js"></script>*@
+                @Scripts.Render("~/bundles/app")
+    <script>
+        $(window).load(function () {
+            $("#featured").orbit();
+        });
+    </script> 
+
+  
+
+</body>
+</html>

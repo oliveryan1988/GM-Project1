@@ -1,0 +1,156 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<GuestRegistrationModel>
+@*@model HotelCarModel*@
+
+@{
+    Layout = null;
+}
+
+
+<link href="~/Content/DT_bootstrap.css" rel="stylesheet" />
+<link href="~/stylesheets/app.css" rel="stylesheet" />
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+
+<div class="row">
+    <div class="twelve columns">
+        <br />
+
+        <div class="admin wdataTable" id="content">
+            <div class="table-holder">
+                <font size="1">
+                <table class="metrics-data" cellspacing="3" cellpadding="3" id="regTable">
+
+                    <tbody> 
+                        <tr border="0" bgcolor="#C5C3C1" color="#222222">
+                            <td>WSLX ID</td>
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>Email Address</td>
+                            <td>Company Name</td>
+                            <td>Department</td>
+                            <td>Title</td>
+                            <td>Phone Number</td>
+                            <td>Dietary Restrictions</td>
+                            <td>Additional Information / Notes</td>
+                            <td>Hotel Accomodations</td>
+                            <td>Immersion Session</td>
+                            <td>Event Selection</td>
+                            <td>Date Registered</td>                         
+                        </tr>
+                            @{
+                                var OddColor = "#FFFFFF";
+                                var evenColor = "#F3F0E8";
+                                var Odd = OddColor;
+                                }
+                        @if (Model.Count() > 0)
+                        {
+                                                     for (int i = 0; i <= Model.Count - 1; i++)
+                            {
+                                if (i == 0)
+                                {
+                           
+                            <tr border="0" bgcolor="@Odd">
+                                <td>@Model[i].WSLX_ID</td>
+                                <td>@Model[i].FIRST_NAME</td>
+                                <td>@Model[i].LAST_NAME</td>
+                                <td>@Model[i].EMAIL_ID</td>
+                                <td>@Model[i].COMPANY_NAME</td>
+                                <td>@Model[i].DEPARTMENT</td>
+                                <td>@Model[i].TITLE</td>
+                                <td>@Model[i].PHONE</td>
+                                <td>@Model[i].DIETARY_RESTRICTION</td>
+                                <td>@Model[i].PROFILE_NOTE</td>
+                                <td>@Model[i].HOTEL_REQUIRED</td>
+                                <td>@Model[i].WAVE</td>
+                                 <td>@Model[i].Session_Name</td>
+                                    <td>
+                                       @string.Format("{0:MM/dd/yyyy}",@Model[i].CREATED_DATE) 
+                                      
+                                    </td>
+                                
+
+                                  </tr>
+                                    if (Odd == OddColor)
+                                    {
+                                        Odd = evenColor;
+                                    }
+                                    else
+                                    {
+                                        Odd = OddColor;
+                                    }
+                                }
+                                else if (Model[i].WSLX_ID == Model[i - 1].WSLX_ID)
+                                {
+                                    <tr border="0" bgcolor="@Odd">
+                                 <td colspan="11"></td>
+                                        <td>@Model[i].WAVE</td>
+                                        <td>@Model[i].Session_Name</td>
+                                        <td>@string.Format("{0:MM/dd/yyyy}",@Model[i].CREATED_DATE)</td>
+
+                                    </tr>
+                                    if (Odd == OddColor)
+                                    {
+                                        Odd = evenColor;
+                                    }
+                                    else
+                                    {
+                                        Odd = OddColor;
+                                    }
+                                    
+                                
+                                }
+                                else
+                                {
+                                     <tr border="0" bgcolor="@Odd">
+                                <td>@Model[i].WSLX_ID</td>
+                                <td>@Model[i].FIRST_NAME</td>
+                                <td>@Model[i].LAST_NAME</td>
+                                <td>@Model[i].EMAIL_ID</td>
+                                <td>@Model[i].COMPANY_NAME</td>
+                                <td>@Model[i].DEPARTMENT</td>
+                                <td>@Model[i].TITLE</td>
+                                <td>@Model[i].PHONE</td>
+                                <td>@Model[i].DIETARY_RESTRICTION</td>
+                                <td>@Model[i].PROFILE_NOTE</td>
+                                <td>@Model[i].HOTEL_REQUIRED</td>
+                                <td>@Model[i].WAVE</td>
+                                 <td> @Model[i].Session_Name                                
+                                    </td>
+                                    <td>
+                                       @string.Format("{0:MM/dd/yyyy}",@Model[i].CREATED_DATE)   
+                                      
+                                    </td>
+                                
+
+                                  </tr>
+                                    if (Odd == OddColor)
+                                    {
+                                        Odd = evenColor;
+                                    }
+                                    else
+                                    {
+                                        Odd = OddColor;
+                                    }
+                                
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="13">No Match Found
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+              </font>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

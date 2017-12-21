@@ -1,0 +1,141 @@
+﻿@using LincolnBrandChampion.Web.Helpers;
+@model LincolnBrandChampion.Model.Models.EventModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutGuest.cshtml";
+    string wslxValue = Session["w_user"] != null ? Session["w_user"].ToString() : string.Empty;
+}
+<div class="row">
+    <div class="twelve columns">
+        <p class="guest-intro"><span>Hello</span>  <strong>@Session["w_user"].ToString().ToUpper(),</strong> welcome to the Lincoln Brand Champion Immersion Event Guest Registration. Below you will find a list of event days, times and details to select from. Please review the information below and select the event(s) that you would like to attend. Upon submitting your selections, you will be required to submit your information to complete your registration request. If you have any questions regarding the Immersion events, please contact phq@LincolnBC.com or call 1-800-816-6130.</p>
+
+        <!-- Grid Example -->
+        <div class="row">
+            <div class="twelve columns">
+                <div class="panel">
+                    <div class="row">
+                        <div class="four columns">
+                            <h5 class="text-center">REGISTRATION STEP</h5>
+
+                            <ul id="reg-steps" class="block-grid three-up mobile-three-up">
+                                <li><a href="~/Guest/Index" id="reg-event" class="active"><span class="image1">
+                                    <img src="~/Images/registration-selectevent1.png" alt="" /></span><span class="image2"><img src="~/Images/registration-selectevent2.png" alt="" /></span></a></li>
+                                <li><a href="~/Guest/GuestRegister" id="reg-reg"><span class="image1">
+                                    <img src="~/Images/registration-register1.png" alt="" /></span><span class="image2"><img src="~/Images/registration-register2.png" alt="" /></span></a></li>
+                                <li></li>
+                            </ul>
+
+                            <h3 class="text-center">WHAT'S IN STORE</h3>
+                            <p class="text-center">
+                                <img src="~/Images/dash.png" alt="" />
+                            </p>
+                            <p>During the Immersion, you can expect to gain first-hand experience with Lincoln product stories, competitive ride-and-drives, hands on product comparisons, Lincoln’s comeback and future vision, customer insights and Brand Champion roles and responsibilities.</p>
+                            <p><strong>High Level Agenda:</strong></p>
+                            <ul class="disc">
+                                <li>Kick off Reception and special Executive Guest Presentation</li>
+                                <li>Behind the scenes visits to key engineering and product development areas of Lincoln Motor Company’s World Headquarters</li>
+                                <li>Rouge Plant Tour</li>
+                                <li>Test Track</li>
+                            </ul>
+
+                        </div>
+                        <div class="eight columns">
+                            @using (Html.BeginForm("RegisterSession", "Guest", FormMethod.Post, new { enctype = "multipart/form-data", @class = "awesome", id = "frmRegisterSession"}))
+                            {
+
+                                <input type="hidden" name="wslx" value="@wslxValue" />  
+@*<form action="registration2.html" class="awesome">*@
+                                <div class="row">
+                                    <div class="four columns">
+                                        <div class="custom dropdown select">
+                                           @Html.DropDownList("Month", new SelectList(ModelValueListProvider.EventMonthList, "Value", "Text"), new { id = "month-switch", @class = "is-wrapper"})
+                          
+                                           @* <select id="month-switch" class="is-wrapped">
+                                                <option value="March,2015" selected>March</option>
+                                                <option value="September,2015">September</option>
+                                            </select>*@
+                                            <span class="selector"></span>
+                                        </div>
+                                    </div>
+                                    <div class="eight columns">
+                                        <h3 class="part">IMMERSION WAVE 8 &amp; 9 &#8212; MARCH</h3>
+                                        <h3 class="part hide">IMMERSION WAVE 10 &amp; 11 &#8212; SEPTEMBER</h3>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    <img src="~/Images/dash.png" alt="" />
+                                </p>
+                                <div id="divpartial">
+                                </div>
+                   
+@*
+                    </form>*@
+                            }
+                            <img src="~/Images/registration-event-image.jpg" alt="" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function CheckAll(id) {
+        if ($("#checkAll" + id).is(":checked")) {
+
+            $('.checkBox' + id).each(function () {
+                this.checked = true;
+
+            });
+        }
+        else {
+
+            $('.checkBox' + id).each(function () {
+                this.checked = false;
+            });
+        }
+    }
+
+    function UncheckHeader(id) {
+        $("#checkAll" + id).attr("checked", false);
+    }
+
+    function isChecked() {
+        var CheckBoxs = $('input[type="checkbox"]');
+        var currentCheckBoxs = CheckBoxs.filter(':checked').length;
+        if (currentCheckBoxs === 0)
+        { return alert("Please select an event."); }
+        else
+        { $("#frmRegisterSession").submit(); }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        populateArea();
+
+        $('#month-switch').change(function () {
+             $(".part").toggleClass("hide");
+            populateArea();
+        });
+
+        function populateArea() {
+            var monYr = $('#month-switch').val();
+
+            $.ajax({
+                url: '@Url.Action("GetSession", "Guest")',
+                    type: 'GET',
+                    cache: false,
+                    data: { monthYear: monYr },
+                    error: function (request, status, error) {
+                        //alert('error');
+                    },
+                    success: function (data) {
+                        $('#divpartial').empty();
+                        $("#divpartial").html(data);
+                        //  $("#terminal").val(result.term);
+                    }
+                });
+            }
+        });
+</script>

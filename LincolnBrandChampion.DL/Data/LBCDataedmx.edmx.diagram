@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4015f3c645b4896a20707a43b09e9f1" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.LBC_DIETARY_RESTRICTIONS" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_LOGIN_TRACKING" Width="1.875" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_PROFILE_HISTORY" Width="3.125" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_PROFILE_RECOGNITION" Width="2.75" PointX="7.375" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_PROFILE_RECOGNITION_MASTER" Width="3.375" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_SHIRT_SIZE" Width="1.5" PointX="4.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_USER_ROLE" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LBC_USERS" Width="1.5" PointX="2.5" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.LBC_USERS_USR_ROLE_ID_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.LBC_EVENT" Width="1.5" PointX="5.1794005954542195" PointY="8.8431184929065019" />
+        <EntityTypeShape EntityType="Model.LBC_FLIGHT_INFO_DETAILS" Width="1.5" PointX="0.84395131694336945" PointY="12.055712526690082" />
+        <EntityTypeShape EntityType="Model.LBC_IMMERSION_COURSE" Width="1.5" PointX="9.9773132791637043" PointY="0.62007495789792155" />
+        <AssociationConnector Association="Model.LBC_RECOGNITION_ID_FK" />
+        <AssociationConnector Association="Model.EVENT_ID_FD_FK" />
+        <EntityTypeShape EntityType="Model.LBC_HOTEL_CAR_INFO" Width="1.5" PointX="11.528580218334021" PointY="9.83255361478429" />
+        <EntityTypeShape EntityType="Model.LBC_REGISTRATION" Width="1.5" PointX="4.4024757763382407" PointY="2.1440570513457327" />
+        <AssociationConnector Association="Model.LBC_REGIST_ID" />
+        <EntityTypeShape EntityType="Model.LBC_FLIGHT_INFO" Width="1.5" PointX="9.2957104301525781" PointY="26.706345361986358" />
+        <AssociationConnector Association="Model.EVENT_ID_FK" />
+        <EntityTypeShape EntityType="Model.AIRLINES_INFO" Width="1.5" PointX="9.3201615984179842" PointY="1.8882382371873774" />
+        <EntityTypeShape EntityType="Model.LBC_EVENT_SESSION_LOOKUP" Width="1.5" PointX="7.2650842476939239" PointY="26.601448339690197" />
+        <EntityTypeShape EntityType="Model.LBC_GUEST_REGD_SESSION" Width="1.5" PointX="8.04980738835866" PointY="23.423132460295751" />
+        <AssociationConnector Association="Model.LBC_SESSEVT_ID" />
+        <EntityTypeShape EntityType="Model.LBC_GUEST_REGISTRATION" Width="1.5" PointX="2.8277004206682093" PointY="12.023532425995699" />
+        <AssociationConnector Association="Model.LBC_WSLX_REGD_ID" />
+        <EntityTypeShape EntityType="Model.LBC_INSTITUTION_ENROLL_REPORT" Width="1.5" PointX="7.93412247855874" PointY="2.2664586018149082" />
+        <EntityTypeShape EntityType="Model.LBC_SURVEY_MASTER" Width="3.125" PointX="2.75" PointY="17.625" />
+        <EntityTypeShape EntityType="Model.LBC_SURVEY_QUESTIONS" Width="2.5" PointX="2.125" PointY="9" />
+        <AssociationConnector Association="Model.SURVEY_ID_FK" />
+        <EntityTypeShape EntityType="Model.LBC_SURVEY_QUESTION_ANSWER" Width="1.5" PointX="2.7615921100422707" PointY="14.986078939859793" />
+        <EntityTypeShape EntityType="Model.LBC_SURVERY_COMPLETED" Width="1.5" PointX="9.4371257654564111" PointY="16.025721244525965" />
+        <EntityTypeShape EntityType="Model.LBC_SURVEY_TAKEN" Width="1.5" PointX="0.15730124905579782" PointY="6.5768954784501785" />
+        <EntityTypeShape EntityType="Model.LBC_SURVEY_REPORT_VW" Width="1.5" PointX="1.2941239798879829" PointY="29.769890322242812" />
+        <EntityTypeShape EntityType="Model.LBC_SURVEY_COMPLETED_VIEW" Width="1.5" PointX="10.313188606087673" PointY="10.34757864957097" />
+        <EntityTypeShape EntityType="Model.LBC_CHECKPOINT" Width="2.75" PointX="12.375" PointY="1.625" />
+        <EntityTypeShape EntityType="Model.LBC_CHECKPOINT_COMPLETED" Width="1.5" PointX="7.5049255338986063" PointY="5.2007669383663533" />
+        <EntityTypeShape EntityType="Model.LBC_CHECKPOINT_TRACKING" Width="1.5" PointX="10.111883259430472" PointY="12.859827092317785" />
+        <EntityTypeShape EntityType="Model.LBC_RESOURCE_TRACKING" Width="1.5" PointX="7.0149945649388217" PointY="31.103979989469043" />
+        <EntityTypeShape EntityType="Model.LBC_STORY" Width="1.5" PointX="1.952296609968085" PointY="26.588787910802658" />
+        <EntityTypeShape EntityType="Model.LBC_STORY_CATEGORY" Width="1.5" PointX="10.75" PointY="1.75" />
+        <EntityTypeShape EntityType="Model.LBC_STORY_RATING" Width="1.5" PointX="1.9443060410880979" PointY="6.6159026057533463" />
+        <EntityTypeShape EntityType="Model.LBC_STORY_REJECT_REASON" Width="1.5" PointX="11.173512635367697" PointY="24.302800994507411" />
+        <EntityTypeShape EntityType="Model.LBC_STORY_SUBCATEGORY" Width="1.5" PointX="3.4851917584823409" PointY="24.335237722999992" />
+        <EntityTypeShape EntityType="Model.LBC_TRANSPORTATION_NEED" Width="1.5" PointX="0.2594837398545275" PointY="5.74503095715541" />
+        <EntityTypeShape EntityType="Model.LBC_CHECKPOINT_VW" Width="1.5" PointX="14.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Model.LBC_PROFILE" Width="1.5" PointX="6.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

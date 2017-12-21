@@ -1,0 +1,6 @@
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.Model\bin\Debug\LincolnBrandChampion.Model.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.Model\bin\Debug\LincolnBrandChampion.Model.pdb
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.Model\obj\Debug\LincolnBrandChampion.Model.dll
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.Model\obj\Debug\LincolnBrandChampion.Model.pdb
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.Model\bin\Debug\PagedList.xml
+D:\lincolnbrandchampion.dealerconnection.com\LincolnBrandChampion.Model\obj\Debug\LincolnBrandChampion.Model.csprojResolveAssemblyReference.cache

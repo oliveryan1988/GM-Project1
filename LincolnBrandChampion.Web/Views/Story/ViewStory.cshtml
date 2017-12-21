@@ -1,0 +1,76 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@model LincolnBrandChampion.Model.Models.StoryModel
+@{
+    ViewBag.Title = "Share My Story";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery.dataTables.js")"></script>
+
+      @using (Html.BeginForm("SaveStoryUser", "Story", FormMethod.Post, new { enctype = "multipart/form-data" , @class = "awesome"}))
+      {
+          string picPath=System.AppDomain.CurrentDomain.BaseDirectory+"//Images//StoryPics//";
+<div class="row">
+    <div class="twelve columns">
+        <p class="home-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong>  Welcome to the Share Your Story section of the Lincoln Brand Champion site. Use this section to share a unique or memorable moment when the Lincoln Brand was elevated in your store. Whether it’s one of your colleagues going above and beyond, using best practices, demonstrating passion or contributing to an exceptional customer experience – we want you to tell your story about how your store is taking luxury to a whole new level.</p>
+        <div class="row">
+            <div class="twelve columns">
+                <div class="panel">
+                    <div class="row">
+                <div class="four columns"> @Html.Partial("~/Views/Story/_Left.cshtml", Model.StoryList)            </div>
+                <div class="eight columns toolback">
+                	<h3 class="text-center">MY STORY</h3>
+                    <p class="text-center"><img src="~/images/dash.png" alt=""/></p>
+                    @{DateTime sbmDate=DateTime.Now;
+                      sbmDate = (DateTime)Model.CREATED_DATE ;}
+                   	<p class="text-right"><strong>@sbmDate.ToString("MM/dd/yy")</strong>
+                    
+                     @if (!String.IsNullOrWhiteSpace(Model.IMG_1))
+                    {
+                      <img src="@Url.Content((Model.IMG_1==null || !File.Exists(picPath+Model.IMG_1)?"~/Images/blank.png":"~/Images/StoryPics/"+Model.IMG_1))" alt="IMAGES"  /> 
+          	        }
+                           </p>
+                        <ul class="block-grid two-up two-three-up">
+  				        <li>
+                            @if (!String.IsNullOrWhiteSpace(Model.IMG_2))
+                            {
+                                <img style="width:100%;height:100%"  src="@Url.Content((Model.IMG_2==null || !File.Exists(picPath+Model.IMG_2)?"~/Images/blank.png":"~/Images/StoryPics/"+Model.IMG_2))" alt="IMAGES"/>
+                            }
+
+  				        </li>
+  				        <li> 
+                              @if (!String.IsNullOrWhiteSpace(Model.IMG_3))
+                            {
+                              <img style="width:100%;height:100%"  src="@Url.Content((Model.IMG_3==null || !File.Exists(picPath+Model.IMG_3)?"~/Images/blank.png":"~/Images/StoryPics/"+Model.IMG_3))" alt="IMAGES"/>
+                                }
+                  
+  				        </li>
+			        </ul>
+                    
+                    <h4>@Html.DisplayFor(model => model.STORY_TITLE)</h4>
+                    <p>@Html.DisplayTextFor(m => Model.STORY_CONTENT)</p>
+                </div> 
+                    </div>
+                    </div>
+            </div>
+        </div>
+          		<div class="row">
+      	  <div class="eight columns offset-by-four"><br>
+  				<div class="row">
+      	  			<div class="six columns"><p><a href="/Story/MyStories" class="button" >&#8249; VIEW STORIES</a></p>
+                    </div>
+      	  			<div class="six columns"><p class="text-right"><a onclick="TableToPdf(@Model.SEQ_ID);return false;" class="button" >PRINT STORY &#8250;</a></p>
+                    </div>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>
+      }
+
+<script type="text/javascript" charset="utf-8">
+
+    function TableToPdf(seqid) {
+        window.open('/StoryPdf/PrintStory/'+seqid,'_blank');
+        //document.location = '/MetricsPdf/PrintUserReport?dlrRegion=' + $("#filterSearch").val();
+    }
+    </script>

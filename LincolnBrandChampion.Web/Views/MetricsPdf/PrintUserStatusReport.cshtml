@@ -1,0 +1,84 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<ProfileModel>
+@{
+    Layout = null;
+}
+<br />
+<font size="1">
+<table cellspacing="3" cellpadding="3">
+
+    <tr border="0" bgcolor="#C5C3C1" color="#222222">
+        <td width="5%" align="center">P&amp;A Code</td>
+        <td width="7.5%" align="center">First Name</td>
+        <td width="7.5%" align="center">Last Name</td>
+        <td width="15%" align="center">Email Address</td>
+        <td width="5%" align="center">Dealer Type</td>
+        <td width="25%" align="center">Dealership Name</td>
+        <td width="30%" align="center">Recognition Title</td>
+        <td width="10%" align="center">Status</td>
+    </tr>
+       @{ 
+          var OddColor = "#FFFFFF";
+          var evenColor = "#F3F0E8";
+          var Odd = OddColor;
+        }
+
+    @if (Model.Count() > 0)
+    {
+        foreach (ProfileModel item in Model)
+        {
+        <tr border="0" bgcolor="@Odd">
+            <td valign="top" align="center">@item.PA_CODE</td>
+            <td valign="top" align="center">@item.FIRST_NAME</td>
+            <td valign="top" align="center">@item.LAST_NAME</td>
+            <td valign="top" align="center">@item.EMAIL_ID</td>
+            <td valign="top" align="center">@item.DEALER_TYPE</td>
+            <td valign="top" align="center">@item.DLR_NAME</td>
+           @if(item.recognitionList.Count() >0)
+           {
+               <td>
+            @foreach (RecognitionModel itemRecognition in item.recognitionList)
+           { 
+           <p>@itemRecognition.RECOGNITION_TITLE</p>
+           } 
+           </td>
+           <td>
+            @foreach (RecognitionModel itemRecognition in item.recognitionList)
+            {
+                if (itemRecognition.STATUS.ToLower().Equals("y"))
+                {
+               <p>Completed</p>
+                }
+                else if (itemRecognition.STATUS.ToLower().Equals("n"))
+                {
+              <p>Not Completed</p>
+                }
+                else
+                {
+              <p>&nbsp</p>
+                }
+                
+            } 
+            </td>
+            }
+            
+        </tr>
+            if (Odd == OddColor)
+            {
+                Odd = evenColor;
+            }
+            else
+            {
+                Odd = OddColor;
+            }
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="12">No Match Found
+            </td>
+        </tr>
+    }
+</table>
+</font>

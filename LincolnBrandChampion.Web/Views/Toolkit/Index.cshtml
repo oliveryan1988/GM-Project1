@@ -1,0 +1,74 @@
+﻿@model  LincolnBrandChampion.Model.Models.CheckpointModel
+@{
+    ViewBag.homeid = "toolkit";
+}
+<div class="row">
+    <div class="twelve columns">
+        <p class="home-intro"></p>
+        <div class="row">
+            <div class="twelve columns">
+                <div class="panel">
+                    <div class="row">
+                        <div class="four columns">
+                            <h5 class="text-center">CHECK POINT CRITERIA:</h5>
+                            <ul id="checkpoints" class="block-grid three-up mobile-three-up">
+                                @foreach (var item in Model.CHECKPOINTS)
+                                {
+                                    if (item.CHECKPOINT_ID == Model.CHECKPOINT_ID)
+                                    {
+                                        <li><a href="#" id="check1" class="active">
+                                            <img src="~/Images/@item.IMAGE_NAME" alt="" /></a><p class="text-center">
+                                                DUE: @string.Format("{0:MM/dd/yyyy}",@item.CHK_END_DATE)  
+                                            </p>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                         <li><a href="#" id="check1">
+                                            <img src="~/Images/@item.IMAGE_NAME" alt="" /></a><p class="text-center">
+                                                DUE: @string.Format("{0:MM/dd/yyyy}",@item.CHK_END_DATE)  
+                                            </p>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <h3 class="text-center">LEAD: Leading change in the store.</h3>
+                            <p class="text-center">
+                                <img src="~/Images/dash.png" alt="" />
+                            </p>
+                            <p><strong>What to do with these tools:</strong></p>
+                            <ul class="disc">
+                                <li>Use these tools as guidelines and to engage your fellow colleagues to shape the future of your clients' experience within your store.</li>
+                                <li>Share key practices and methodologies with internal store departments and elevate the client experience in every corner of the store; from the sales floor to the service counter.</li>
+                                <li>Use the provided Lincoln Brand Champion Toolkit materials as resources for quarterly Check Point test completion and for earning Lincoln Brand Champion Rewards. </li>
+                            </ul>
+                        </div>
+                        <div class="eight columns toolback">
+                            <h3 class="text-center">TOOLS OF THE TRADE</h3>
+                            <p class="text-center">
+                                <img src="~/Images/dash.png" alt="" />
+                            </p>
+                            <div class="toolsform">
+                                <div class="row">
+                                    <div class="two columns">
+                                        <p class="text-center">
+                                            <img src="~/Images/@Model.IMAGE_NAME" alt="" />
+                                        </p>
+                                    </div>
+                                    <div class="ten columns">
+                                        <p>
+                                            <strong>@Model.CHK_TITLE</strong><br>
+                                            <strong>DEADLINE - @string.Format("{0:MMMM dd, yyyy}",@Model.CHK_END_DATE) </strong> – @Model.CHK_DESC
+                                        </p>
+                                    </div>
+                                </div>
+                                    @Html.Action("SelfStudy", "Toolkit")
+                            </div>
+                            @*</form>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

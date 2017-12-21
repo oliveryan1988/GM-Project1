@@ -1,0 +1,91 @@
+﻿@model LincolnBrandChampion.Model.Models.CheckpointReportModel
+@using LincolnBrandChampion.Web.Helpers
+<h2>EDIT BRAND CHAMPION CHECKPOINT STATUS</h2>
+<div class="row">
+    <div class="ten columns centered">
+        <h3>@Html.DisplayTextFor(m => Model.FIRST_NAME) @Html.DisplayTextFor(m => Model.LAST_NAME)</h3>
+        <p class="subtitle">
+            TOOL ORDERED: @Html.DisplayTextFor(m=>Model.TOOL_ORDERED)<br />
+            EMAIL ADDRESS: @Html.DisplayTextFor(m => Model.EMAIL_ID)<br />
+            @Html.DisplayTextFor(m => Model.DLR_NAME)<br />
+            @Html.DisplayTextFor(m => Model.DLR_ADDRESS)<br />
+            @Html.DisplayTextFor(m => Model.DLR_CITY)&nbsp;@Model.DLR_STATE&nbsp;@Model.DLR_ZIP<br />
+            P&amp;A Code: @Model.PA_CODE
+        </p>
+        @using (Html.BeginForm("CheckpointInfo", "Metrics", FormMethod.Post, new { enctype = "multipart/form-data", @class = "profileform awesome" }))
+        {
+            @Html.HiddenFor(m => Model.CHECKPOINT_ID)
+            @Html.HiddenFor(m => Model.STARS_ID)
+            <h3>CHECKPOINT</h3>
+            <div class="row">
+                <div class="twelve columns">
+                    <h3>Checkpoint Selected: @Model.CHECKPOINT_ID</h3>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <h3>SHIPPING STATUS</h3>
+                    <ul class="inline-list attended">
+                        @if (Model.SHIPPING_STATUS == "Submitted" | Model.SHIPPING_STATUS == null)
+                        { 
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Submitted" checked />
+                                <label for="no" title="No">Submitted</label></li>
+                        }
+                        else
+                        {
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Submitted" />
+                                <label for="no" title="No">Submitted</label></li>
+                        }
+                        @if (Model.SHIPPING_STATUS == "Shipped")
+                        { 
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Shipped" checked />
+                                <label for="yes" title="yes">Shipped</label></li>
+                        }
+                        else
+                        {
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Shipped" />
+                                <label for="yes" title="yes">Shipped</label></li>
+                        }
+                        @if (Model.SHIPPING_STATUS == "Delivered")
+                        { 
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Delivered" checked />
+                                <label for="cancelled" title="yes">Delivered</label></li>
+                        }
+                        else
+                        {
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Delivered" />
+                                <label for="cancelled" title="yes">Delivered</label></li>
+                        }
+                        @if (Model.SHIPPING_STATUS == "Cancelled")
+                        { 
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Cancelled" checked />
+                                <label for="cancelled" title="yes">Cancelled</label></li>
+                        }
+                        else
+                        {
+                            <li>
+                                <input type="radio" name="attend" class="radioAttend" value="Cancelled" />
+                                <label for="cancelled" title="yes">Cancelled</label></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <p class="text-right">
+                        <input type="submit" value="Save &#8250;" class="button admin-button"></p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<a class="close-reveal-modal">&#215;</a>
+

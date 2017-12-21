@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Land";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+       		  <div class="four columns">
+                <img src="~/images/new-admin-story.png" alt=""/> </div>
+                
+        		<div class="eight columns ">
+                	<h3 class="text-center">ADD USER STORY</h3>
+                  <p class="text-center"><img src="~/images/dash.png" alt=""/></p>
+      				@using (Html.BeginForm("AddStoryAdmin", "Story", FormMethod.Post, new { enctype = "multipart/form-data", @class="awesome" }))
+                    {
+                        <div class="row">
+                          <div class="twelve columns"><input type="text" placeholder="Enter P&amp;A Code" id="search" name ="search" /><label class="required">* P&amp;A Code</label></div>
+                        </div>
+         
+                        <div class="row">
+                          <div class="twelve columns"><select id="regLBC" name="regLBC" >
+  			                    <option value="">-- Select --</option>
+  			
+		                    </select><label class="required">* Select the relevant Lincoln Brand Champion</label></div>
+                        </div>
+                        <div class="row">
+                          <div class="twelve columns text-right"><input type="submit" value="SUBMIT &#8250;" class="button" id="bttn" disabled></div>
+                        </div>
+                    }
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+    $(function () {
+       
+        $('#regLBC').change(function () {
+            
+            if ($('#regLBC option:selected').text() != "-- Select --") {
+                $('#bttn').attr('disabled', false);
+            }
+            else {
+                $('#bttn').attr('disabled', true);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#search').change(function () {
+
+            populateLBC();
+
+
+        });
+        function clearRegLBC() {
+            $('#regLBC').find('option').remove();
+            $('#regLBC').append($('<option/>').attr("value", "").text("-- Select --"));
+            $('#bttn').attr("disabled", true);
+        }
+        function populateLBC() {
+            var pacode = $('#search').val();
+
+
+            $.ajax({
+                url: '@Url.Action("GetLBCList", "Registration")',
+                type: 'GET',
+                cache: false,
+                data: { PaCode: pacode },
+                error: function (request, status, error) {
+                    //alert('error');
+                },
+                success: function (result) {
+
+                    clearRegLBC();
+
+                    $.each(result.lstModel, function (i, option) {
+                        $('#regLBC').append($('<option/>').attr("value", option.STARS_ID).text(option.FIRST_NAME));
+                    });
+
+                }
+            });
+        }
+    });
+
+        
+</script>      
+

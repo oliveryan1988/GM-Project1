@@ -1,0 +1,122 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<GuestRegistrationModel>
+@{
+    Layout = null;
+    Response.ContentType = "application/vnd.ms-excel";
+    Response.AddHeader("Content-Disposition", "attachment; filename=GuestRegistration.xls");
+}
+
+<?xml version="1.0" encoding="utf-16" ?>
+<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+    <ss:Worksheet ss:Name="Sheet1">
+        <ss:Table>
+            <ss:Row>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">WSLX ID</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">First Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Last Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Email Address</ss:Data>
+                </ss:Cell>
+
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Company Name</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Department</ss:Data>
+                </ss:Cell>                                
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Title</ss:Data>
+                </ss:Cell>
+                                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Phone Number</ss:Data>
+                </ss:Cell>
+                                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Dietary Restrictions</ss:Data>
+                </ss:Cell>
+                                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Additional Information / Notes</ss:Data>
+                </ss:Cell>
+                                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Hotel Accomodations</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Immersion Session</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Event Selection</ss:Data>
+                </ss:Cell>
+                <ss:Cell ecProperty="">
+                    <ss:Data ss:Type="String">Date Registered</ss:Data>
+                </ss:Cell>
+            </ss:Row>
+            @foreach (var item in Model)
+            {
+                <ss:Row>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.WSLX_ID
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.FIRST_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.LAST_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.EMAIL_ID
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.COMPANY_NAME
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.DEPARTMENT
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                       <ss:Data ss:Type="String">@item.TITLE
+                        </ss:Data>
+                    </ss:Cell>
+                                        <ss:Cell>
+                       <ss:Data ss:Type="String">@item.PHONE
+                        </ss:Data>
+                    </ss:Cell>
+                                        <ss:Cell>
+                       <ss:Data ss:Type="String">@item.DIETARY_RESTRICTION
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.PROFILE_NOTE
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.HOTEL_REQUIRED
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.WAVE
+                        </ss:Data>
+                    </ss:Cell>                                       
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@item.Session_Name
+                        </ss:Data>
+                    </ss:Cell>
+                    <ss:Cell>
+                        <ss:Data ss:Type="String">@string.Format("{0:MM/dd/yyyy}",@item.CREATED_DATE)
+                        </ss:Data>
+                    </ss:Cell>
+                </ss:Row>
+
+            }
+        </ss:Table>
+    </ss:Worksheet>
+</ss:Workbook>

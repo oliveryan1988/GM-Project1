@@ -1,0 +1,249 @@
+﻿@using LincolnBrandChampion.Model.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@using LincolnBrandChampion.Web.Helpers;
+@model IPagedList<LincolnBrandChampion.Model.Models.StoryModel>
+@{
+    ViewBag.Title = "Submitted Stories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="twelve columns">
+        <p class="guest-intro"><span>Hello</span>  <strong>@Session["User_Id"].ToString().ToUpper(),</strong>  Welcome to the Share Your Story section of the Lincoln Brand Champion site. Use this section to share a unique or memorable moment when the Lincoln Brand was elevated in your store. Whether it’s one of your colleagues going above and beyond, using best practices, demonstrating passion or contributing to an exceptional customer experience – we want you to tell your story about how your store is taking luxury to a whole new level.</p>
+   <p>Please read through the submissions and categorize appropriately. With your help, our brand’s narrative will become even more compelling.</p>
+@using (Html.BeginForm("AdminStories", "Story", FormMethod.Post, new { enctype = "multipart/form-data", @class = "awesome story-search profileform", id = "frmSearch" }))
+{
+
+	@*<form class="awesome story-search">*@
+      <div class="row">
+        <div class="three columns">
+        	<p><strong></strong> <span></span></p>
+        </div>
+        <div class="one columns">
+        <p class="text-right"><strong>BY:</strong></p>
+        </div>
+        <div class="two columns">
+            @Html.DropDownList("Market", new SelectList(ModelValueListProvider.MarketList, "Value", "Text",Session["market"]), new  {id="market",@onchange="$('#frmSearch').submit();"})
+        </div>
+        <div class="two columns">
+            @Html.DropDownList("Event", new SelectList(ModelValueListProvider.EventList , "Value", "Text",Session["event"]), new  {id="Event",@onchange="$('#frmSearch').submit();"})
+        </div>
+        <div class="two columns">
+            <p class="text-right"><strong>SEARCH BY NAME:</strong></p>
+        </div>
+        <div class="two columns">
+      	    <input type="text" placeholder="Search" class="champ-search" id="SearchName" name="SearchName" value="@Session["searchname"].ToString()" />
+        </div>
+      </div>
+       
+    <div class="row">
+        <div class="six columns">
+        </div>
+        <div class="two columns">
+            @Html.TextBox("fromdate",@Session["fromdate"] , "{0:MM/dd/yyyy}", new { @id = "fromdate",@class="",@onchange="$('#frmSearch').submit();"})
+        </div>
+        <div class="two columns" style="text-align:center">
+            <p class="text-right"><strong>To:</strong></p>
+        </div>
+        <div class="two columns">
+            @Html.TextBox("todate",@Session["todate"] , "{0:MM/dd/yyyy}", new { @id = "todate",@class="",@onchange="$('#frmSearch').submit();"})
+        </div>
+      </div>    
+    
+      <!-- Grid Example -->
+	  @*</form>*@
+      <div class="row">
+        <div class="twelve columns">
+          <div class="panel">
+      		<div class="row">
+             @* <div class="twelve columns"  >*@
+                <div class="four columns">
+                  <div id="divpartial">
+                  </div> 
+                </div>
+               	<div class="eight columns toolback">
+                    <div id="divstories">
+                        @Html.Partial("~/Views/Story/_AdminStoryList.cshtml", Model)
+                    </div>
+                </div>
+         @* </div>*@
+        
+  		<div class="row">
+      	  <div class="eight columns offset-by-four"><br>
+  				<div class="row">
+      	  			<div class="twelve columns">
+                <p class="text-center"><a onclick="tableToExcel();return false;" class="button admin-button" >Export to Excel &#8250;</a></p>
+                    </div>
+                </div>
+
+                </div>
+          </div>
+        </div>
+        </div>
+    </div>
+</div>
+    }   
+        </div>
+    </div>                         
+<script>
+    function tableToExcel() {
+        var str="";  
+        $("input[name='Category']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _category = str.substr(0,str.length-1);
+
+        str = "";
+        $("input[name='SubCategory']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _subcategory = str.substr(0, str.length - 1);
+
+        str = "";
+        $("input[name='Rating']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _rating = str.substr(0, str.length - 1);
+
+        var _market = $("#market").val();
+        var _event = $("#Event").val();
+        var _searchname = $("#SearchName").val();
+        
+        document.location = '/Story/AdminStoriesExcel/?category=' + _category+'&subcategory='+_subcategory+'&rating='+_rating+'&market='+_market+'&events='+_event+'&searchname='+_searchname;
+    }
+
+    function CheckAll(id) {
+        if ($("#checkAll" + id).is(":checked")) {
+            $('.checkBox' + id).each(function () {
+                this.checked = true;
+            });
+        }
+        else {
+            $('.checkBox' + id).each(function () {
+                this.checked = false;
+
+            });
+        }
+        isChecked();
+    }
+
+    function UncheckHeader(id) {
+        $("#checkAll" + id).attr("checked", false);
+        isChecked();
+    }
+
+    function isChecked() {
+        var CheckBoxs = $('input[type="checkbox",name="category"]');
+        var currentCheckBoxs = CheckBoxs.filter(':checked').length;
+        if (currentCheckBoxs == 2)
+        { $("#checkAll0").atttr("checked", true);}
+         $("#frmSearch").submit(); 
+        //populateStoryList();
+    }
+
+
+    function populateStoryList() {
+        var str="";  
+        $("input[name='Category']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _category = str.substr(0,str.length-1);
+
+        str = "";
+        $("input[name='SubCategory']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _subcategory = str.substr(0, str.length - 1);
+
+        str = "";
+        $("input[name='Rating']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _rating = str.substr(0, str.length - 1);
+
+        $.ajax({
+            url: '@Url.Action("SearchStories", "Story")',
+                type: 'GET',
+                cache: false,
+                data: { Category: _category,Subcategory: _subcategory,Rating:_rating },
+                error: function (request, status, error) {
+                    //alert('error');
+                },
+                success: function (data) {
+                    $('#divstories').empty();
+                    $("#divstories").html(data);
+                    //  $("#terminal").val(result.term);
+                }
+            });
+        }
+</script>
+<script>
+    $(document).ready(function () {
+        populateArea();
+        $("#fromdate").datepicker();
+        $("#todate").datepicker();
+
+        function populateArea() {
+            $.ajax({
+                url: '@Url.Action("GetSelections", "Story")',
+                    type: 'GET',
+                    cache: false,
+                    data: {  },
+                    error: function (request, status, error) {
+                        //alert('error');
+                    },
+                    success: function (data) {
+                        $('#divpartial').empty();
+                        $("#divpartial").html(data);
+                        //  $("#terminal").val(result.term);
+                    }
+                });
+        }
+
+
+        });
+</script>
+
+
+@*<script>
+    $(function () { $('#myPager').on('click', 'a', function () { populateStoryList(); }); });
+
+    function populateStoryList() {
+        alert("OK");
+        var str = "";
+        $("input[name='Category']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _category = str.substr(0, str.length - 1);
+
+        str = "";
+        $("input[name='SubCategory']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _subcategory = str.substr(0, str.length - 1);
+
+        str = "";
+        $("input[name='Rating']:checked").each(function () {
+            str += $(this).val() + ",";
+        })
+        var _rating = str.substr(0, str.length - 1);
+
+        $.ajax({
+            url: '@Url.Action("SearchStories", "Story")',
+            type: 'GET',
+            cache: false,
+            data: { Category: _category, Subcategory: _subcategory, Rating: _rating },
+            error: function (request, status, error) {
+                //alert('error');
+            },
+            success: function (data) {
+                $('#divstories').empty();
+                $("#divstories").html(data);
+                //  $("#terminal").val(result.term);
+            }
+        });
+    }
+</script>*@
+
+
+    

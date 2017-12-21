@@ -1,0 +1,79 @@
+﻿@using LincolnBrandChampion.Model.Models
+@model List<SurveyReportModel>
+@{
+    Layout = null;
+}
+<br />
+<font size="1">
+<table cellspacing="3" cellpadding="3">
+
+    <tr border="0" bgcolor="#C5C3C1" color="#222222">
+        <td width="10%" align="center">Date Completed</td>
+        <td width="10%" align="center">Brand Champion Name</td>
+        <td width="10%" align="center">Dealership Name</td>
+        <td width="10%" align="center">Registration Information</td>
+        <td width="30%" align="center">Question</td>
+        <td width="30%" align="center">Answer</td>
+    </tr>
+    </tr>
+       @{ 
+          var OddColor = "#FFFFFF";
+          var evenColor = "#F3F0E8";
+          var Odd = OddColor;
+        }
+
+    @if (Model.Count() > 0)
+    {
+        foreach (SurveyReportModel item in Model)
+        {
+        <tr border="0" bgcolor="@Odd">
+            <td valign="top" align="center">@string.Format("{0:MM/dd/yyyy}",@item.DATE)</td>
+            <td valign="top" align="center">@item.NAME</td>
+            <td valign="top" align="center">@item.DLR_NAME</td>
+            <td valign="top" align="center">@item.EVENT_SESSION</td>
+            <td valign="top" align="center">
+              @foreach (SurveyQuestionModel itemQuestion in item.QUESTIONS)
+               { 
+               @itemQuestion.QUESTION_ID 
+               @Html.Raw(". ")    
+               @itemQuestion.QUESTION_DESC<br />
+               } 
+            </td>
+            <td valign="top" align="center">
+                @Html.Raw("1. ")@item.ANSWER1 <br />
+                @Html.Raw("2. ")@item.ANSWER2 <br />
+                @Html.Raw("3. ")@item.ANSWER3 <br />
+                @Html.Raw("4. ")@item.ANSWER4 <br />
+                @Html.Raw("5. ")@item.ANSWER5 <br />
+                @Html.Raw("6. ")@item.ANSWER6 <br />
+                @Html.Raw("7. ")@item.ANSWER7 <br />
+                @Html.Raw("8. ")@item.ANSWER8 <br />
+                @Html.Raw("9. ")@item.ANSWER9 <br />
+                @Html.Raw("10. ")@item.ANSWER10 <br /><br />
+                @Html.Raw("11. ")@item.ANSWER11 <br />
+                @Html.Raw("12. ")@item.ANSWER12 <br /><br />
+                @Html.Raw("13. ")@item.ANSWER13 <br /><br />
+                @Html.Raw("14. ")@item.ANSWER14 <br />
+                @Html.Raw("15. ")@item.ANSWER15 <br /><br />
+                @Html.Raw("16. ")@item.ANSWER16 <br /><br />
+            </td>
+        </tr>
+            if (Odd == OddColor)
+            {
+                Odd = evenColor;
+            }
+            else
+            {
+                Odd = OddColor;
+            }
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="5">No Match Found
+            </td>
+        </tr>
+    }
+</table>
+</font>

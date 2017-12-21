@@ -1,0 +1,31 @@
+﻿<div id="footer">
+    <div class="row">
+        <div class="twelve columns">
+            <p class="right">
+                <img src="~/Images/lincoln-symbol.png" alt="" />
+            </p>
+            <ul class="inline-list">
+                @if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+                {
+                    <li><a href="~/Registration/Index">Event Registration</a></li>
+                    <li>|</li>}
+                @if (Convert.ToInt32(Session["ROLE_ID"]) == 3 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+                { 
+                    <li><a href="~/Registration/registerAdmin">Event Registration</a></li>
+                    <li>|</li>
+                }
+                <li><a href="~/Resources/Index">Resources</a></li>
+                <li>|</li>
+                <li><a href="~/BrandChampion/MakeConnections">Brand Champions</a></li>
+                <li>|</li>
+                @if (Convert.ToInt32(Session["ROLE_ID"]) == 1 || (Convert.ToInt32(Session["ROLE_ID"]) == 5))
+                {
+                    <li><a href="~/LBC/UnderConstruction">Toolkit</a></li>
+                    <li>|</li>}
+                <li><a href="~/Content/pdf/LN_Brand_Champ_FAQ.pdf" target="_blank">FAQs</a></li>
+                <li>|</li>
+                <li><a href="~/Contact/Index">Contacts</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,405 @@
+﻿@using LincolnBrandChampion.Web.Helpers
+@model LincolnBrandChampion.Model.Models.ProfileModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model != null)
+{
+<div class="row ">
+
+  <div class="four mobile-one columns text-center">
+
+      @Html.Partial("~/Views/BrandChampion/_ProfilePic.cshtml", string.IsNullOrEmpty(Model.PHOTO_PATH) ? string.Empty : Model.PHOTO_PATH)
+
+    <p>@if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+            {<a href="#" data-reveal-id="pictureModal" class="button">Update Profile Picture ></a>}</p>
+    <p class="pro-stat">PROFILE STATUS:@Model.PROFILE_TYPE</p>
+    <p>@if (Convert.ToInt32(Session["ROLE_ID"]) == 1)
+            {<a href="#" data-reveal-id="profileModal" class="button">Edit Profile ></a>}</p>
+  </div>
+  <div class="eight mobile-three columns">
+    <h5>@Model.FIRST_NAME @Model.LAST_NAME<br />
+      @Model.DLR_NAME <br />
+      @Model.DLR_ADDRESS @Model.DLR_CITY @Model.DLR_STATE @Model.DLR_ZIP</h5>
+    <p><strong><a href="mailto:@Model.EMAIL_ID">@Model.EMAIL_ID</a><br />
+      Dealership Phone: @Model.phone1-@Model.phone2-@Model.phone3<br />
+      Mobile Phone: @Model.mobile1-@Model.mobile2-@Model.mobile3</strong></p>
+    <h5>BRAND CHAMPION BIOGRAPHY</h5>
+    <p>@Model.BIOGRAPHY</p>
+    <hr />
+    <h5>COMMENTS</h5>
+    <p>@Model.PROFILE_NOTE</p>
+    <hr />
+    <h5>SHIRT SIZE: @Model.SHIRT_SIZE</h5>
+           @if (Convert.ToInt32(Session["ROLE_ID"]) == 5 || Convert.ToInt32(Session["ROLE_ID"]) == 2 ||  Convert.ToInt32(Session["ROLE_ID"]) == 4)
+            {
+                <hr />
+                <h5 class="admin-color">NOTES:</h5>
+                <p class="admin-color">@Model.ADMIN_NOTES</p>
+                <p class="text-right"><a href="#" data-reveal-id="adminModal" class="button admin-button">Edit User Information &#8250;</a></p>
+            }
+  </div>
+        
+</div>
+}
+
+@Html.Partial("~/Views/BrandChampion/_ReportCard.cshtml", Model)
+
+<div id="adminModal" class="reveal-modal medium">
+  <h2>LINCOLN BRAND CHAMPION PERSONAL PROFILE EDITOR</h2>
+  <div class="row">
+    <div class="twelve columns text-center">
+      <p class="subtitle">Update the profile below with relevant information and/or edit the 
+Lincoln Brand Champion Initiative status results in the checkboxes below.</p>
+<table class="prof-info" border="0" cellpadding="5px">
+  <tbody>
+    <tr>
+      <td width="20%">@if (string.IsNullOrEmpty(Model.PHOTO_PATH))
+                      {
+                     <img src="~/Images/person-cutout.png" alt="" class="prof-info-img"/>
+                      }
+                      else
+                      {
+                         <img src="@Url.Content("~/Images/ProfilePics/" + Model.PHOTO_PATH)"  alt="IMAGES" class="prof-info-img"/>
+                      }
+
+      </td>
+      <td><strong>@Model.FIRST_NAME @Model.LAST_NAME<br>
+
+@Model.DLR_NAME<br>
+
+@Model.DLR_ADDRESS @Model.DLR_CITY @Model.DLR_STATE @Model.DLR_ZIP</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+    	
+            @using (Html.BeginForm("SaveProfileUserAdmin", "BrandChampion", FormMethod.Post, new { enctype = "multipart/form-data", @class="profileform awesome text-left" }))
+            {
+          @Html.HiddenFor(m => Model.STARS_ID)
+            @Html.HiddenFor(m => Model.PA_CODE)
+    <div class="row">
+      <div class="twelve columns">@Html.TextBoxFor(m => Model.EMAIL_ID, new { @class = "" , maxlength=60})
+                                    @Html.ValidationMessageFor(m => Model.EMAIL_ID)
+          <label class="required">* eMail Address</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <div class="row collapse">
+           <div class="three columns"> @Html.TextBoxFor(m => Model.mobile1, new { @class = "three columns", maxlength = 3 })</div>
+           <div class="three columns"> @Html.TextBoxFor(m => Model.mobile2, new { @class = "three columns", maxlength = 3 })</div>
+           <div class="six columns"> @Html.TextBoxFor(m => Model.mobile3, new { @class = "six columns", maxlength = 4 })</div>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile1)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile2)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile3)<br /></span>
+        </div><label>Mobile/Other Phone Number</label></div>
+      <div class="six columns"></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+  		@Html.DropDownListFor(m => Model.SHIRT_SIZE, new SelectList(ModelValueListProvider.ShirtSizeList, "Value", "Text"))
+          @Html.ValidationMessageFor(m => Model.SHIRT_SIZE)	
+		<label class="required">* Shirt Size</label></div>
+      <div class="six columns"></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+          @Html.TextAreaFor(m => Model.ADMIN_NOTES, new { @class = "" , maxlength=2000})
+          <label>Additional Notes / Comments (Viewable by Administrators Only)</label></div>
+    </div>
+    
+                <div class="row admincattable">
+    	<div class="twelve columns">
+    <h5>DESCRIPTION:<span>STATUS:</span><img src="~/Images/legend.png" alt="" class="legend"/></h5>
+          
+               
+    <div class="reg-table"><h6><img src="~/Images/icon-immersion.png" alt="" class="icon"/>REGISTRATION:</h6>
+    <hr />
+        	<table width="100%" border="0" cellspacing="0" cellpadding="5px">
+      <tbody>
+         
+           @foreach (var item in Model.recognitionList)
+           {
+
+
+               if (@item.CATEGORY.ToUpper() == "REGISTRATION")
+               {
+                  
+        <tr>
+          <td class="descr"><strong>@item.RECOGNITION_TITLE</strong> <br>
+            @item.RECOGNITION_DESC</td>
+
+             @if (item.STATUS == "Y")
+             {
+          <td class="stat-not">
+            @*<input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat1_@item.RECOGNITION_ID" class="radioSelect" value="N"  />
+            <label for="Stat1_@item.RECOGNITION_ID"></label></td>
+             
+          <td class="stat">
+            @*<input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat2_@item.RECOGNITION_ID" class="radioSelect" value="@item.STATUS" checked />
+            <label for="Stat2_@item.RECOGNITION_ID"></label></td>
+             }
+             else if (item.STATUS == "N" | item.STATUS == null)
+             {
+                <td class="stat-not">
+        @*    <input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat1_@item.RECOGNITION_ID" class="radioSelect" value="@item.STATUS" checked  />
+            <label for="Stat1_@item.RECOGNITION_ID"></label></td>
+             
+          <td class="stat">
+           @* <input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat2_@item.RECOGNITION_ID" class="radioSelect" value="Y"  />
+            <label for="Stat2_@item.RECOGNITION_ID"></label></td>
+            
+             }
+                 
+
+
+        </tr>
+                   
+               }
+
+           }
+      </tbody>
+    </table></div>
+           
+          
+    <div class="res-table"><h6><img src="~/Images/icon-resources.png" alt="" class="icon"/>RESOURCES:</h6>
+    <hr />
+        	<table width="100%" border="0" cellspacing="0" cellpadding="5px">
+      <tbody>
+          @foreach (var item in Model.recognitionList)
+          {
+
+              if (@item.CATEGORY.ToUpper() == "RESOURCES")
+              {
+                 
+        <tr>
+          <td class="descr"><strong>@item.RECOGNITION_TITLE</strong> <br>
+           @item.RECOGNITION_DESC</td>
+          
+            @if (item.STATUS == "Y")
+            {
+          <td class="stat-not">
+           @* <input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+             
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat3_@item.RECOGNITION_ID" class="radioSelect" value="N"   />
+            <label for="Stat3_@item.RECOGNITION_ID"></label>
+             </td>
+            
+             <td class="stat">
+          @*  <input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat4_@item.RECOGNITION_ID" class="radioSelect" value="@item.STATUS" checked  />
+            <label for="Stat4_@item.RECOGNITION_ID"></label>
+             </td>
+         
+            }
+            else if (item.STATUS == "N" | item.STATUS == null)
+            {
+            <td class="stat-not">
+         @*   <input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+             
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat3_@item.RECOGNITION_ID" class="radioSelect" value="@item.STATUS" checked  />
+            <label for="Stat3_@item.RECOGNITION_ID"></label>
+             </td>
+            
+             <td class="stat">
+           @* <input type="hidden" name="@item.RECOGNITION_ID" value="@item.STATUS" />*@
+            <input type="radio" name="@item.RECOGNITION_ID" id="Stat4_@item.RECOGNITION_ID" class="radioSelect" value="Y"  />
+            <label for="Stat4_@item.RECOGNITION_ID"></label>
+             </td>
+            }
+        </tr>
+              }
+
+          }
+      </tbody>
+    </table></div>
+          
+        </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns text-right"><input type="reset" value="Cancel &#8250;" class="button admin-button" >
+          <input type="submit" value="Save User Information &#8250;" class="button admin-button" ></div>
+    </div>
+            }
+    </div>
+  </div>
+</div>
+
+
+<div id="pictureModal" class="reveal-modal medium">
+  <h2>LINCOLN BRAND CHAMPION PERSONAL PROFILE PHOTO</h2>
+  <div class="row">
+    <div class="ten columns centered text-center">
+      @using (Html.BeginForm("Upload", "BrandChampion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+      {
+          @Html.HiddenFor(p => Model.STARS_ID);
+        <label class="text-center">Browse to upload your personal profile photo.  Please exercise discretion in selecting a photo that is respectful and appropriate in representing you.</label>
+        <div class="row">
+          <div class="eight columns">
+            <input type="file" name="File" accept="image/x-png, image/gif, image/jpeg" placeholder="Browse" />
+          </div>
+         @* <div class="four columns">
+            <input type="button" value="Browse &#8250;" class="button browse-button" >
+          </div>*@
+        </div>
+        <p>200px X 200px Image (.jpg, .png, .gif file formats).</p>
+        <input type="submit" value="Upload Profile Photo &#8250;" class="button" >
+      }
+    </div>
+  </div>
+</div>
+
+      @using (Html.BeginForm("SaveProfileUser", "BrandChampion", FormMethod.Post, new { enctype = "multipart/form-data" , @class = "awesome"}))
+      {
+          @Html.HiddenFor(m => Model.STARS_ID)
+          @Html.HiddenFor(m => Model.PA_CODE)
+<div id="profileModal" class="reveal-modal medium">
+  <h2>LINCOLN BRAND CHAMPION PERSONAL PROFILE EDITOR</h2>
+  <div class="row">
+    <div class="ten columns centered text-center">
+      <p class="subtitle">Update your profile below with relevant information that you would like to share with other Lincoln Brand Champions, and for faster event registration and processing.</p>
+    </div>
+  </div>
+  <form action="#" class="profileform awesome">
+    <div class="row">
+      <div class="six columns">
+         @Html.TextBoxFor(m => Model.FIRST_NAME, new { @class = "", maxlength=35 })
+          <span class="required">@Html.ValidationMessageFor(m => Model.FIRST_NAME)</span>
+          <label>First Name</label></div>
+      <div class="six columns">
+          @Html.TextBoxFor(m => Model.LAST_NAME, new { @class = "", maxlength=35 })
+          <span class="required">@Html.ValidationMessageFor(m => Model.LAST_NAME)</span>
+          <label>Last Name</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+          @Html.TextBoxFor(m => Model.TITLE, new { @class = "", maxlength=40 })<label>Title</label></div>
+      <div class="six columns">
+          @Html.TextBoxFor(m => Model.DEPARTMENT, new { @class = "", maxlength=40 })<label>Department</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+          @Html.TextAreaFor(m => Model.BIOGRAPHY, new { @class = "", maxlength=2084 })<label>Biography</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+          @Html.TextBoxFor(m => Model.EMAIL_ID, new { @class = "", maxlength=60 })
+          <span class="required">@Html.ValidationMessageFor(m => Model.EMAIL_ID)</span>
+          <label class="required">* eMail Address</label></div>
+      <div class="six columns">
+          
+@Html.DropDownListFor(m => Model.PROFILE_TYPE, new SelectList(ModelValueListProvider.ProfileTypeList, "Value", "Text"))
+          <span class="required">@Html.ValidationMessageFor(m => Model.PROFILE_TYPE)</span>
+          <label class="required">* Profile Status</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <div class="row collapse">
+
+            @Html.TextBoxFor(m => Model.phone1, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.phone2, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.phone3, new { @class = "six columns", maxlength = 4 })
+            <span class="required">@Html.ValidationMessageFor(m => Model.phone1)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.phone2)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.phone3)<br /></span>
+
+        </div><label>Dealership Phone Number</label>
+      </div>
+      <div class="six columns">
+        <div class="row collapse">
+          
+
+            @Html.TextBoxFor(m => Model.mobile1, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.mobile2, new { @class = "three columns", maxlength = 3 })
+            @Html.TextBoxFor(m => Model.mobile3, new { @class = "six columns", maxlength = 4 })
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile1)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile2)<br /></span>
+            <span class="required">@Html.ValidationMessageFor(m => Model.mobile3)<br /></span>
+        
+        </div><label>Mobile/Other Phone Number</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">@Html.TextBoxFor(m => Model.DLR_ADDRESS, new { @class = "", @readonly = "readonly" })<label>Dealership Address</label></div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+          @Html.TextBoxFor(m => Model.DLR_CITY, new { @class = "", @readonly = "readonly" })<label>Dealership City</label></div>
+      <div class="three columns">@Html.TextBoxFor(m => Model.DLR_STATE, new { @class = "", @readonly = "readonly" })<label>State/Prov.</label></div>
+      <div class="three columns">@Html.TextBoxFor(m => Model.DLR_ZIP, new { @class = "", @readonly = "readonly" })<label>ZIP/Postal Code</label></div>
+    </div>
+
+    <div class="row">
+
+      <div class="six columns">
+                  @Html.DropDownListFor(m => Model.SHIRT_SIZE, new SelectList(ModelValueListProvider.ShirtSizeList, "Value", "Text"))
+                   <span class="required">@Html.ValidationMessageFor(m => Model.SHIRT_SIZE)</span>
+          <label class="required">* Shirt Size</label></div>
+
+      <div class="six columns">
+                  @Html.DropDownListFor(m => Model.DIETARY_RESTRICTION, new SelectList(ModelValueListProvider.DietaryRestrictionsList, "Value", "Text"))
+                    <span class="required">@Html.ValidationMessageFor(m => Model.DIETARY_RESTRICTION)</span>
+          <label class="required">* Dietary Restrictions</label></div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">@Html.TextAreaFor(m => Model.PROFILE_NOTE, new { @class = "", maxlength=2084 })<label>Notes/Comments</label></div>
+    </div>
+    <div class="row">
+      <div class="twelve columns text-right"><input type="reset" value="Clear &#8250;" class="button" ><input type="submit" value="Save &#8250;" class="button" ></div>
+    </div>
+  </form>
+</div>
+      }
+
+<script>
+    $(document).ready(function () {
+
+        wrapSelects = function () {
+            $('form.awesome select:not(.is-wrapped)')
+              .addClass('is-wrapped')
+              .wrap('<div class="custom dropdown select" />')
+              .after('<span class="selector"></span>');
+        }
+
+        $(wrapSelects);
+
+    });
+    </script>
+
+<script type ="text/javascript">
+    $(document).ready(function () {
+        $("#UploadImage").click(function () {
+            var data = new FormData();
+            var files = $("#fileUpload").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionImages", files[0]);
+            }
+            $.ajax({
+                url: resolveUrl("~/BrandChampion/Upload/"),
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    //code after success
+
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    });
+    </script>
+
+
